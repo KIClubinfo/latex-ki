@@ -1,0 +1,13 @@
+*.tex.backup
+*.out
+*.aux
+*.idx
+*.ilg
+*.ind
+*.lof
+*.log
+*.lot
+*.toc
+*.pdf_tex
+*.cls.backup
+*-converted-to.pdf
