@@ -38,7 +38,7 @@
   ([yshift=-2.5cm]current page.north west) -- cycle;
   \node[anchor=base west, white,font=\LARGE\titlefont,xshift=1cm,yshift=-1.5cm] at (current page.north west){#1};
   \node[anchor=north east] at (current page.north east)%
-    {\includegraphics[height=2.5cm]{logo.pdf}};
+    {\includegraphics[height=2.5cm]{logo-ki.pdf}};
 \end{tikzpicture}%
 }
 \newcommand\Footer{%

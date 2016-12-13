@@ -23,8 +23,8 @@ endef
 PDFLATEX:=pdflatex -interaction=nonstopmode
 MAKEINDEX:=makeindex -q -s gind.ist -o
 OUTPUT:=>/dev/null 2>&1
-PKGDIR:=$(shell kpsewhich -var-value=TEXMFHOME)
-PKGDIR:=$(PKGDIR)/tex/latex/enpc-ki
+TEXMFHOME:=$(shell kpsewhich -var-value=TEXMFHOME)
+PKGDIR:=$(TEXMFHOME)/tex/latex/enpc-ki
 
 all: install
 
@@ -34,5 +34,5 @@ install:
 	$(call say,copying files to $(PKGDIR))
 	@cp -r . $(PKGDIR)
 	@rm -f $(PKGDIR)/Makefile
-	@texhash || mktexlsr
+	@texhash $(TEXMFHOME) || mktexlsr
 	$(call installed,$(PKGDIR))
