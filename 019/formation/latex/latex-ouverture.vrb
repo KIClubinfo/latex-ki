@@ -1,8 +1,8 @@
 \frametitle{Conseils et liens utiles}
-    \begin{enumerate}
+    \begin{itemize}
         \item<1-> Tester très souvent la compilation car la moindre '\}' oubliée donne une erreur incompréhensible car l'erreur est indiquée à la fin de l'environnement / page
         \item<2-> mode mathématiques de LaTeX sans autocomplétion = folie
         \item<3-> Online code editor : \url{https://www.codecogs.com/latex/eqneditor.php}
-        \item<4-> Templates : bibliographie, livre, sujet d'examen, calendrier, CV, thèse, slides, article scientifique, template de supaero...
+        \item<4-> Templates : bibliographie, livre, sujet d'examen, calendrier, CV, thèse, slides, article scientifique, template de Supaero...
         \url{https://fr.sharelatex.com/templates}
-    \end{enumerate}
+    \end{itemize}
