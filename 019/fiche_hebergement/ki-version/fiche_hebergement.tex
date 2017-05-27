@@ -1,16 +1,14 @@
-\documentclass[a4paper]{article}
+\documentclass{ki}
 
-\usepackage[margin=0.6in]{geometry}
-\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
 \usepackage[T1]{fontenc}
-\usepackage[frenchb]{babel}
 \usepackage{array}
 
 \newcolumntype{K}[1]{>{\centering\arraybackslash}p{#1}}
 
 \newenvironment{tableau}[1]{
 \LARGE #1\\
-\vspace{0.2cm}
+\vspace{0.4cm}
 \begin{tabular}{|K{5cm}|K{8cm}|}
 }
 {
@@ -24,10 +22,9 @@
 
 \noindent
 
-\begin{center}
-\textsc{\LARGE Fiche d'hébergement KI}
-\vspace{0.5cm}
+\section{Fiche d'hébergement KI}
 
+\begin{center}
 \begin{tableau}{Site web}
 \hline
 Nom & BDE des Ponts  \\
@@ -97,4 +94,5 @@ Espace maximum & 1 Go \\
 \end{tableau}
 
 \end{center}
+
 \end{document}
