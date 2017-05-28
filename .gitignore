@@ -7,7 +7,12 @@
 *.lof
 *.log
 *.lot
+*.nav
+*.snm
+*.synctex.gz
 *.toc
 *.pdf_tex
+*.vrb
+
 *.cls.backup
 *-converted-to.pdf
