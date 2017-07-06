@@ -1,4 +1,4 @@
-\ProvidesClass{ki}[31/8/2016 KI Clubinfo des Ponts]
+\ProvidesClass{charteki019}[05/07/2017 KI Clubinfo des Ponts]
 \LoadClass[11pt]{article}
 
 \RequirePackage[a4paper,margin=1.75cm]{geometry}
@@ -22,8 +22,9 @@
 
 \setlength{\parindent}{0em}
 \setlength{\parskip}{1em}
-
-\definecolor{ki}{RGB}{30, 34, 130}
+% vert : 13, 161, 75
+% rouge : 192, 30, 51
+\definecolor{ki019}{RGB}{13, 161, 75}
 \definecolor{bg}{RGB}{231,241,253}
 
 \newenvironment{kiframe}%
@@ -32,13 +33,13 @@
 
 \newcommand{\Header}[1]{%
 \begin{tikzpicture}[remember picture,overlay,baseline=0pt]
-\fill[ki]
+\fill[ki019]
   (current page.north west) -- (current page.north east) --
   ([yshift=-3.0cm]current page.north east) --
   ([yshift=-2.5cm]current page.north west) -- cycle;
   \node[anchor=base west, white,font=\Huge\titlefont,xshift=3.3cm,yshift=-1.5cm] at (current page.north west){#1};
   \node[anchor=north east,xshift=-0.5cm] at (current page.north east)%
-    {\includegraphics[height=2.5cm]{logo-ki.pdf}};
+    {\includegraphics[height=2.5cm]{logo-ki019.png}};
 \end{tikzpicture}%
 }
 \newcommand\Footer{%
@@ -51,11 +52,15 @@
 \let\emph\relax % there's no \RedeclareTextFontCommand
 \DeclareTextFontCommand{\emph}{\bfseries}
 
+\newcommand{\header}[1]{\newpage\Header{#1}\vspace{1cm}}
+
+\newcommand{\freesection}[1]{{\color{ki019}\titlefont\oldsection*{#1}}\vspace{-1em}}
+
 \let\oldsection\section
-\renewcommand{\section}[1]{\newpage\Header{#1}\vspace{1cm}}
+\renewcommand{\section}[1]{{\color{ki019}\titlefont\oldsection{#1}}\vspace{-1em}}
 
 \let\oldsubsection\subsection
-\renewcommand{\subsection}[1]{{\color{ki}\titlefont\oldsubsection*{#1}}\vspace{-1em}}
+\renewcommand{\subsection}[1]{{\color{ki019}\titlefont\oldsubsection{#1}}\vspace{-1em}}
 
 \let\oldsubsubsection\subsubsection
 \renewcommand{\subsubsection}[1]{{\oldsubsubsection*{#1}}\vspace{-1em}}

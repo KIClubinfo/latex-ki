@@ -1,0 +1,107 @@
+\documentclass{charteki019}
+
+\usepackage{hyperref}
+\usepackage[T1]{fontenc}
+\usepackage{array}
+
+\begin{document}
+
+\header{Charte d'hébergement KI}
+
+\freesection{Préambule}
+
+La présente charte est un guide destiné à assurer la compréhension ainsi que de poser les principes d'utilisation des services d'hébergement proposés par le Club informatique des Ponts et Chaussées, dénommé ci-après KI, pour favoriser la vie associative et la transmission de la connaissance au sein de l'école. Le KI met à disposition des entités (personnes, associations, clubs, programmes scolaires... ) qui en font la demande des services d'hébergement. Les ressources suceptibles d'être alloués sont les suivantes :
+\begin{itemize}
+\item sous nom de domaine de enpc.org
+\item compte FTP
+\item base de données
+\item compte email
+\item module WordPress
+\item Nextcloud
+\end{itemize}
+
+L'utilisation de ces ressources doit être liée à la vie collective des Ponts et Chaussées.
+
+\section{Demande d'hébergement}
+
+\subsection{Première demande}
+
+Toute demande d'hébergement doit être adressée au KI et contenir les informations suivantes :
+\begin{itemize}
+\item Nom de l'entité
+\item Responsable des systèmes d'information (dénommé ci-après RSI) appartenant à l'entité
+\item La liste des ressources dont la demande d'hébergement fait l'objet
+\item Les motivations et les usages auxquels sont destinées les ressources
+\item La liste des personnes qui auront accès aux identifiants, si elle ne se limite pas au RSI
+\item La durée de mise à disposition du service d'hébergement
+\end{itemize}
+
+Le RSI est l'intermédiaire entre le KI et l'entité pour tout ce qui attrait aux services d'hébergement. Il est le garant moral du respect des principes de cette charte, au nom de l'entité. La durée de mise à disposition du service d'hébergement ne peut excéder un an, et est renouvelable indéfiniment, sous réserve d'accord du KI.
+Si la demande est acceptée par le KI, le responsable hébergement délivre au RSI une fiche d'hébergement informatique, dénommée ci-après FHI. Toute modification des informations stipulées sur la FHI doit être porté à l'attention du responsable hébergement du KI et donnera lieu à un amendement de la FHI. La durée de validité d'une FHI est de un an.
+
+\subsection{Renouvellement}
+
+Les identifiants sont changées à chaque renouvellement dès lors qu'au moins une personne qui étaient en possession d'identifiant selon la FHI, perd se droit selon la nouvelle FHI. C'est donc systématiquement le cas pour les clubs/assos, pour lesquels le renouvellement s'effectue au moment de la passation entre 2 équipes. 
+
+\section{Sous nom de domaine}
+
+Le KI possède le nom de domaine enpc.org depuis le 29 mai 2001. Il offre donc d'attribuer des sous nom de domaine de la forme site.enpc.org. Ce sous nom de domaine pointe vers le répertoire du compte FTP stipulé sur la FHI par son chemin relatif à la racine du compte FTP.
+L'entité hébergée a conscience que toute personne ou bot, y compris extérieure aux Ponts, est susceptible de consulter, enregistrer ou référencer le contenu afficher publiquement à une url appartenant au sous nom de domaine alloué. L'entité accepte donc l'entière responsabilité de ce qu'il met en ligne sur le sous-nom de domaine qu'il lui est attribué, et s'engage donc à respecter les lois françaises.
+
+Redirection : TODO
+
+\section{Compte FTP}
+
+Les comptes FTP mis à disposition consituent une partie du système de fichier d'un serveur mutualisé OVH. Ce serveur tourne sur un système d'exploitation linux Debian sur lequel est installé Apache et PHP. Ces comptes sont un espace de stoquage de fichiers destiné à héberger un site internet. L'accès à cette espace se fait via une connexion ftp, sftp ou ssh, à l'aide des identifiants fournis sur la FHI. Une connexion FTP peut s'effectuer dans un terminal linux par la commande ssh user@host. Il est d'autre part possible de se connecter en FTP par son navigateur internet en tapant l'url ftp://user@host, son explorateur de fichier ou le logiciel FileZilla.
+
+\subsection{Modalités}
+
+L'hébergé s'engage a respecté le quota d'espace mémoire qu'il lui est alloué, tel que mentionné sur la fiche d'hébergement.
+Le KI s'engage à ne pas écrire ou modifier de fichiers sur l'espace alloué sans avertir le RSI des opérations effectuées.
+Le KI s'optroie la propriété de tout fichier laissé par l'entité sur ses serveurs à la date d'expiration du service, tel que notifiée sur la FHI.
+
+\subsection{Données et confidentialité}
+
+Tout document ou information sur l'hébergement est susceptible d'être consulté par le président, le président technique et le responsable hébergement du KI.
+L'ensemble des fichiers font l'objet d'une sauvegarde externe une fois par mois.
+
+\section{Base de données}
+
+TODO : description matériel, phpmyadmin
+Une sauvegarde des base de données est effectuée toutes les semaines. Ces sauvegardes sont conservées au moins un mois.
+
+\section{Compte email}
+
+TODO
+
+\section{Module WordPress}
+
+TODO
+
+Des bots circulent en permanence sur internet afin en quête de formulaire de soumission de texte afin de poster des annonces publicitaires, pouvant être à caractère sexuel ou illégal. Tout type de blog étant une cible privilégiée, il est demandé que l'entité modère les commentaires ou de les désactive.
+
+\section{Nextcloud}
+
+TODO
+
+\section{Sécurité}
+
+\subsection{Serveur}
+
+Il est strictement interdit de porter atteinte d'une quelconque manière que ce soit à la stabilité du serveur OVH hébergeur, ainsi que de lister, créer, lire, modifier ou exécuter des fichiers qui se trouvent à l'extérieur de l'espace alloué.
+Le RSI est seule responsable de la non-divulgation des mots de passe à l'extérieur des personnes indiquées sur la FHI, le KI ne peut donc être tenu responsable de tout dommage lié à l'utilisation des mots de passe transmis au FHI. Si vous suspectez qu'un ordinateur contenant des mots de passe enregistrés dans un navigateur internet, un fichier non-cryptés ou un logiciel tel que FileZilla, ait été piratée, volé ou perdu, merci d'en faire part au KI dans les plus brefs délais.
+Tout formulaire sur une page publique permettant la soumission par un internaute d'informations non-restreintes (une checkbox avec 6 choix définies vs un champs de texte où on écrit ce que l'on veut) doit faire l'objet d'une attention particulière de la part de l'entité. La soumissions de données non-échappées ("sanitized") peut permettre de l'injection de code type SQL, PHP ou javascript sur une page web, et porter atteinte à la sécurité de l'ensemble de l'hébergement du KI.
+
+\subsection{Identifiants}
+
+En cas de perte d'identifiants, le RSI doit les réclamer auprès du responsable hébergement du KI. Jamais aucun identifiant ne sera demandé de la part du KI.
+
+\section{Missions de création de site}
+
+TODO
+
+TODO : migration des ressources, assistance
+
+Cette charte est disponible à tout moment à l'adresse clubinfo.enpc.org/charte ainsi qu'à la racine de tout compte FTP nouvellement créé. Cette charte est la propriété intellectuelle du club informatique de l'Ecole Nationale des Ponts et Chaussées. Elle est susceptible d'être modifiée à tout moment par le club informatique.
+
+\end{document}
