@@ -1,5 +1,6 @@
-Vert #00a14b
-Rouge #bf1e2d
-Blanc #bcbec0
-Rose #bf1e2d
-Gris #2d2d2d 
+Vert	#00a14b	rgb(0,161,75)
+Rouge	#bf1e2d	rgb(191,30,45)
+Blanc	#bcbec0	rgb(188,190,192)
+Blanc blanchi	rgb(255,255,255)
+Rose	#bf1e2d	rgb(191,30,45)
+Gris	#2d2d2d	rgb(45,45,45)
