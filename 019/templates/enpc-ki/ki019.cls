@@ -1,5 +1,5 @@
 \ProvidesClass{ki019}[05/07/2017 KI Clubinfo des Ponts]
-\LoadClass[11pt]{article}
+\LoadClass[14pt]{extarticle}
 
 \RequirePackage[a4paper,margin=1.75cm]{geometry}
 \RequirePackage[utf8]{inputenc}
@@ -30,24 +30,29 @@
 \definecolor{exemplebg}{RGB}{224,252,218}
 
 \newenvironment{kiframe}
-  {\vspace{1em}\begin{mdframed}[linewidth=0,backgroundcolor=exemplebg]}
-  {\end{mdframed}\vspace{-0.5em}}
+  {\vspace{1em}
+  \begin{mdframed}
+    [linewidth=0,backgroundcolor=exemplebg]}
+  {\vspace{0.8cm}\end{mdframed}\vspace{-0.5em}}
 
 \newcommand{\Header}[1]{
 \begin{tikzpicture}[remember picture,overlay,baseline=0pt]
 \fill[primary]
-  ([yshift=-4.1cm]current page.north west) --
-  ([xshift=-4.62cm,yshift=-2.55cm]current page.north east) --
-  ([yshift=-4.97cm]current page.north west) -- cycle;
+  ([yshift=-4.4cm]current page.north west) --
+  ([xshift=-4.62cm,yshift=-2.85cm]current page.north east) --
+  ([yshift=-5.27cm]current page.north west) -- cycle;
 \fill[header]
   (current page.north west) -- (current page.north east) --
-  ([yshift=-2.15cm]current page.north east) --
-  ([xshift=-4.62cm,yshift=-2.59cm]current page.north east) --
-  ([yshift=-4.14cm]current page.north west) -- cycle;
-  \node[anchor=base west, white,font=\Huge\titlefont,xshift=5cm,yshift=-1.7cm] at (current page.north west){#1};
+  ([yshift=-2.45cm]current page.north east) --
+  ([xshift=-4.62cm,yshift=-2.89cm]current page.north east) --
+  ([yshift=-4.44cm]current page.north west) -- cycle;
+  \node[anchor=base west, white,font=\Huge\titlefont,xshift=3.5cm,yshift=-2cm] at (current page.north west){#1 \vphantom{A}};
   \node[anchor=north west,xshift=0.5cm,yshift=-0.2cm] at (current page.north west)
     {\includegraphics[height=3cm]{../../logos/Logo_fond_gris_blanchi.png}};
 \end{tikzpicture}
+%\vspace{4cm}
+
+\vspace{2.3cm}
 }
 \newcommand{\Footer}{
 \begin{tikzpicture}[remember picture,overlay,baseline=0pt]
@@ -63,7 +68,7 @@
 \end{tikzpicture}
 }
 
-\pagestyle{empty}
+%\pagestyle{empty}
 %\AtBeginShipout{\Header\Footer}
 %\AtBeginShipoutFirst{\Header\Footer}
 %\AddEverypageHook{\Header\Footer}
@@ -74,11 +79,28 @@
 \newcommand{\primary}[1]{{\color{primary}#1}}
 \newcommand{\secondary}[1]{{\color{secondary}#1}}
 
-\let\oldsection\section
-\renewcommand{\section}[1]{\newpage\Header{#1}\vspace{2cm}}
+\makeatletter
+%\let\oldsection\section
+%\newcommand\section{\@startsection {section}{1}{\z@}%
+%                                   {-3.5ex \@plus -1ex \@minus -.2ex}%
+%                                   {2.3ex \@plus.2ex}%
+%                                   {\Header}}
+\newcommand{\Section}[1]{\newpage\Header{#1}\addcontentsline{toc}{section}{#1}}
 
 \let\oldsubsection\subsection
-\renewcommand{\subsection}[1]{{\color{primary}\titlefont\oldsubsection*{#1}}\vspace{-1em}}
+%\renewcommand{\subsection}[1]{{\color{primary}\titlefont\oldsubsection*{#1}}\vspace{-1em} \addcontentsline{toc}{subsection}{#1}}
+\newcommand\Subsection{\@startsection{subsection}{2}{\z@}%
+                                     {-3.25ex\@plus -1ex \@minus -.2ex}%
+                                     {1.5ex \@plus .2ex}%
+                                     {\normalfont\large\bfseries\color{primary}}}
+\renewcommand\subsection[1]{\Subsection*{#1}\vspace{-1em}\addcontentsline{toc}{subsection}{#1}}
 
 \let\oldsubsubsection\subsubsection
-\renewcommand{\subsubsection}[1]{{\oldsubsubsection*{#1}}\vspace{-1em}}
+%\renewcommand{\subsubsection}[1]{{\oldsubsubsection*{\secondary{#1}}}\vspace{-1em}}
+\newcommand\Subsubsection{\@startsection{subsubsection}{3}{\z@}%
+                                     {-3.25ex\@plus -1ex \@minus -.2ex}%
+                                     {1.5ex \@plus .2ex}%
+                                     {\normalfont\normalsize\bfseries\color{secondary}}}
+\renewcommand\subsubsection[1]{\Subsubsection*{#1}\vspace{-1em}\addcontentsline{toc}{subsubsection}{#1}}
+
+\makeatother
