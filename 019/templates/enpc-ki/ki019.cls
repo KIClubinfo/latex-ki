@@ -3,7 +3,7 @@
 
 \RequirePackage[a4paper,margin=1.75cm]{geometry}
 \RequirePackage[utf8]{inputenc}
-\RequirePackage[frenchb]{babel}
+\RequirePackage[french]{babel}
 \RequirePackage[md]{titlesec}
 \RequirePackage{tikzpagenodes}
 \usetikzlibrary{calc}

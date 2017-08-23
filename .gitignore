@@ -13,6 +13,8 @@
 *.toc
 *.pdf_tex
 *.vrb
+*.pyg
+_minted-*
 
 *.cls.backup
 *-converted-to.pdf
