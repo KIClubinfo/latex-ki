@@ -1,0 +1,117 @@
+\documentclass{../ki019}
+
+\usepackage{hyperref}
+\usepackage[T1]{fontenc}
+\usepackage{array}
+\usepackage{draftwatermark}
+
+\newcolumntype{K}[1]{>{\centering\arraybackslash}p{#1}}
+
+\newenvironment{tableau}[1]{
+\LARGE #1\\
+\vspace{0.4cm}
+\begin{tabular}{|K{5cm}|K{10cm}|}
+}
+{
+\end{tabular}
+\vspace{0.5cm}
+}
+
+\SetWatermarkLightness{0.75}
+\SetWatermarkAngle{40}
+\SetWatermarkScale{2}
+\SetWatermarkFontSize{2cm}
+\SetWatermarkText{Draft for approval}
+
+\begin{document}
+
+\pagestyle{empty} % Removes the page number from the bottom of the page
+
+\noindent
+
+\section{Fiche d'hébergement KI}
+
+\begin{center}
+\begin{tableau}{Site web}
+\hline
+Nom & Galleries Ponthé \\
+\hline
+Nom de domaine & ponthe.enpc.org \\
+\hline
+Date de création & 07/11/2017\phantom{ } \\
+\hline
+Date d'expiration & 07/07/2018$^*$ \\
+\hline
+Certificat SSL & Oui \\
+\hline
+IPv6 & Oui \\
+\hline
+Logs séparés & Non \\
+\hline
+\end{tableau}
+
+\begin{tableau}{Détenteur}
+\hline
+Entité & Club Ponthé \\
+\hline
+Responsable & Inès Tazi \\
+\hline
+Adresse email & ines.tazi@eleves.enpc.fr \\
+\hline
+\end{tableau}
+
+\begin{tableau}{Compte FTP}
+\hline
+Serveur hôte & ftp.enpc.org (ftp.cluster007.ovh.net) \\
+\hline
+IP & 213.186.33.18 \\
+\hline
+Port & 21 \\
+\hline
+Personnes autorisées$^{**}$ & Inès Tazi, Fabien Lespagnol, Alexandre Pacaud \\
+\hline
+Utilisateur & enpc-ponthe \\
+\hline
+Mot de passe & Ponthasm7gorique2017 \\
+\hline
+SFTP / SSH & Oui (port 22) \\
+\hline
+Espace maximum & 1 Go \\
+\hline
+Apache & v2.4 \\
+\hline
+PHP & v5.6 \\
+\hline
+Git & v2.1 \\
+\hline
+\end{tableau}
+
+\begin{tableau}{SSO uPont}
+\hline
+Status & non demandé \\
+\hline
+Description & Connection grâce à un compte uPont et récupération des informations de profil correspondants \\
+\hline
+\end{tableau}
+
+\begin{tableau}{Base de données}
+\hline
+Status & non demandé \\
+\hline
+\end{tableau}
+
+\begin{tableau}{Adresse mail}
+\hline
+Status & non demandé \\
+\hline
+\end{tableau}
+
+\end{center}
+
+\Large \noindent
+$^{\phantom{*}*}$ Hébergement renouvelable auprès du responsable hébergement. \\
+$^{**}$ Liste des personnes autorisées à connaître et utiliser les identifiants de l'accès FTP. Toute modification doit être portée à la connaissance du responsable hébergement.
+
+\Footer
+
+\end{document}

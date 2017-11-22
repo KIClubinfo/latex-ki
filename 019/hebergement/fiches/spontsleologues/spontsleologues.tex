@@ -1,0 +1,147 @@
+\documentclass{../ki019}
+
+\usepackage{hyperref}
+\usepackage[T1]{fontenc}
+\usepackage{array}
+%\usepackage{draftwatermark}
+
+\newcolumntype{K}[1]{>{\centering\arraybackslash}p{#1}}
+
+\newenvironment{tableau}[1]{
+\LARGE #1\\
+\vspace{0.4cm}
+\begin{tabular}{|K{5cm}|K{10cm}|}
+}
+{
+\end{tabular}
+\vspace{0.5cm}
+}
+
+%\SetWatermarkLightness{0.75}
+%\SetWatermarkAngle{40}
+%\SetWatermarkScale{2}
+%\SetWatermarkFontSize{2cm}
+%\SetWatermarkText{Draft for approval}
+
+\begin{document}
+
+\pagestyle{empty} % Removes the page number from the bottom of the page
+
+\noindent
+
+\section{Fiche d'hébergement KI}
+
+\begin{center}
+\begin{tableau}{Site web}
+\hline
+Nom & Site de Campagne SPonts'léologues \\
+\hline
+Nom de domaine & spontsleologues.enpc.org \\
+\hline
+Date de création & 14/11/2017\phantom{ } \\
+\hline
+Date d'expiration & 14/01/2018$^*$ \\
+\hline
+Certificat SSL & Oui \\
+\hline
+IPv6 & Oui \\
+\hline
+Logs séparés & Non \\
+\hline
+\end{tableau}
+
+\begin{tableau}{Détenteur}
+\hline
+Entité & Liste BDS SPonts'léologues \\
+\hline
+Responsable & Elhoussein El Beghdadi \\
+\hline
+Adresse email & elhoussein.el-beghdadi@eleves.enpc.fr (houssein98@outlook.com) \\
+\hline
+\end{tableau}
+
+\begin{tableau}{Compte FTP}
+\hline
+Serveur hôte & ftp.enpc.org (ftp.cluster007.ovh.net) \\
+\hline
+IP & 213.186.33.18 \\
+\hline
+Port & 21 \\
+\hline
+Personnes autorisées$^{**}$ & Elhoussein El Beghdadi \\
+\hline
+Utilisateur & enpc-spontsleologues \\
+\hline
+Mot de passe & uznS3z7Ehn \\
+\hline
+SFTP / SSH & Oui (port 22) \\
+\hline
+Espace maximum & 1 Go \\
+\hline
+Apache & v2.4 \\
+\hline
+PHP & v5.6 \\
+\hline
+Git & v2.1 \\
+\hline
+\end{tableau}
+
+\begin{tableau}{Base de données}
+\hline
+Serveur & mysql.enpc.org (va1757-001.privatesql) \\
+\hline
+Port & 35287 \\
+\hline
+Base de données & enpc-spontsleologues  \\
+\hline
+Utilisateur & enpc-spontsleo \\
+\hline
+Droits & Admin (Select, Insert, Update, Delete, Create, Alter, Drop) \\
+\hline
+Mot de passe & uznS3z7Ehn \\
+\hline
+Interface admin & https://phpmyadmin.ovh.net \\
+\hline
+Type & MySQL 5.6 \\
+\hline
+Espace maximum & 1 Go \\
+\hline
+Sauvegarde hebdomadaire & Oui \\
+\hline
+\end{tableau}
+
+\begin{tableau}{Wordpress}
+\hline
+Page de login & https://spontsleologues.enpc.org/wp-admin \\
+\hline
+Utilisateur & admin \\
+\hline
+Mot de passe & uznS3z7Ehn  \\
+\hline
+\end{tableau}
+
+\begin{tableau}{Adresse mail}
+\hline
+Status & non demandé \\
+\hline
+Usages fréquents & Contacter les entreprises, créer le compte de campagne Fb, adresse de contact sur le site \\
+\hline
+\end{tableau}
+
+\end{center}
+
+\vspace{-0.5cm}
+\noindent
+$^{\phantom{*}*}$ Hébergement renouvelable auprès du responsable hébergement. \\
+$^{**}$ Liste des personnes autorisées à connaître et utiliser les identifiants de l'accès FTP. Toute modification doit être portée à la connaissance du responsable hébergement.
+
+\vspace{0.5cm}
+\Large
+\begin{tabular}{p{7.5cm}p{7.5cm}}
+Signature du & Signature du respo \\
+webmaster    & hébergement du KI 
+\end{tabular}
+
+\Footer{\today}
+
+\end{document}
