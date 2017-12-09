@@ -1,9 +1,9 @@
-\ProvidesClass{ki019}[05/07/2017 KI Clubinfo des Ponts]
+\ProvidesClass{ki019}[09/12/2017 KI Clubinfo des Ponts]
 \LoadClass[11pt]{article}
 
 \RequirePackage[a4paper,margin=1.75cm]{geometry}
 \RequirePackage[utf8]{inputenc}
-\RequirePackage[frenchb]{babel}
+\RequirePackage[french]{babel}
 \RequirePackage[md]{titlesec}
 \RequirePackage{tikzpagenodes}
 \usetikzlibrary{calc}
@@ -85,3 +85,11 @@
 
 \let\oldsubsubsection\subsubsection
 \renewcommand{\subsubsection}[1]{{\oldsubsubsection*{#1}}\vspace{-1em}}
+
+\newcommand{\freesection}[1]{{\color{primary}\titlefont\oldsection*{#1}}\vspace{-1em}}
+
+\newcommand{\sectionenum}[1]{{\color{primary}\titlefont\oldsection{#1}}\vspace{-1em}}
+
+\newcommand{\subsectionenum}[1]{{\color{primary}\titlefont\oldsubsection{#1}}\vspace{-1em}}
+
+\newcommand{\subsubsectionenum}[1]{{\oldsubsubsection*{#1}}\vspace{-1em}}
