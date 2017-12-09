@@ -13,12 +13,11 @@
 \RequirePackage[ddmmyyyy]{datetime}
 
 \RequirePackage{fontspec}
-\newfontfamily\titlefont[Path = fonts/]{Telex-Regular.ttf}
+\newfontfamily\titlefont{Telex-Regular.ttf}
 \setmainfont[
     Extension=.ttf,
     UprightFont= *-Light,
-    BoldFont=*-Bold,
-    Path = fonts/
+    BoldFont=*-Bold
 ]{Nunito}
 
 
@@ -48,7 +47,7 @@
 \node[anchor=base west, white,font=\Huge\titlefont,
   xshift=5cm,yshift=-1.7cm] at (current page.north west){#1};
 \node[anchor=north west,xshift=0.5cm,yshift=-0.2cm] at (current page.north west)
-  {\includegraphics[height=3cm]{../../logos/Logo_fond_gris_blanchi.png}};
+  {\includegraphics[height=3cm]{logo_ki019.png}};
 \end{tikzpicture}
 }
 \newcommand{\Footer}[1]{
