@@ -13,21 +13,25 @@ latex_env = jinja2.Environment(
 	line_comment_prefix = '%#',
 	trim_blocks = True,
 	autoescape = False,
-	loader = jinja2.FileSystemLoader(os.path.abspath('templates/'))
+	loader = jinja2.FileSystemLoader(os.path.abspath('app/templates/'))
 )
 
 class Row():
-	def __init__(self, slug, field, *values):
+	def __init__(self, slug, field, values=None):
 		self.slug = slug
 		self.field = field
-		self.value = ', '.join(values) if values else None
+		self.values = values if type(values) is list else [values]
 		self.template = latex_env.get_template('row.tex')
 
 	def template(self, table_slug):
-		return self.template.render(field=self.field, value=(self.value if self.value else "\VAR{%s}" % (table_slug+"_"+self.slug)))
+		return self.template.render(field=self.field, value=(', '.join(self.values) if self.values else "\VAR{%s}" % (table_slug+"_"+self.slug)))
 
-	def tex(self, value):
-		return self.template.render(field=self.field, value=self.value if self.filled() else value)
+	def tex(self, value=None):
+		if not value and not self.values:
+			raise ValueError("Mandatory filled not filled")
+		if type(value) is list:
+			value = ', '.join(value)
+		return self.template.render(field=self.field, value=value if value else ', '.join(self.values))
 
 	def filled(self):
 		return self.value != None
@@ -59,39 +63,44 @@ class Fiche():
 	def template(self):
 		return self.template.render(title=self.title, tables=[table.template() for table in self.tables])
 
-	def tex(self, json_data, watermark=False):
-		return self.template.render(title=self.title, tables=[table.tex(json_data[table.slug]) for table in self.tables if table.slug in json_data], watermark=watermark)
+	def tex(self, json_data, draft=False):
+		return self.template.render(title=self.title, tables=[self.table(table_slug).tex(json_data[table_slug]) for table_slug, table_data in json_data.items()], draft=draft)
 
-	def save_tex(self, slug_name, json_data, watermark=False, dir=None):
+	def save_tex(self, slug_name, json_data, draft=False, dir=None):
 		if dir:
 			if dir[-1] not in {"/", "."}:
 				dir+="/"
 		else:
-			dir = "tex/"
+			dir = "app/tex/"
 		subprocess.call(["mkdir", "-p", dir])
 
 		with open(dir+'{}.tex'.format(slug_name), 'w') as output_file:
-			output_file.write(fiche.tex(json_data, watermark))
+			output_file.write(fiche.tex(json_data, draft))
 
 	def clean(self, slug_name="*"):
 		if slug_name == "*":
-			tmp_folder = "tmp/"
+			tmp_folder = "app/tmp/"
 		else:	
-			tmp_folder = "tmp/"+slug_name
+			tmp_folder = "app/tmp/"+slug_name
 
 		subprocess.call(["rm", "-R", tmp_folder])
 
-	def save_pdf(self, slug_name, json_data, watermark=False):
-		tmp_folder = "tmp/"+slug_name
-		self.save_tex(slug_name, json_data, watermark, tmp_folder)
+	def save_pdf(self, slug_name, json_data, draft=False):
+		tmp_folder = "app/tmp/"+slug_name
+		self.save_tex(slug_name, json_data, draft, tmp_folder)
 		for i in range(2):
 			subprocess.call(["xelatex", "{}.tex".format(slug_name)], cwd=tmp_folder)
-		subprocess.call(["mv", "tmp/{0}/{0}.tex".format(slug_name), "tex/{}.tex".format(slug_name)])
-		subprocess.call(["mv", "tmp/{0}/{0}.pdf".format(slug_name), "../pdf/{}.pdf".format(slug_name)])
-		subprocess.call(["rm", "-R", tmp_folder])
+		subprocess.call(["mv", "{}/{}.tex".format(tmp_folder, slug_name), "app/tex/{}.tex".format(slug_name)])
+		subprocess.call(["mv", "{}/{}.pdf".format(tmp_folder, slug_name), "pdf/{}.pdf".format(slug_name)])
+		#subprocess.call(["rm", "-R", tmp_folder])
 
 	def placeholders(self):
 		return sum(table.placeholders() for table in self.tables)
+
+	def table(self, table_slug):
+		for table in self.tables:
+			if table.slug == table_slug:
+				return table
 
 
 fiche = Fiche("fiche", "Fiche d'hébergement KI",
@@ -99,22 +108,27 @@ fiche = Fiche("fiche", "Fiche d'hébergement KI",
 				Row('name', "Nom"),
 				Row('domain', "Nom de domaine"),
 				Row('creation_date', "Date de création"),
-				Row('expiry_date', "Date d'expiration"),
+				Row('expiry_date', "Date d'expiration$^*$"),
 				Row('ssl', "Certificat SSL", "Oui"),
 				Row('ipv6', "IPv6", "Oui"),
 				Row('seperated_logs', "Logs séparés", "Non")
 			),
 			Table('owner',"Détenteur",
 				Row('entity', "Entité"),
-				Row('person', "Responsable"),
+				Row('person', "Responsable$^{**}$"),
 				Row('email', "Adresse email")
+			),
+			Table('redirection', "Redirections",
+				Row('from', "Origine"),
+				Row('to', "Destination"),
+				Row('type', "Type")
 			),
 			Table('ftp', "Compte FTP",
 				Row('server_domain', "Serveur hôte", "ftp.enpc.org (ftp.cluster007.ovh.net)"),
 				Row('ip', "IP", "213.186.33.18"),
 				Row('port', "Port", "21"),
-				Row('authorized_people', "Personnes autorisées"),
-				Row('user', "Utilisateur"),
+				Row('authorized_people', "Personnes autorisées$^{***}$"),
+				Row('user', "Utilisateur"),	# without hiphens
 				Row('password', "Mot de passe"),
 				Row('ssh', "SFTP / SSH", "Oui"),
 				Row('max_space', "Espace maximum", "1 Go"),
@@ -136,7 +150,7 @@ fiche = Fiche("fiche", "Fiche d'hébergement KI",
 			),
 			Table('wordpress', "Wordpress",
 				Row('login_page', "Page de login"),
-				Row('user', "Utilisateur", "admin"),
+				Row('user', "Utilisateur"),
 				Row('password', "Mot de passe")
 			),
 			Table('email', "Compte email",

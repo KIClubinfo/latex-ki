@@ -15,7 +15,7 @@
 \vspace{0.5cm}
 }
 
-\BLOCK{ if watermark }
+\BLOCK{ if draft }
 \usepackage{draftwatermark}
 \SetWatermarkLightness{0.75}
 \SetWatermarkAngle{40}
@@ -42,14 +42,17 @@
 
 \vspace{-0.5cm}
 \noindent
-$^{\phantom{*}*}$ Hébergement renouvelable auprès du responsable hébergement. \\
-$^{**}$ Liste des personnes autorisées à connaître et utiliser les identifiants de l'accès FTP. Toute modification doit être portée à la connaissance du responsable hébergement.
+$^{\phantom{**}*}$ Hébergement renouvelable auprès du responsable hébergement. \\
+$^{\phantom{*}**}$ Liste des personnes autorisées à connaître et utiliser les identifiants de l'accès FTP. Toute modification doit être portée à la connaissance du responsable hébergement. \\
+$^{***}$ Désigne le Responsable des Systèmes d'Information de l'entité. Il s'engage à faire respecter la charte d'hébergement disponible à http://enpc.org/charte selon les modalitées décrites dans la présente fiche.
 
+\BLOCK{ if not draft }
 \vspace{0.5cm}
 \Large
-\begin{tabular}{p{7cm}p{8cm}}
-Signature du RSI & Signature du respo hébergement du KI
+\begin{tabular}{p{6cm}p{9.5cm}}
+Signature du RSI & Signature du responsable hébergement du KI
 \end{tabular}
+\BLOCK{ endif }
 
 \Footer{\today}
 
