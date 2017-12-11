@@ -10,6 +10,9 @@ parser.add_option("-d", "--draft", \
                   action="store_true", dest="draft", default=False, \
                   help="draw a watermark at the center of each page \
                   and does not print signing part")
+parser.add_option("-k", "--ki", \
+                  action="store_true", dest="ki", default=False, \
+                  help="make fiche with ki reserved information")
 
 def random_password(size = 16):
 	'''FTP contains between 8 and 30 characters, being only digits and letters, with at least one digit, one capital letter, one lowercase letter'''
@@ -37,8 +40,8 @@ if __name__ == "__main__":
 		print(vars_of(data))
 		for slug in vars_of(data):
 			json_data = getattr(data, slug)
-			models.fiche.save_pdf(slug, json_data, options.draft)
+			models.fiche.save_pdf(slug, json_data, options)
 	else:
 		for slug in args:
 			json_data = getattr(data, slug)
-			models.fiche.save_pdf(slug, json_data, options.draft)
+			models.fiche.save_pdf(slug, json_data, options)

@@ -63,19 +63,21 @@ class Fiche():
 	def template(self):
 		return self.template.render(title=self.title, tables=[table.template() for table in self.tables])
 
-	def tex(self, json_data, draft=False):
-		return self.template.render(title=self.title, tables=[self.table(table_slug).tex(json_data[table_slug]) for table_slug, table_data in json_data.items()], draft=draft)
+	def tex(self, json_data, options=False):
+		return self.template.render(title=self.title, draft=options.draft, ki=options.ki, tables=[self.table(table_slug).tex(json_data[table_slug]) for table_slug, table_data in json_data.items() if (table_slug != 'ki' or options.ki)])
 
-	def save_tex(self, slug_name, json_data, draft=False, dir=None):
+	def save_tex(self, slug_name, json_data, options=False, dir=None):
 		if dir:
 			if dir[-1] not in {"/", "."}:
 				dir+="/"
-		else:
-			dir = "app/tex/"
+		elif options.ki:
+			dir = "app/tex/ki/"
+		else: 
+			dir = "app/tex/clubs/"
 		subprocess.call(["mkdir", "-p", dir])
 
 		with open(dir+'{}.tex'.format(slug_name), 'w') as output_file:
-			output_file.write(fiche.tex(json_data, draft))
+			output_file.write(fiche.tex(json_data, options))
 
 	def clean(self, slug_name="*"):
 		if slug_name == "*":
@@ -85,14 +87,19 @@ class Fiche():
 
 		subprocess.call(["rm", "-R", tmp_folder])
 
-	def save_pdf(self, slug_name, json_data, draft=False):
+	def save_pdf(self, slug_name, json_data, options=False):
 		tmp_folder = "app/tmp/"+slug_name
-		self.save_tex(slug_name, json_data, draft, tmp_folder)
+		self.save_tex(slug_name, json_data, options, tmp_folder)
+		subdir = "ki/" if options.ki else "clubs/"
 		for i in range(2):
 			subprocess.call(["xelatex", "{}.tex".format(slug_name)], cwd=tmp_folder)
-		subprocess.call(["mv", "{}/{}.tex".format(tmp_folder, slug_name), "app/tex/{}.tex".format(slug_name)])
-		subprocess.call(["mv", "{}/{}.pdf".format(tmp_folder, slug_name), "pdf/{}.pdf".format(slug_name)])
-		#subprocess.call(["rm", "-R", tmp_folder])
+
+		subprocess.call(["mkdir", "-p", "app/tex/"+subdir])
+		subprocess.call(["mv", "{}/{}.tex".format(tmp_folder, slug_name), "app/tex/{}{}.tex".format(subdir, slug_name)])
+		subprocess.call(["mkdir", "-p", subdir])
+		subprocess.call(["mv", "{}/{}.pdf".format(tmp_folder, slug_name), "{}{}.pdf".format(subdir, slug_name)])
+
+		subprocess.call(["rm", "-R", tmp_folder])
 
 	def placeholders(self):
 		return sum(table.placeholders() for table in self.tables)
@@ -158,5 +165,8 @@ fiche = Fiche("fiche", "Fiche d'hébergement KI",
 				Row('address', "Adresse email"),
 				Row('password', "Mot de passe"),
 				Row('max_space', "Espace maximum", "1 Go")
+			),
+			Table('ki', "Réservé au KI",
+				Row('directory', "Répertoire FTP")
 			)
 		)

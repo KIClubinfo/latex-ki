@@ -1,0 +1,100 @@
+\documentclass{ki019}
+
+\usepackage[T1]{fontenc}
+\usepackage{array}
+
+\newcolumntype{K}[1]{>{\centering\arraybackslash}p{#1}}
+
+\newenvironment{tableau}[1]{
+\LARGE #1\\
+\vspace{0.4cm}
+\begin{tabular}{|K{5cm}|K{10cm}|}
+}
+{
+\end{tabular}
+\vspace{0.5cm}
+}
+
+
+\begin{document}
+
+\pagestyle{empty}
+
+\noindent
+
+\section{Fiche d'hébergement KI}
+
+\begin{center}
+
+\begin{tableau}{Site web}
+\hline
+Nom & Ponts Safe Place \\
+\hline
+Nom de domaine & psp.enpc.org \\
+\hline
+Date de création & 8 décembre 2017 \\
+\hline
+Date d'expiration$^*$ & 8 décembre 2018 \\
+\hline
+Certificat SSL & Oui \\
+\hline
+IPv6 & Oui \\
+\hline
+Logs séparés & Non \\
+\hline
+\end{tableau}
+
+\begin{tableau}{Détenteur}
+\hline
+Entité & Ponts Safe Place \\
+\hline
+Responsable$^{**}$ & Frédéric Martin \\
+\hline
+Adresse email & frederic.martin@eleves.enpc.fr \\
+\hline
+\end{tableau}
+
+\begin{tableau}{Compte FTP}
+\hline
+Serveur hôte & ftp.enpc.org (ftp.cluster007.ovh.net) \\
+\hline
+IP & 213.186.33.18 \\
+\hline
+Port & 21 \\
+\hline
+Personnes autorisées$^{***}$ & Frédéric Martin \\
+\hline
+Utilisateur & enpc-psp \\
+\hline
+Mot de passe & lt9nXlpy4RibZxXN \\
+\hline
+SFTP / SSH & Oui \\
+\hline
+Espace maximum & 1 Go \\
+\hline
+Apache & v2.4 \\
+\hline
+PHP & v5.6 \\
+\hline
+Git & v2.1 \\
+\hline
+\end{tableau}
+
+\begin{tableau}{Réservé au KI}
+\hline
+Répertoire FTP & www/psp/ \\
+\hline
+\end{tableau}
+
+\end{center}
+
+\vspace{-0.5cm}
+\noindent
+$^{\phantom{**}*}$ Hébergement renouvelable auprès du responsable hébergement. \\
+$^{\phantom{*}**}$ Liste des personnes autorisées à connaître et utiliser les identifiants de l'accès FTP. Toute modification doit être portée à la connaissance du responsable hébergement. \\
+$^{***}$ Désigne le Responsable des Systèmes d'Information de l'entité. Il s'engage à faire respecter la charte d'hébergement disponible à http://enpc.org/charte selon les modalitées décrites dans la présente fiche.
+
+
+\Footer{\today}
+
+\end{document}

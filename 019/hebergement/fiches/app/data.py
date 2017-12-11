@@ -14,6 +14,9 @@ psp = {
 		'authorized_people': "Frédéric Martin",
 		'user': "enpc-psp",
 		'password': "lt9nXlpy4RibZxXN"
+	},
+	'ki': {
+		'directory': "www/psp/"
 	}
 }
 
@@ -55,6 +58,9 @@ bal = {
 	'email': {
 		'address': "baldesponts@enpc.org",
 		'password': "Connemara2017"
+	},
+	'ki': {
+		'directory': "www/gala/"
 	}
 }
 
@@ -78,6 +84,9 @@ pontslarbears = {
 	'email': {
 		'address': "pontslar-bears@enpc.org",
 		'password': "TonPrlU69em"
+	},
+	'ki': {
+		'directory': "www/sitesdecampagne/pontslar-bears/"
 	}
 }
 
@@ -106,5 +115,8 @@ ghostpontsters = {
 	'email': {
 		'address': "ghostpontsters@enpc.org",
 		'password': "ebF6oiTui65zM"
+	},
+	'ki': {
+		'directory': "www/sitesdecampagne/ghostpontsters/"
 	}
 }
