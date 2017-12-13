@@ -1,9 +1,9 @@
 from optparse import OptionParser
-
 import string
 import random
 
-from app import models, data
+from pymongo import MongoClient
+from app import models
 
 parser = OptionParser()
 parser.add_option("-d", "--draft", \
@@ -23,25 +23,21 @@ def random_password(size = 16):
 	random.shuffle(pwd_list)
 	return  ''.join(pwd_list)
 
-def json_to_dict(json):	# useless
-	dico = {}
-	for table_slug, table_dict in json.items():
-		for row_slug, row_value in table_dict.items():
-			dico[table_slug+"_"+row_slug] = row_value
-
-	return dico
-
 def vars_of(module):
 	return [var for var in dir(module) if not var.startswith('__')]
 
+
 if __name__ == "__main__":
 	(options, args) = parser.parse_args()
-	if args[0] == "*":
-		print(vars_of(data))
-		for slug in vars_of(data):
-			json_data = getattr(data, slug)
-			models.fiche.save_pdf(slug, json_data, options)
+	client = MongoClient()
+	db = client.fiches
+	clubs = db.clubs
+
+	if args[0] == "all":
+		clubs_data = clubs.find()
+		for club_data in clubs_data:
+			models.fiche.save_pdf(club_data['_id'], club_data, options)
 	else:
 		for slug in args:
-			json_data = getattr(data, slug)
-			models.fiche.save_pdf(slug, json_data, options)
+			club_data = clubs.find_one({'_id': slug})
+			models.fiche.save_pdf(slug, club_data, options)

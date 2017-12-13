@@ -1,4 +1,5 @@
 psp = {
+	'_id': "psp",
 	'site': {
 		'name': "Ponts Safe Place",
 		'domain': "psp.enpc.org",
@@ -20,7 +21,8 @@ psp = {
 	}
 }
 
-bal = {
+baldesponts = {
+	'_id': "baldesponts",
 	'site': {
 		'name': "Bal des Ponts",
 		'domain': "baldesponts.enpc.org",
@@ -65,6 +67,7 @@ bal = {
 }
 
 pontslarbears = {
+	'_id': "pontslarbears",
 	'site': {
 		'name': "Pont'slar Bears",
 		'domain': "pontslar-bears.enpc.org",
@@ -91,6 +94,7 @@ pontslarbears = {
 }
 
 ghostpontsters = {
+	'_id': "ghostpontsters",
 	'site': {
 		'name': "Ghost Ponts'ters",
 		'domain': "ghostpontsters.enpc.org",
@@ -120,3 +124,32 @@ ghostpontsters = {
 		'directory': "www/sitesdecampagne/ghostpontsters/"
 	}
 }
+
+geoponts = {
+	'_id': "geoponts",
+	'site': {
+		'name': "GéoPonts",
+		'domain': "geoponts.enpc.org",
+		'creation_date': "Avant 2016",
+		'expiry_date': "13 décembre 2018"
+	},
+	'dns': {
+		'domain': "geoponts.enpc.org.",
+		'cname': "geoponts.enpc.fr.",
+		'mx': ["20 mail.geoschool.fr.", "100 mx.sendgrid.net."],
+		'txt': "v=spf1 mx a:geoponts.enpc.fr a:geoponts.enpc.org ip4:37.187.243.249 ip6:2001:41d0:52:cff::4e0 include:servers.mcsv.net include:sendgrid.net ~all",
+		'anomaly': "zone enpc.org/IN: geoponts.enpc.org/MX 'mail.geoschool.fr' (out of zone) is a CNAME 'sw-par1-geoponts.stajou.top' (illegal)"
+	},
+	'dns': {
+		'domain': "m1._domainkey.geoponts.enpc.org.",
+		'txt': "k=rsa; t=s; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDOgNN1U6MDDmxam79iCxUv2Z+diW74tTxh6CATDloWmW70X7vjgcodx4hV46rOpCSOLPXRr7cJcA6BhP3fFw1EterUhFyVoUWrmfLHVZ7HZAPKoZOtTdrIzjET+kBxlgNui/MFIynHSE1hyn7Xe33F3lZALShg3/swxeRjkq92CQIDAQAB"
+	}
+}
+
+# Remplacer club_data par les données à insérer
+
+from pymongo import MongoClient
+client = MongoClient()
+db = client.fiches
+clubs = db.clubs
+print(clubs.insert_one(club_data).inserted_id)

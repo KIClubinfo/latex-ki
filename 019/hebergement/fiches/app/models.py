@@ -16,22 +16,41 @@ latex_env = jinja2.Environment(
 	loader = jinja2.FileSystemLoader(os.path.abspath('app/templates/'))
 )
 
+def flatten(json):
+	dico = {}
+	for table_slug, table_dict in json.items():
+		for row_slug, row_value in table_dict.items():
+			dico[table_slug+"_"+row_slug] = row_value
+
+	return dico
+
 class Row():
-	def __init__(self, slug, field, values=None):
+	def __init__(self, slug, field, values=None, footnote=None, optional=False):
 		self.slug = slug
 		self.field = field
 		self.values = values if type(values) is list else [values]
 		self.template = latex_env.get_template('row.tex')
+		self.footnote = footnote
+		self.optional = optional
 
 	def template(self, table_slug):
 		return self.template.render(field=self.field, value=(', '.join(self.values) if self.values else "\VAR{%s}" % (table_slug+"_"+self.slug)))
 
-	def tex(self, value=None):
+	def tex(self, value=None, footnote_id=None):
 		if not value and not self.values:
-			raise ValueError("Mandatory filled not filled")
-		if type(value) is list:
-			value = ', '.join(value)
-		return self.template.render(field=self.field, value=value if value else ', '.join(self.values))
+			raise ValueError("Mandatory field not filled")
+		if value:
+			if type(value) is list:
+				rendered_value = ', '.join(value)
+			else:
+				rendered_value = value
+		else:
+			rendered_value = ', '.join(self.values)
+		if footnote_id:
+			rendered_field = self.field+("$^{%s}$" % ("*"*footnote_id))
+		else:
+			rendered_field = self.field
+		return self.template.render(field=rendered_field, value=rendered_value)
 
 	def filled(self):
 		return self.value != None
@@ -47,14 +66,14 @@ class Table():
 	def template(self):
 		return self.template.render(title=self.title, rows=[row.template(self.slug) for row in self.rows])
 
-	def tex(self, json_data):
-		return self.template.render(title=self.title, rows=[row.tex(json_data[row.slug] if row.slug in json_data else None) for row in self.rows])
+	def tex(self, json_data, footnote_ids):
+		return self.template.render(title=self.title, rows=[row.tex(json_data[row.slug] if row.slug in json_data else None, footnote_ids[row.slug]) for row in self.rows if not row.optional or row.slug in json_data])
 
 	def placeholders(self):
 		return [self.slug+"_"+row.slug for row in rows if row.filled()]
 
 class Fiche():
-	def __init__(self, slug, title="Fiche d'hébergement KI", *tables):
+	def __init__(self, slug, title, *tables):
 		self.slug = slug
 		self.title = title
 		self.tables = tables
@@ -63,8 +82,17 @@ class Fiche():
 	def template(self):
 		return self.template.render(title=self.title, tables=[table.template() for table in self.tables])
 
-	def tex(self, json_data, options=False):
-		return self.template.render(title=self.title, draft=options.draft, ki=options.ki, tables=[self.table(table_slug).tex(json_data[table_slug]) for table_slug, table_data in json_data.items() if (table_slug != 'ki' or options.ki)])
+	def tex(self, club_data, options=False):
+		if not options.ki:
+			footnotes = [row.footnote for table in self.tables for row in table.rows if row.footnote]
+			footnote_ids = { table.slug: {row.slug: footnotes.index(row.footnote)+1 if row.footnote else None for row in table.rows} for table in self.tables }
+			footnote = '\\\\\n'.join(["$^{\phantom{%s}%s}$ %s" % ("*"*(len(footnotes)-id-1), "*"*(id+1), fn) for id, fn in enumerate(footnotes)])
+		else:
+			footnote = ""
+			footnote_ids = { table.slug: {row.slug: None for row in table.rows} for table in self.tables }
+
+
+		return self.template.render(title=self.title, draft=options.draft, ki=options.ki, footnote=footnote, tables=[self.table(table_slug).tex(club_data[table_slug], footnote_ids[table_slug]) for table_slug, table_data in club_data.items() if (table_slug != '_id' and (table_slug != 'ki' or options.ki))])
 
 	def save_tex(self, slug_name, json_data, options=False, dir=None):
 		if dir:
@@ -79,21 +107,28 @@ class Fiche():
 		with open(dir+'{}.tex'.format(slug_name), 'w') as output_file:
 			output_file.write(fiche.tex(json_data, options))
 
-	def clean(self, slug_name="*"):
-		if slug_name == "*":
+	def clean_all(self):
+		subprocess.call(["rm", "-R", "app/tmp/", "app/tex/", "clubs/", "ki/"])
+
+	def clean_tmp(self, slug_name="all"):
+		if slug_name == "all":
 			tmp_folder = "app/tmp/"
 		else:	
 			tmp_folder = "app/tmp/"+slug_name
 
 		subprocess.call(["rm", "-R", tmp_folder])
+	def clean_pdf(self):
+	 	subprocess.call(["rm", "-R", "clubs/", "ki/"])
 
 	def save_pdf(self, slug_name, json_data, options=False):
 		tmp_folder = "app/tmp/"+slug_name
 		self.save_tex(slug_name, json_data, options, tmp_folder)
 		subdir = "ki/" if options.ki else "clubs/"
+		FNULL = open(os.devnull, 'w')
 		for i in range(2):
 			subprocess.call(["xelatex", "{}.tex".format(slug_name)], cwd=tmp_folder)
 
+		subprocess.call(["echo", "{0}.tex compiled in {0}.pdf".format(slug_name)])
 		subprocess.call(["mkdir", "-p", "app/tex/"+subdir])
 		subprocess.call(["mv", "{}/{}.tex".format(tmp_folder, slug_name), "app/tex/{}{}.tex".format(subdir, slug_name)])
 		subprocess.call(["mkdir", "-p", subdir])
@@ -115,14 +150,17 @@ fiche = Fiche("fiche", "Fiche d'hébergement KI",
 				Row('name', "Nom"),
 				Row('domain', "Nom de domaine"),
 				Row('creation_date', "Date de création"),
-				Row('expiry_date', "Date d'expiration$^*$"),
+				Row('expiry_date', "Date d'expiration", None, 
+					"Hébergement renouvelable auprès du responsable hébergement."),
 				Row('ssl', "Certificat SSL", "Oui"),
 				Row('ipv6', "IPv6", "Oui"),
 				Row('seperated_logs', "Logs séparés", "Non")
 			),
 			Table('owner',"Détenteur",
 				Row('entity', "Entité"),
-				Row('person', "Responsable$^{**}$"),
+				Row('person', "Responsable", None,
+					"Liste des personnes autorisées à connaître et utiliser les identifiants de l'accès FTP. Toute modification \
+					doit être portée à la connaissance du responsable hébergement."),
 				Row('email', "Adresse email")
 			),
 			Table('redirection', "Redirections",
@@ -134,7 +172,9 @@ fiche = Fiche("fiche", "Fiche d'hébergement KI",
 				Row('server_domain', "Serveur hôte", "ftp.enpc.org (ftp.cluster007.ovh.net)"),
 				Row('ip', "IP", "213.186.33.18"),
 				Row('port', "Port", "21"),
-				Row('authorized_people', "Personnes autorisées$^{***}$"),
+				Row('authorized_people', "Personnes autorisées", None,
+					"Désigne le Responsable des Systèmes d'Information de l'entité. Il s'engage à faire respecter la charte \
+					d'hébergement disponible à http://enpc.org/charte selon les modalitées décrites dans la présente fiche."),
 				Row('user', "Utilisateur"),	# without hiphens
 				Row('password', "Mot de passe"),
 				Row('ssh', "SFTP / SSH", "Oui"),
@@ -168,5 +208,12 @@ fiche = Fiche("fiche", "Fiche d'hébergement KI",
 			),
 			Table('ki', "Réservé au KI",
 				Row('directory', "Répertoire FTP")
+			),
+			Table('dns', "DNS",
+				Row('domain', "Nom de domaine"),
+				Row('cname', "CNAME", optional=True),
+				Row('mx', "MX", optional=True),
+				Row('txt', "TXT", optional=True),
+				Row('anomaly', "Anomalie", optional=True)
 			)
 		)
