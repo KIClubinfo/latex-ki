@@ -1,6 +1,7 @@
 import jinja2
 import os
 import subprocess
+from string import digits
 
 latex_env = jinja2.Environment(
 	block_start_string = '\BLOCK{',
@@ -15,6 +16,53 @@ latex_env = jinja2.Environment(
 	autoescape = False,
 	loader = jinja2.FileSystemLoader(os.path.abspath('app/templates/'))
 )
+
+tex_match = {
+    '&':  '\&',
+    '%':  '\%',
+    '$':  '\$',
+    '#':  '\#',
+    '_':  '\_',
+    '^':  '\^',
+}
+
+def latex_escape(string):
+	if not string:
+		return ""
+	elif string[0] in tex_match:
+		return tex_match[string[0]]+latex_escape(string[1:])
+	else:
+		return string[0]+latex_escape(string[1:])
+
+def ending_nb_strip(string):
+	if type(string) is list:
+		return list(map(ending_nb_strip, string))
+
+	elif type(string) is str:
+		if not string:
+			return ""
+		elif string[-1] in digits:
+			return ending_nb_strip(string[0:-1])
+		else:
+			return string
+	else:
+		assert False, "ending_nb_strip must be applied to a string or a list of strings : \n{}".format(string)
+
+def word_break_aux(string, index):
+	if not string:
+		return ""
+	elif string[0] in {" ", "@", "."}:
+		return string[0]+word_break_aux(string[1:], 0)
+	elif index == 25:
+		return "\\newline "+word_break_aux(string, 0)
+	else:
+		return string[0]+word_break_aux(string[1:], index+1)
+
+def word_break(string):
+	return word_break_aux(string, 0)
+
+def rendered(value):
+	return latex_escape(word_break(value))
 
 def flatten(json):
 	dico = {}
@@ -34,43 +82,48 @@ class Row():
 		self.optional = optional
 
 	def template(self, table_slug):
-		return self.template.render(field=self.field, value=(', '.join(self.values) if self.values else "\VAR{%s}" % (table_slug+"_"+self.slug)))
+		return self.template.render(field=latex_escape(self.field), value=(latex_escape(', '.join(self.values)) if self.values else "\VAR{%s}" % (table_slug+"_"+self.slug)))
 
 	def tex(self, value=None, footnote_id=None):
 		if not value and not self.values:
 			raise ValueError("Mandatory field not filled")
 		if value:
 			if type(value) is list:
-				rendered_value = ', '.join(value)
+				prerendered_value = ', '.join(value)
 			else:
-				rendered_value = value
+				prerendered_value = value
 		else:
-			rendered_value = ', '.join(self.values)
+			prerendered_value = ', '.join(self.values)
 		if footnote_id:
-			rendered_field = self.field+("$^{%s}$" % ("*"*footnote_id))
+			rendered_field = latex_escape(self.field)+("$^{%s}$" % ("*"*footnote_id))
 		else:
-			rendered_field = self.field
-		return self.template.render(field=rendered_field, value=rendered_value)
+			rendered_field = latex_escape(self.field)
+		return self.template.render(field=rendered_field, value=rendered(prerendered_value))
 
 	def filled(self):
 		return self.value != None
 
 class Table():
-	def __init__(self, slug, title, *rows):
+	def __init__(self, slug, title, *rows, mandatory=False):
 		self.slug = slug
 		self.title = title
 		self.rows = rows
 		self.template = latex_env.get_template('table.tex')
-
+		self.mandatory = mandatory
 
 	def template(self):
 		return self.template.render(title=self.title, rows=[row.template(self.slug) for row in self.rows])
 
-	def tex(self, json_data, footnote_ids):
-		return self.template.render(title=self.title, rows=[row.tex(json_data[row.slug] if row.slug in json_data else None, footnote_ids[row.slug]) for row in self.rows if not row.optional or row.slug in json_data])
+	def tex(self, club_data, footnote_ids):
+		return self.template.render(title=self.title, rows=[row.tex(club_data[row.slug] if row.slug in club_data else None, footnote_ids[row.slug]) for row in self.rows if not row.optional or row.slug in club_data])
 
 	def placeholders(self):
 		return [self.slug+"_"+row.slug for row in rows if row.filled()]
+
+	def row(self, row_slug):
+		for row in self.rows:
+			if row.slug == ending_nb_strip(row_slug):
+				return row
 
 class Fiche():
 	def __init__(self, slug, title, *tables):
@@ -84,17 +137,17 @@ class Fiche():
 
 	def tex(self, club_data, options=False):
 		if not options.ki:
-			footnotes = [row.footnote for table in self.tables for row in table.rows if row.footnote]
-			footnote_ids = { table.slug: {row.slug: footnotes.index(row.footnote)+1 if row.footnote else None for row in table.rows} for table in self.tables }
+			footnotes = [self.table(table_slug).row(row_slug).footnote for table_slug, table_data in club_data.items() for row_slug, values in table_data.items() if self.table(table_slug).row(row_slug).footnote]
+			footnote_ids = { table.slug: {row.slug: footnotes.index(row.footnote)+1 if row.footnote else None for row in table.rows} for table in self.tables if table.slug in ending_nb_strip(list(club_data.keys()))}
 			footnote = '\\\\\n'.join(["$^{\phantom{%s}%s}$ %s" % ("*"*(len(footnotes)-id-1), "*"*(id+1), fn) for id, fn in enumerate(footnotes)])
 		else:
 			footnote = ""
-			footnote_ids = { table.slug: {row.slug: None for row in table.rows} for table in self.tables }
+			footnote_ids = { table.slug: {row.slug: None for row in table.rows} for table in self.tables if table.slug in ending_nb_strip(list(club_data.keys()))}
 
 
-		return self.template.render(title=self.title, draft=options.draft, ki=options.ki, footnote=footnote, tables=[self.table(table_slug).tex(club_data[table_slug], footnote_ids[table_slug]) for table_slug, table_data in club_data.items() if (table_slug != '_id' and (table_slug != 'ki' or options.ki))])
+		return self.template.render(title=self.title, draft=options.draft, ki=options.ki, footnote=footnote, tables=[self.table(table_slug).tex(club_data[table_slug], footnote_ids[ending_nb_strip(table_slug)]) for table_slug, table_data in club_data.items() if table_slug != 'ki' or options.ki])
 
-	def save_tex(self, slug_name, json_data, options=False, dir=None):
+	def save_tex(self, slug_name, club_data, options=False, dir=None):
 		if dir:
 			if dir[-1] not in {"/", "."}:
 				dir+="/"
@@ -105,7 +158,7 @@ class Fiche():
 		subprocess.call(["mkdir", "-p", dir])
 
 		with open(dir+'{}.tex'.format(slug_name), 'w') as output_file:
-			output_file.write(fiche.tex(json_data, options))
+			output_file.write(fiche.tex(club_data, options))
 
 	def clean_all(self):
 		subprocess.call(["rm", "-R", "app/tmp/", "app/tex/", "clubs/", "ki/"])
@@ -120,9 +173,9 @@ class Fiche():
 	def clean_pdf(self):
 	 	subprocess.call(["rm", "-R", "clubs/", "ki/"])
 
-	def save_pdf(self, slug_name, json_data, options=False):
+	def save_pdf(self, slug_name, club_data, options=False):
 		tmp_folder = "app/tmp/"+slug_name
-		self.save_tex(slug_name, json_data, options, tmp_folder)
+		self.save_tex(slug_name, club_data, options, tmp_folder)
 		subdir = "ki/" if options.ki else "clubs/"
 		FNULL = open(os.devnull, 'w')
 		for i in range(2):
@@ -141,8 +194,13 @@ class Fiche():
 
 	def table(self, table_slug):
 		for table in self.tables:
-			if table.slug == table_slug:
+			if table.slug == ending_nb_strip(table_slug):
 				return table
+
+	def check_mandatory_tables(self, club_data):
+		for table in self.tables:
+			if table.mandatory:
+				assert table.slug in ending_nb_strip(list(club_data.keys())), "Mandatory table '{}' is missing".format(table.title)
 
 
 fiche = Fiche("fiche", "Fiche d'hébergement KI",
@@ -154,14 +212,18 @@ fiche = Fiche("fiche", "Fiche d'hébergement KI",
 					"Hébergement renouvelable auprès du responsable hébergement."),
 				Row('ssl', "Certificat SSL", "Oui"),
 				Row('ipv6', "IPv6", "Oui"),
-				Row('seperated_logs', "Logs séparés", "Non")
+				Row('seperated_logs', "Logs séparés", "Non"),
+				mandatory=True
 			),
 			Table('owner',"Détenteur",
 				Row('entity', "Entité"),
 				Row('person', "Responsable", None,
-					"Liste des personnes autorisées à connaître et utiliser les identifiants de l'accès FTP. Toute modification \
-					doit être portée à la connaissance du responsable hébergement."),
-				Row('email', "Adresse email")
+					"Désigne le Responsable des Systèmes d'Information de l'entité. Il s'engage à faire respecter la charte \
+					d'hébergement disponible à https://enpc.org/charte selon les modalitées décrites dans la présente fiche."),
+				Row('email', "Adresse email"),
+				Row('role', "Poste", None, optional=True),
+				Row('phone', "Téléphone", None, optional=True),
+				mandatory=True
 			),
 			Table('redirection', "Redirections",
 				Row('from', "Origine"),
@@ -173,8 +235,8 @@ fiche = Fiche("fiche", "Fiche d'hébergement KI",
 				Row('ip', "IP", "213.186.33.18"),
 				Row('port', "Port", "21"),
 				Row('authorized_people', "Personnes autorisées", None,
-					"Désigne le Responsable des Systèmes d'Information de l'entité. Il s'engage à faire respecter la charte \
-					d'hébergement disponible à http://enpc.org/charte selon les modalitées décrites dans la présente fiche."),
+					"Liste des personnes autorisées à connaître et utiliser les identifiants de l'accès FTP. Toute modification \
+					doit être portée à la connaissance du responsable hébergement."),
 				Row('user', "Utilisateur"),	# without hiphens
 				Row('password', "Mot de passe"),
 				Row('ssh', "SFTP / SSH", "Oui"),

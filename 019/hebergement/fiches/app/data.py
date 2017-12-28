@@ -53,7 +53,7 @@ baldesponts = {
 		'password': "tu3Dya3Pf26sdflS"
 	},
 	'wordpress': {
-		'login_page': "bal.enpc.org/wp-admin",
+		'login_page': "https://bal.enpc.org/wp-admin",
 		'user': "enpc-gala",
 		'password': "KzkqjbKZ5Cpc"
 	},
@@ -133,16 +133,22 @@ geoponts = {
 		'creation_date': "Avant 2016",
 		'expiry_date': "13 décembre 2018"
 	},
-	'dns': {
+	'owner': {
+		'entity': "Entreprise GéoSchool",
+		'person': "Albéric Trancart",
+		'email': "alberic.trancart@eleves.enpc.fr (alberic@geoschool.fr)",
+		'role': "CTO"
+	},
+	'dns1': {
+		'domain': "m1._domainkey.geoponts.enpc.org.",
+		'txt': "k=rsa; t=s; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDOgNN1U6MDDmxam79iCxUv2Z+diW74tTxh6CATDloWmW70X7vjgcodx4hV46rOpCSOLPXRr7cJcA6BhP3fFw1EterUhFyVoUWrmfLHVZ7HZAPKoZOtTdrIzjET+kBxlgNui/MFIynHSE1hyn7Xe33F3lZALShg3/swxeRjkq92CQIDAQAB"
+	},
+	'dns2': {
 		'domain': "geoponts.enpc.org.",
 		'cname': "geoponts.enpc.fr.",
 		'mx': ["20 mail.geoschool.fr.", "100 mx.sendgrid.net."],
 		'txt': "v=spf1 mx a:geoponts.enpc.fr a:geoponts.enpc.org ip4:37.187.243.249 ip6:2001:41d0:52:cff::4e0 include:servers.mcsv.net include:sendgrid.net ~all",
 		'anomaly': "zone enpc.org/IN: geoponts.enpc.org/MX 'mail.geoschool.fr' (out of zone) is a CNAME 'sw-par1-geoponts.stajou.top' (illegal)"
-	},
-	'dns': {
-		'domain': "m1._domainkey.geoponts.enpc.org.",
-		'txt': "k=rsa; t=s; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDOgNN1U6MDDmxam79iCxUv2Z+diW74tTxh6CATDloWmW70X7vjgcodx4hV46rOpCSOLPXRr7cJcA6BhP3fFw1EterUhFyVoUWrmfLHVZ7HZAPKoZOtTdrIzjET+kBxlgNui/MFIynHSE1hyn7Xe33F3lZALShg3/swxeRjkq92CQIDAQAB"
 	}
 }
 
@@ -152,4 +158,9 @@ from pymongo import MongoClient
 client = MongoClient()
 db = client.fiches
 clubs = db.clubs
-print(clubs.insert_one(club_data).inserted_id)
+#print(clubs.insert_one(geoponts).inserted_id)
+#clubs.update_one({'_id': "geoponts"}, {'$set': {'dns1': geoponts['dns1'], 'dns2': geoponts['dns2']}})
+#clubs.update_one({'_id': "geoponts"}, {'$set': {'dns2.txt': "k=rsa; t=s; p=MIGfMA0GCSqGSIb3DQEBAQU AA4GNADCBiQKBgQDOgNN1U6M DDmxam79iCxUv2Z+diW74tTxh6CA TDloWmW70X7vjgcodx4hV46rOpCSO LPXRr7cJcA6BhP3fFw1EterUhFyVoU WrmfLHVZ7HZAPKoZOtTdrIzjET+k BxlgNui/MFIynHSE1hyn7Xe33F3lZA LShg3/swxeRjkq92CQIDAQAB"}})
+#clubs.update_one({'_id': "geoponts"}, {'$unset': {'dns': ""}})
+#clubs.remove({'_id': "geoponts"})
+#print(clubs.insert_one(geoponts).inserted_id)

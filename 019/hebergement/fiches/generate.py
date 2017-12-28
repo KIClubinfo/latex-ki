@@ -40,4 +40,5 @@ if __name__ == "__main__":
 	else:
 		for slug in args:
 			club_data = clubs.find_one({'_id': slug})
+			club_data.pop('_id', None)
 			models.fiche.save_pdf(slug, club_data, options)
