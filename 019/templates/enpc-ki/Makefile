@@ -32,7 +32,12 @@ install:
 	$(call say,creating destination $(PKGDIR))
 	@mkdir -p $(PKGDIR)
 	$(call say,copying files to $(PKGDIR))
-	@cp -r . $(PKGDIR)
-	@rm -f $(PKGDIR)/Makefile
+	@cp -r $(wildcard *.cls) images/ $(PKGDIR)
+
+	$(call say,creating destination $(TEXMFHOME)/fonts/truetype)
+	@mkdir -p $(TEXMFHOME)/fonts/truetype
+	$(call say,copying files to $(TEXMFHOME)/fonts/truetype)
+	@cp $(wildcard fonts/*.ttf) $(TEXMFHOME)/fonts/truetype
+
 	@texhash $(TEXMFHOME) || mktexlsr
 	$(call installed,$(PKGDIR))
