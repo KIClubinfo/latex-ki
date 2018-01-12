@@ -86,9 +86,9 @@
 \let\oldsubsubsection\subsubsection
 \renewcommand{\subsubsection}[1]{{\oldsubsubsection*{#1}}\vspace{-1em}}
 
-\newcommand{\freesection}[1]{{\color{primary}\titlefont\oldsection*{#1}}\vspace{-1em}}
+\newcommand{\freesection}[1]{\bigskip{\color{primary}\titlefont\oldsection*{#1}}\vspace{-1em}}
 
-\newcommand{\sectionenum}[1]{{\color{primary}\titlefont\oldsection{#1}}\vspace{-1em}}
+\newcommand{\sectionenum}[1]{\bigskip{\color{primary}\titlefont\oldsection{#1}}\vspace{-1em}}
 
 \newcommand{\subsectionenum}[1]{{\color{primary}\titlefont\oldsubsection{#1}}\vspace{-1em}}
 
