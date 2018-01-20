@@ -1,0 +1,141 @@
+\documentclass[12pt,twoside]{article}
+\usepackage[french]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{times}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{float}
+\usepackage{makeidx}
+\usepackage{amsfonts}
+\usepackage{bmpsize}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage{ifoddpage}
+\usepackage{enumitem}
+\usepackage[export]{adjustbox}
+\usepackage[pages=all]{background}
+\usepackage{booktabs}
+\usepackage{multirow}
+
+%DES BEAUX TENSEURS TOUT PRAI
+
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\I}{\mathbb{I}}
+\newcommand{\J}{\mathbb{J}}
+\newcommand{\K}{\mathbb{K}}
+
+%POUR AVOIR DES BEAUX MATHS DANS LES ZONES DE TEXTES, SAUF SI VOUS VOULEZ PAS
+\everymath{\displaystyle\everymath{}}
+
+%UNE COMMANDE \CODE POUR AVOIR UN BEAU FONT POUR ÉCRIRE UNE COMMANDE OU WHATEVER
+\definecolor{light-gray}{gray}{0.95}
+\newcommand{\code}[1]{\colorbox{light-gray}{\texttt{#1}}}
+
+%GEOMETRIE DE LA PAGE OSEF
+
+\textwidth=18.5cm \textheight=23.5cm \oddsidemargin=-1.00cm
+\evensidemargin=-1.00cm
+\parindent=1cm
+\topmargin=-2cm
+
+%VOS HEADERS / FOOTERS DU SWAG À CUSTOMISER
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{\thepage}
+\fancyhead[CE]{Compte-rendu de réunion} %ICI
+\fancyhead[CO]{Formation \LaTeX} %LA
+\fancyfoot[CE]{\vspace{-7mm}\includegraphics[scale=0.15]{ecole_ponts_noir.png}\\ \textcolor{black!40}{École Nationale des Ponts et Chaussées}}
+\fancyfoot[CO]{\vspace{-1cm}\includegraphics[scale=0.12]{Logo_fond_clair_transparent.png} }%ET LA AUSSI
+
+%SI VOUS VOULEZ PAS D?INDENTS SINON ENLEVEZ
+
+\setlength\parindent{0pt}
+
+%BACKGROUND DU SWAG PAS TOUCHE
+
+\backgroundsetup{scale=1.3,angle=0,opacity=0.15,position={14.65,-16.51},contents={%
+\ifnum\value{page}>1
+	\checkoddpage
+  	\ifoddpage
+		\includegraphics[scale=0.8]{ecole_ponts_noir.png}
+	\fi
+\fi
+}
+}
+
+\backgroundsetup{scale=1,angle=0,opacity=0.15,position={8.3,-11.5},contents={%
+\includegraphics[scale=1]{Logo_fond_clair.png}
+}
+}
+
+
+\begin{document}
+
+%PAGE DE GARDE DU SWAG
+\thispagestyle{empty}
+%CA T ENLEVE SI TU VEUX PAS DEUX COLONNES
+\begin{center}
+
+{\Large{\bf ÉCOLE NATIONALE DES PONTS ET CHAUSSÉES}}
+
+\medskip
+
+\begin{center}
+\includegraphics[scale=0.3]{Logo_fond_clair_transparent.png}
+\end{center}
+\vspace{1cm}
+{\Large{\bf COMPTE RENDU DE RÉUNION}}
+
+\vspace{1cm}
+
+{\huge{\bf FORMATION \LaTeX\:2018}}
+
+\vspace{1cm}
+
+{\large{LUNDI 15 JANVIER 2018\vspace{1cm}\\EN PRÉSENCE DE\vspace{0.5cm}\\ÉLISABETH BEYLS\\POUR LE DÉPARTEMENT 1A\vspace{0.5cm}\\ANTOINE ADELINE\\GUILLAUME DESFORGES\\CAROLINE PASCAL\\CLÉMENT PHAN\\MAXIME PIERRE\\POUR LE KI 019}}
+
+\vspace{2cm}
+
+%ABSTRACT SI VOUS LE VOULEZ
+
+\begin{minipage}{16cm}
+  {\fontsize{11pt}{13pt}\selectfont
+   \parindent=0pt
+    {{\bf CONDENSÉ} : Cette réunion a eu lieu dans l'optique d'un travail conjoint avec le département de première année dans l'organisation de la formation à \LaTeX, notamment pour trouver un créneau-horaire libre pour l'ensemble de la promotion et institutionnaliser la formation. Ont été abordés différents points comme le calendrier, les aspects logistiques, ainsi que la coopération accrue, dans le futur, entre la direction de l'enseignement et le club informatique. D'autres points comme les autres formations, ainsi que l'implication du Club Informatique au sein de l'École, ont également été discutés.}.
+\par}
+\end{minipage}
+
+\end{center}
+
+\clearpage
+
+\section*{Session 2018}
+
+La formation \LaTeX\: s'adresse principalement aux élèves de première année, dans la période de rédaction des projets de département. Ces derniers commencent le 29 janvier pour un rendu au cours de la semaine du 19 mars. La {\bf semaine du 26 février}, au retour des vacances d'hiver semble la plus propice à la formation, étant donné que les cours de sport n'ont pas lieu en raison des vacances scolaires. Pour ne pas empiéter sur les activités ayant lieu en soirée, il est évoqué la possibilité d'articuler la {\bf formation en deux séances}, probablement le mercredi et le jeudi en fin d'après-midi. Un découpage naturel entre mise en page et traitement des mathématiques serait donc providentiel.\\
+
+Concernant la logistique, si la formation devait être annoncée comme obligatoire par le département de première année, il est proposé d'investir l'{\bf amphithéâtre Cauchy} plutôt que l'habituel Navier. Il est possible de demander à ce que des rallonges multiprises soient installées dans l'amphithéâtre afin que les étudiants puissent brancher leur ordinateur portable. Le département de première année propose également la {\bf prise en charge de la reprographie}, notamment pour les fiches aide-mémoire que nous sommes amenés à distribuer lors de la formation.\\
+
+Il est également à noter que si une pause pizza était organisé durant la formation, le département de première année pourrait éventuellement couvrir tout ou partie des frais.
+
+\section*{Concernant les futures sessions}
+
+Il n'est pas aisé de trouver des créneaux pour la formation car les emplois du temps sont déjà établis, avec peu de latitudes pour bloquer une plage horaire pour la formation. Les emplois du temps se construisent à cette période de l'année. Celui de deuxième année est définitif fin mars, pour une présentation au conseil d'administration d'avril, tandis que celui de première année dispose d'un délais un peu plus long de par sa relative indépendance du reste. En tout état de cause, il faut dialoguer dès aujourd'hui avec les départements si l'on veut jouir de créneaux pré-établis pour les formations de l'année 2018-2019. Le Club Informatique propose notamment de consacrer une partie d'une des séances de projet de département à la formation \LaTeX\: pour l'année scolaire 2018-2019.
+
+\section*{Sur la formation Git notamment}
+
+Le Club Informatique aborde le problème de la formation Git de fin 2017, organisée pour le cours de TDLog, à laquelle la plupart des élèves n'appartenant pas au département IMI n'avaient malheureusement pu assister, à cause du créneau horaire choisi. Il est important de s'assurer auprès de la direction de l'enseignement dès maintenant que cette formation puisse bénéficier d'un créneau transversal, car cette formation est importante pour tous les élèves du cours. De manière générale, il faut à l'avenir penser davantage à s'accorder avec l'administration pour ces formations importantes, en sachant que celle-ci est prête à y consacrer des créneaux si tant est que la demande soit faite suffisamment en amont.
+
+
+\section*{À propos de l'implication du Club Informatique dans la vie associative de l'École}
+
+Il s'avère que l'administration, en dehors de la DSI, n'a que peu ou pas de connaissances sur les activités du Club Informatique au sein de l'École. Dans une période où est discuté en conseil d'administration une hypothétique valorisation en crédits ECTS des implications associatives, il semble important de montrer à l'administration l'étendue et la variété des activités du Club Informatique. Il faudrait alors peut-être songer à une manière de présenter à l'administration la mission du Club.
+
+\begin{flushright}
+Le secrétaire général pour le KI 019.
+\end{flushright}
+
+\end{document}
