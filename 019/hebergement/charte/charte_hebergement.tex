@@ -16,7 +16,9 @@ La présente charte est un guide destiné à assurer la compréhension ainsi que
 \item compte FTP
 \item base de données
 \item compte email
+\item redirection email
 \item module WordPress
+\item entrée DNS
 \item Nextcloud
 \end{itemize}
 
@@ -105,6 +107,18 @@ L'interface d'administration du module est accessible à l'adresse monsite.enpc.
 
 Des bots circulent en permanence sur internet afin en quête de formulaire de soumission de texte afin de poster des annonces publicitaires, pouvant être à caractère sexuel ou illégal. Tout type de blog étant une cible privilégiée, il est demandé que l'entité modère les commentaires ou les désactive.
 
+\sectionenum{Entrée DNS}
+
+Elles peuvent être de trois types :
+\begin{itemize}
+\item Champs de pointage : A, AAAA, NS, CNAME
+\item Champs étendus : CAA, TXT, NAPTR, SRV, LOC, SSHFP, TLSA
+\item MX, SPF, DKIM
+\end{itemize}
+
+Le KI s'occupe de cette configuration pour les services qu'ils proposent. Il est cependant possible de demander une configuration DNS particulière.
+Cela peut servir à la configuration de serveurs mails ou de sites web gérées de manières externes par les entitités (sur un VPS ou via un site d'emailing de masse type \url{sparkpost.com} ou \url{mailgun.com})
+
 \sectionenum{Nextcloud}
 
 Nextcloud est un logiciel de cloud avec un système de partage de fichier par lien public ou avec d'autres utilisateurs ou groupes d'utilisateurs.
@@ -136,8 +150,8 @@ Guide officiel de migration de WordPress : \url{https://codex.wordpress.org/Movi
 
 \subsectionenum{Assistance}
 
-En cas de besoin, contactez le KI par Messenger à https://m.me/enpc.clubinfo, ou bien sur uPont via la section dépannage à https://upont.enpc.fr/assos/depannage.
-Vous pouvez également nous contacter par notre mailing list clubinfo@liste.enpc.fr.
+En cas de besoin, contactez le KI par Messenger à \url{https://m.me/enpc.clubinfo}, ou bien sur uPont via la section dépannage à \url{https://upont.enpc.fr/assos/depannage}.
+Vous pouvez également nous contacter pour des problèmes d'hébergement à ovh@clubinfo.enpc.fr.
 Notre local est situé en P401. Il est joignable par téléphone au 01 64 15 33 82.
 Un voyant lumineux dans la sidebar de uPont indique si nous sommes ouverts.
 
