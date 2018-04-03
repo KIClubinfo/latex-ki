@@ -12,14 +12,14 @@
 
 La présente charte est un guide destiné à assurer la compréhension ainsi que de poser les principes d'utilisation des services d'hébergement proposés par le Club informatique des Ponts et Chaussées, dénommé ci-après KI, pour favoriser la vie associative et la transmission de la connaissance au sein de l'école. Le KI met à disposition des entités (personnes, associations, clubs, programmes scolaires... ) qui en font la demande des services d'hébergement. Les ressources suceptibles d'être alloués sont les suivantes :
 \begin{itemize}
-\item sous nom de domaine de enpc.org
-\item compte FTP
-\item base de données
-\item compte email
-\item redirection email
-\item module WordPress
-\item entrée DNS
+\item Sous nom de domaine de enpc.org et redirection
+\item Compte FTP
+\item Base de données
+\item Compte email et redirection
+\item Module WordPress
+\item Entrée DNS
 \item Nextcloud
+\item Rocket Chat
 \end{itemize}
 
 L'utilisation de ces ressources doit être liée à la vie collective des Ponts et Chaussées.
@@ -28,6 +28,7 @@ L'utilisation de ces ressources doit être liée à la vie collective des Ponts 
 
 \subsectionenum{Première demande}
 
+% A modifier quand services.enpc.org sera en fonctionnement
 Toute demande d'hébergement doit être adressée au KI et contenir les informations suivantes :
 \begin{itemize}
 \item Nom de l'entité
@@ -47,17 +48,18 @@ Les identifiants sont changées à chaque renouvellement dès lors qu'au moins u
 
 \sectionenum{Sous nom de domaine}
 
-Le KI possède le nom de domaine enpc.org depuis le 29 mai 2001. Il offre donc d'attribuer des sous nom de domaine de la forme site.enpc.org. Ce sous nom de domaine pointe vers le répertoire du compte FTP stipulé sur la FHI par son chemin relatif à la racine du compte FTP.
-L'entité hébergée a conscience que toute personne ou bot, y compris extérieure aux Ponts, est susceptible de consulter, enregistrer ou référencer le contenu afficher publiquement à une url appartenant au sous nom de domaine alloué. L'entité accepte donc l'entière responsabilité de ce qu'il met en ligne sur le sous-nom de domaine qu'il lui est attribué, et s'engage donc à respecter les lois françaises.
+Le KI possède le nom de domaine enpc.org depuis le 29 mai 2001. Il offre donc d'attribuer des sous nom de domaine de la forme site.enpc.org. Ce sous nom de domaine pointe vers le répertoire du compte FTP stipulé sur la FHI par son chemin relatif à la racine du compte FTP.		% A rajouter sur le modèle de fiche
+L'entité hébergée a conscience que toute personne ou bot, y compris extérieure aux Ponts, est susceptible de consulter, enregistrer ou référencer le contenu afficher publiquement à une url appartenant au sous nom de domaine alloué. L'entité accepte donc l'entière responsabilité de ce qu'il met en ligne sur le sous nom de domaine qu'il lui est attribué, et s'engage donc à respecter les lois françaises.
 
-%Redirection : TODO
 Les redirections peuvent se faire entre noms de domaine (CNAME) ou vers une url de manière visible ou non (url qui change dans le navigateur), permanente ou non (code de retour HTTP de redirection différent pour la mise à jour du référencement des moteurs de recherche).
 
 \sectionenum{Compte FTP}
 
-Les comptes FTP mis à disposition consituent une partie du système de fichier d'un serveur mutualisé OVH. Ce serveur tourne sur un système d'exploitation linux Debian sur lequel est installé Apache et PHP. Ces comptes sont un espace de stoquage de fichiers destiné à héberger un site internet. L'accès à cette espace se fait via une connexion ftp, sftp ou ssh, à l'aide des identifiants fournis sur la FHI. Une connexion FTP peut s'effectuer dans un terminal linux par la commande \textbf{ssh user@host}. Il est d'autre part possible de se connecter en FTP par son navigateur internet en tapant l'url \url{ftp://user@host}, par son explorateur de fichier ou le logiciel FileZilla.
+Les comptes FTP mis à disposition constituent une partie du système de fichier d'un serveur mutualisé OVH. Ce serveur tourne sur un système d'exploitation linux Debian sur lequel est installé Apache et PHP. Ces comptes sont des espaces de stoquage de fichiers destinés à héberger des sites internet. L'accès à ces espaces se fait via une connexion ftp, sftp ou ssh, à l'aide des identifiants fournis sur la FHI. Une connexion FTP peut s'effectuer dans un terminal linux par la commande \textit{ssh user@host}. Il est d'autre part possible de se connecter en FTP par son navigateur internet en tapant l'url \textit{ftp://user@host}, par son explorateur de fichier ou le logiciel FileZilla.
 
-Les comptes FTP sont fournis avec les programmes Apache v2.4, PHP v5.6 et Git v2.1. Il n'y a pas d'accès en sudo.
+Depuis un téléphone Android, il est possible d'établir des connexions SSH avec l'application JuiceSSH. D'autre part l'utilisation d'une configuration SSH et de la méthode d'authentification par clef privée / clef publique facilitent grandemment l'accès.
+
+Les comptes FTP sont fournis avec les programmes Apache v2.4, PHP v5.6 et Git v2.1. Il n'y a pas d'accès root.
 
 Formations
 \begin{itemize}
@@ -69,8 +71,8 @@ Formations
 
 \subsectionenum{Modalités}
 
-L'hébergé s'engage a respecté le quota d'espace mémoire qu'il lui est alloué, tel que mentionné sur la fiche d'hébergement.
-Le KI s'engage à ne pas écrire ou modifier de fichiers sur l'espace alloué dans un but très éloignement de celui indiquer à la création du site.
+L'hébergé s'engage à respecter le quota d'espace mémoire qu'il lui est alloué, tel que mentionné sur la fiche d'hébergement.
+Le KI s'engage à ne pas écrire ou modifier de fichiers sur l'espace alloué sans l'authorisation de l'herbergé et l'hébergé s'engage à ne pas détourner l'usage des services qui sont mis à sa dispostion respectivement à l'utilisation mentionné à la création du site.
 Le KI s'optroie la propriété de tout fichier laissé par l'entité sur ses serveurs à la date d'expiration du service, tel que notifiée sur la FHI.
 
 \subsectionenum{Données et confidentialité}
@@ -80,30 +82,33 @@ L'ensemble des fichiers font l'objet d'une sauvegarde externe une fois par mois.
 
 \sectionenum{Base de données}
 
-%TODO : description matériel, phpmyadmin
+\subsectionenum{MySQL}
+
 Les bases de données sont de type MySQL 5.6. Nous disposons d'un total de 8 Go pour l'ensemble des bases de données, c'est pourquoi nous limitons à 1 Go l'espace de chacune.
 Une sauvegarde des base de données est effectuée toutes les semaines. Ces sauvegardes sont conservées au moins un mois.
-La base de données peut être accéder via une interface graphique avec phpmyadmin.
-Se connecter sur https://phpmyadmin.ovh.net avec
+La base de données peut être accédée via une interface graphique avec phpmyadmin.
+Se connecter sur \url{https://phpmyadmin.ovh.net} avec
 \begin{itemize}
 \item server : va1757-001.privatesql
 \item port : 35287
 \end{itemize}
 
+\subsectionenum{Autre}
+
+D'autres types de base de données peuvent être déployés sous forme dockerisée tel que MongoDB.
+
 \sectionenum{Compte email}
 
-%TODO
+Les adresses sont en @enpc.org.
 Les boîtes mail sont accessibles à l'adresse \url{mail.enpc.org} (\url{https://mail.ovh.net/}).
 Ce sont des boîte Roundcube avec un quota autorisé entre 1 et 5 Go en fonction des besoins exprimés au moment de la demande d'hébergement.
-Des filtres de suppression et de redirection de mais peuvent être mis en place par le KI.
+Des filtres de suppression et de redirection peuvent être mis en place par le KI.
 Il est possible depuis les paramètres de créer différentes identités : nom et adresse email affichés, adresse de réponse, de copie cachée et signature (HTML avec image, lien, couleur, italique...) des mails envoyés.
 Les messages peuvent eux aussi être composés en HTML en l'indiquant comme \textit{editor type} au moment d'écrire l'email.
 
 \sectionenum{Module WordPress}
 
-%TODO
-
-L'interface d'administration du module est accessible à l'adresse monsite.enpc.org/wp-admin.
+L'interface d'administration du module est accessible à l'adresse https://monsite.enpc.org/wp-admin.
 
 Des bots circulent en permanence sur internet afin en quête de formulaire de soumission de texte afin de poster des annonces publicitaires, pouvant être à caractère sexuel ou illégal. Tout type de blog étant une cible privilégiée, il est demandé que l'entité modère les commentaires ou les désactive.
 
@@ -123,6 +128,11 @@ Cela peut servir à la configuration de serveurs mails ou de sites web gérées 
 
 Nextcloud est un logiciel de cloud avec un système de partage de fichier par lien public ou avec d'autres utilisateurs ou groupes d'utilisateurs.
 
+\sectionenum{Rocket Chat}
+
+Le KI peut héberger tout type d'application opensource dockerisée telle que des chats.
+Rocket Chat est un chat doté de fonctionnalités de vidéo conference, de partage d'écran, d'upload d'images, de roles et permissions, de notifications, d'intégrations hubot et webhooks, de recherche d'historique par expression régulière, de décorateurs de texte tels que le markdown, le KaTeX, les emojis. Il est possible d'importer des données de Slack et Hipchat.
+
 \sectionenum{Sécurité}
 
 \subsectionenum{Serveur}
@@ -139,7 +149,7 @@ En cas de perte d'identifiants, le RSI doit les réclamer auprès du responsable
 
 \subsectionenum{Missions de création de site}
 
-Le KI pour être contracté pour coder des sites à l'image de admissibles.enpc.org destinés aux admissibles du concours commun Mines-Ponts.
+Le KI pour être contracté pour coder des sites à l'image de \url{https://admissibles.enpc.org} destinés aux admissibles du concours commun Mines-Ponts.
 
 \subsectionenum{Migration des ressources}
 
@@ -151,7 +161,7 @@ Guide officiel de migration de WordPress : \url{https://codex.wordpress.org/Movi
 \subsectionenum{Assistance}
 
 En cas de besoin, contactez le KI par Messenger à \url{https://m.me/enpc.clubinfo}, ou bien sur uPont via la section dépannage à \url{https://upont.enpc.fr/assos/depannage}.
-Vous pouvez également nous contacter pour des problèmes d'hébergement à ovh@clubinfo.enpc.fr.
+Vous pouvez également nous contacter pour des problèmes d'hébergement sur ovh@clubinfo.enpc.fr.
 Notre local est situé en P401. Il est joignable par téléphone au 01 64 15 33 82.
 Un voyant lumineux dans la sidebar de uPont indique si nous sommes ouverts.
 
