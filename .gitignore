@@ -9,6 +9,7 @@
 *.lot
 *.nav
 *.snm
+*.synctex
 *.synctex.gz
 *.toc
 *.pdf_tex
