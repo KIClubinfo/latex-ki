@@ -15,6 +15,7 @@
 \usepackage{listings}
 \usepackage{textcomp}
 \usepackage{verbatim}
+\usepackage{ulem}
 
 \lstset{literate={é}{{\'e}}1}
 
@@ -1051,6 +1052,623 @@ $$
 		"Google est votre ami !" 
 	\end{frame}
 
+\section{Ouverture}
+
+	\begin{frame}
+		\frametitle{Pour l'avenir}
+		\framesubtitle{De nouveaux environnements}
+		
+		\centering
+		\sout{\textsc{SHARELATEX}}
+		
+		\begin{itemize}
+			\item IDE : Miktex, Texmaker, Kile (avec texlive)
+		\end{itemize}
+	\end{frame}
+
+	\begin{frame}
+	\frametitle{Pour l'avenir}
+	\framesubtitle{Des compilateurs et éditeurs dédiés}
+	
+	\centering
+	\sout{\textsc{SHARELATEX}}
+	
+	\begin{itemize}
+		\item IDE : Miktex, Texmaker, Kile (avec texlive)
+		\item Compilateur / éditeur : texlive / Vim, Emacs, Atom, Gedit, Notepad++
+	\end{itemize}
+	\end{frame}
+
+	\begin{frame}
+	\frametitle{Pour l'avenir}
+	\framesubtitle{Des outils plus complexes}
+	
+	\centering
+	\sout{\textsc{SHARELATEX}}
+	
+	\begin{itemize}
+		\item IDE : Miktex, Texmaker, Kile (avec texlive)
+		\item Compilateur / éditeur : texlive / Vim, Emacs, Atom, Gedit, Notepad++
+		\item Les .sty et le CTAN (classes, extensions, packages)
+	\end{itemize}
+	\end{frame}
+
+	\begin{frame}
+	\frametitle{Pour l'avenir}
+	\framesubtitle{Des outils plus complexes}
+	
+	\centering
+	\sout{\textsc{SHARELATEX}}
+	
+	\begin{itemize}
+		\item IDE : Miktex, Texmaker, Kile (avec texlive)
+		\item Compilateur / éditeur : texlive / Vim, Emacs, Atom, Gedit, Notepad++
+		\item Les .sty et le CTAN (classes, extensions, packages)
+		\item Tex, LaTeX, BibTeX, LuaLaTeX, XeTeX (langages de scripts \textit{lua}, mise en page en \textit{Unicode})
+	\end{itemize}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Un éditeur d'image ?}
+		\framesubtitle{Tikz et pgf}
+		
+		\begin{minipage}{6cm}
+			
+			\begin{itemize}
+				\item Des dessins, des graphes, ...\\
+				\texttt{http://www.texample.net/media/
+					tikz/examples/PDF/
+					phasor-diagram.pdf}
+			\end{itemize}
+		\end{minipage}\hfill
+		\begin{minipage}{4cm}
+			\includegraphics[width=4cm]{Images/Ouverture/phasor_diagram}
+		\end{minipage}
+	
+		
+	\end{frame}
+
+	\begin{frame}
+	\frametitle{Un éditeur d'image ?}
+	\framesubtitle{Tikz et pgf}
+	
+	\begin{minipage}{6cm}
+		
+		\begin{itemize}
+			\item Des dessins, des graphes, ...\\
+			\texttt{http://www.texample.net/media/
+				tikz/examples/PDF/
+				phasor-diagram.pdf}
+			\item Exportation géogébra
+		\end{itemize}
+	\end{minipage}\hfill
+	\begin{minipage}{4cm}
+		\includegraphics[width=4cm]{Images/Ouverture/phasor_diagram}
+	\end{minipage}
+	
+	
+	\end{frame}
+
+	\begin{frame}[fragile=singleslide]
+		\frametitle{Les présentations}
+		\framesubtitle{Comment faire une présentation aussi stylée ?}
+		
+		\begin{itemize}
+			\item Ces slides sont faites en \LaTeX avec le type \textbf{beamer}\\
+			\begin{block}
+				
+				\begin{verbatim}
+				\begin{frame}
+				\frametitle{Titre de la slide}
+				Contenu de la slide
+				\end{frame}
+				\end{verbatim}
+			\end{block}
+		\end{itemize}
+	
+	\end{frame}
+
+	\begin{frame}[fragile=singleslide]
+		\frametitle{Les présentations}
+		\framesubtitle{Comment faire une présentation aussi stylée ?}
+		
+		\begin{itemize}
+			\item Ces slides sont faites en \LaTeX avec le type \textbf{beamer}\\
+			\begin{block}
+				
+				\begin{verbatim}
+				\begin{frame}
+				\frametitle{Titre de la slide}
+				Contenu de la slide
+				\end{frame}
+				\end{verbatim}
+			\end{block}
+		
+			\item L'environnement double colonne, minipage,...
+			\begin{block}
+				
+				\begin{verbatim}
+				\begin{columns}
+				\begin{column}[c]{5cm} ... \end{column}
+				\begin{column}[c]{4cm} ... \end{column}
+				\end{columns}
+				\end{verbatim}
+			\end{block}
+			
+		\end{itemize}
+		
+	\end{frame}
+	
+	\begin{frame}[fragile=singleslide]
+		\frametitle{Python avec \LaTeX}
+	
+\begin{minipage}{6cm}
+	\begin{itemize}
+		\item \LaTeX dans Matplotlib : r' '\\
+		\begin{lstlisting}
+plt.title(r'$\sin(2\pi x)$ 
+sur $[0,1]$')
+		\end{lstlisting}
+	\end{itemize}
+\end{minipage}\hfill
+\begin{minipage}{4cm}
+	\includegraphics[width=4cm]{Images/Ouverture/python_latex}
+\end{minipage}
+
+	\end{frame}
+
+	\begin{frame}[fragile=singleslide]
+	\frametitle{Python avec \LaTeX}
+	
+	\begin{minipage}{6cm}
+		\begin{itemize}
+			\item \LaTeX dans Matplotlib : r' '\\
+			\begin{lstlisting}
+plt.title(r'$\sin(2\pi x)$ 
+sur $[0,1]$')
+			\end{lstlisting}
+			\item Changer la police, la taille,...\\
+			\texttt{https://matplotlib.org/users
+				/usetex.html}
+		\end{itemize}
+	\end{minipage}\hfill
+	\begin{minipage}{4cm}
+		\includegraphics[width=4cm]{Images/Ouverture/python_latex}
+	\end{minipage}
+
+		
+	\end{frame}
+	
+	\begin{frame}[fragile=singleslide]
+		\frametitle{Python avec \LaTeX}
+		
+		\begin{minipage}{6cm}
+			\begin{itemize}
+				\item \LaTeX dans Matplotlib : r' '\\
+				\begin{lstlisting}
+plt.title(r'$\sin(2\pi x)$ 
+sur $[0,1]$')
+				\end{lstlisting}
+				\item Changer la police, la taille,...\\
+				\texttt{https://matplotlib.org/users
+					/usetex.html}
+				\item Exporter de belles figures\\
+				\texttt{plt.savefig('output.eps',format='eps',dpi=1000)}
+			\end{itemize}
+		\end{minipage}\hfill
+		\begin{minipage}{4cm}
+			\includegraphics[width=4cm]{Images/Ouverture/python_latex}
+		\end{minipage}
+		
+		
+	\end{frame}
+
+	\begin{frame}[fragile=singleslide]
+		\frametitle{Jupyter Notebook}
+		
+		Exporter un notebook en latex depuis notebook avec du bash :
+		\begin{block}
+			
+		\begin{verbatim}
+		%%bash 
+		jupyter nbconvert notebook.ipynb --to latex
+		latex notebook.tex
+		pdflatex notebook.tex
+		\end{verbatim}
+		\end{block}
+	\end{frame}
+
+	\begin{frame}[fragile=singleslide]
+		\frametitle{Formatage des paragraphes}
+		
+		\begin{itemize}
+			\item Changer les marges  de la page\\
+			\begin{block}
+			
+			\begin{verbatim}
+			\usepackage[a4paper,total={6in,8in}]{geometry}
+			\end{verbatim}
+			\end{block}
+		\end{itemize}
+	\end{frame}
+
+	\begin{frame}[fragile=singleslide]
+	\frametitle{Formatage des paragraphes}
+	
+	\begin{itemize}
+		\item Changer les marges  de la page\\
+		\begin{block}
+			
+		\begin{verbatim}
+		\usepackage[a4paper,total={6in,8in}]{geometry}
+		\end{verbatim}
+		\end{block}
+		\item Indentation d'un paragraphe\\
+		\begin{block}
+			
+		\begin{verbatim}
+		\setlength{\parindent}{4em}
+		\end{verbatim}
+		\end{block}
+	\end{itemize}
+	\end{frame}
+
+	\begin{frame}[fragile=singleslide]
+	\frametitle{Formatage des paragraphes}
+	
+	\begin{itemize}
+		\item Changer les marges  de la page\\
+		\begin{block}
+			
+		\begin{verbatim}
+		\usepackage[a4paper,total={6in,8in}]{geometry}
+		\end{verbatim}
+		\end{block}
+		\item Indentation d'un paragraphe\\
+		\begin{block}
+			
+		\begin{verbatim}
+		\setlength{\parindent}{4em}
+		\end{verbatim}
+		\end{block}
+		\item Distance inter-paragraphe\\
+		\begin{block}
+			
+		\begin{verbatim}
+		\setlength{\parskip}{1em}
+		\end{verbatim}
+		\end{block}
+	\end{itemize}
+	\end{frame}
+
+	\begin{frame}[fragile=singleslide]
+	\frametitle{Formatage des paragraphes}
+	
+	\begin{itemize}
+		\item Changer les marges  de la page\\
+		\begin{block}
+			
+		\begin{verbatim}
+		\usepackage[a4paper,total={6in,8in}]{geometry}
+		\end{verbatim}
+		\end{block}
+		\item Indentation d'un paragraphe\\
+		\begin{block}
+			
+		\begin{verbatim}
+		\setlength{\parindent}{4em}
+		\end{verbatim}
+		\end{block}
+		\item Distance inter-paragraphe\\
+		\begin{block}
+			
+		\begin{verbatim}
+		\setlength{\parskip}{1em}
+		\end{verbatim}
+		\end{block}
+		\item Hauteur de ligne\\
+		\begin{block}
+			
+		\begin{verbatim}
+		\renewcommand{\baselinestretch}{2}
+		\end{verbatim}
+		\end{block}
+	\end{itemize}
+	\end{frame}
+
+	\begin{frame}[fragile=singleslide]
+		\frametitle{Mettre un lien}
+		
+		\begin{enumerate}
+			\item Include le module :\\
+			\begin{block}
+				
+			\begin{verbatim}
+			\usepackage{hyperref}
+			\end{verbatim}
+			\end{block}
+		\end{enumerate}
+	\end{frame}
+
+	\begin{frame}[fragile=singleslide]
+	\frametitle{Mettre un lien}
+	
+	\begin{enumerate}
+		\item Include le module :\\
+		\begin{block}
+			
+		\begin{verbatim}
+		\usepackage{hyperref}
+		\end{verbatim}
+		\end{block}
+		\item Faire des liens :\\
+		\begin{block}
+			
+		\begin{verbatim}
+		\url{https://en.wikibooks.org/wiki/LaTeX}
+		\href{https://en.wikibooks.org}{Un lien}
+		\end{verbatim}
+		\end{block}
+	\end{enumerate}
+	\end{frame}
+
+	\begin{frame}[fragile=singleslide]
+		\frametitle{Mettre un lien}
+		
+		\begin{enumerate}
+			\item Include le module :\\
+			\begin{block}
+				
+			\begin{verbatim}
+			\usepackage{hyperref}
+			\end{verbatim}
+			\end{block}
+			\item Faire des liens :\\
+			\begin{block}
+				
+			\begin{verbatim}
+			\url{https://en.wikibooks.org/wiki/LaTeX}
+			\href{https://en.wikibooks.org}{Un lien}
+			\end{verbatim}
+			\end{block}
+			\item Dans un beamer :\\
+			\begin{block}
+				
+			\begin{verbatim}
+			\begin{frame}[fragile]
+			\end{verbatim}
+			\end{block}
+			Exemple : Online code editor
+		\end{enumerate}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{\LaTeX fait-il du café ?}
+		\begin{enumerate}
+			\item \LaTeX est turing-complet 
+		\end{enumerate}
+	\end{frame}
+
+	\begin{frame}
+	\frametitle{\LaTeX fait-il du café ?}
+	\begin{enumerate}
+		\item \LaTeX est turing-complet 
+		\item Créer des macros (donc des fonctions)
+	\end{enumerate}
+	\end{frame}
+
+	\begin{frame}
+	\frametitle{\LaTeX fait-il du café ?}
+	\begin{enumerate}
+		\item \LaTeX est turing-complet 
+		\item Créer des macros (donc des fonctions)
+		\item La suite de Fibonacci (exemple de récursivité) :\\
+		\texttt{https://fr.sharelatex.com/blog/2012/04/24/
+			latex-is-more-powerful-than-you-think.html}
+	\end{enumerate}
+	\end{frame}
+
+	\begin{frame}
+	\frametitle{\LaTeX fait-il du café ?}
+	\begin{enumerate}
+		\item \LaTeX est turing-complet 
+		\item Créer des macros (donc des fonctions)
+		\item La suite de Fibonacci (exemple de récursivité) :\\
+		\texttt{https://fr.sharelatex.com/blog/2012/04/24/
+			latex-is-more-powerful-than-you-think.html}
+		\item Un interpréteur de Basic (BaSiX, 1990) :\\
+		\texttt{http://tug.org/TUGboat/Articles/tb11-3/tb29greene.pdf}
+	\end{enumerate}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{\LaTeX fait-il du café ?}
+		\begin{enumerate}
+			\item \LaTeX est turing-complet 
+			\item Créer des macros (donc des fonctions)
+			\item La suite de Fibonacci (exemple de récursivité) :\\
+			\texttt{https://fr.sharelatex.com/blog/2012/04/24/
+				latex-is-more-powerful-than-you-think.html}
+			\item Un interpréteur de Basic (BaSiX, 1990) :\\
+			\texttt{http://tug.org/TUGboat/Articles/tb11-3/tb29greene.pdf}
+			\item Créer une classe, créer des paquets,...
+		\end{enumerate}
+	\end{frame}
+
+	\begin{frame}
+	\frametitle{\LaTeX fait-il du café ?}
+	\begin{enumerate}
+		\item \LaTeX est turing-complet 
+		\item Créer des macros (donc des fonctions)
+		\item La suite de Fibonacci (exemple de récursivité) :\\
+		\texttt{https://fr.sharelatex.com/blog/2012/04/24/
+			latex-is-more-powerful-than-you-think.html}
+		\item Un interpréteur de Basic (BaSiX, 1990) :\\
+		\texttt{http://tug.org/TUGboat/Articles/tb11-3/tb29greene.pdf}
+		\item Créer une classe, créer des paquets,...
+		\item Faire des animations
+	\end{enumerate}
+	\end{frame}
+
+	\begin{frame}[fragile=singleslide]
+		\frametitle{Mettre des vidéos}
+		
+		\begin{enumerate}
+			\item Appeler le module :\\
+			\begin{block}
+				
+				\begin{verbatim}
+				\usepackage{multimedia}
+				\end{verbatim}
+			\end{block}
+		\end{enumerate}
+	\end{frame}
+
+	\begin{frame}[fragile=singleslide]
+		\frametitle{Mettre des vidéos}
+		
+		\begin{enumerate}
+			\item Appeler le module :\\
+			\begin{block}
+				
+			\begin{verbatim}
+			\usepackage{multimedia}
+			\end{verbatim}
+			\end{block}
+			\item Inclure une vidéo :\\
+			\begin{block}
+				
+			\begin{verbatim}
+			\movie[width=0.3\textwidth,showcontrols=true]
+			{% placeholder = text or image 
+			\includegraphics[width=0.3\textwidth]{img.pdf}
+			}
+			{video.mp4} % video filename
+			\end{verbatim}
+			\end{block}
+		\end{enumerate}
+	\end{frame}
+
+	\begin{frame}[fragile=singleslide]
+		\frametitle{Mettre des vidéos}
+		
+		\begin{enumerate}
+			\item Appeler le module :\\
+			\begin{block}
+				
+			\begin{verbatim}
+			\usepackage{multimedia}
+			\end{verbatim}
+			\end{block}
+			\item Inclure une vidéo :\\
+			\begin{block}
+				
+			\begin{verbatim}
+			\movie[width=0.3\textwidth,showcontrols=true]
+			{% placeholder = text or image 
+			\includegraphics[width=0.3\textwidth]{img.pdf}
+			}
+			{video.mp4} % video filename
+			\end{verbatim}
+			\end{block}
+			\item Compiler en PDFLaTeX
+		\end{enumerate}
+	\end{frame}
+
+		\begin{frame}
+		\frametitle{Conseils et liens utiles}
+		\begin{itemize}
+		\item Testez très souvent la compilation car la moindre accolade oubliée donne une erreur
+		incompréhensible car l'erreur est indiquée à la fin de l'environnement / page
+
+		\end{itemize}
+		\end{frame}
+
+		\begin{frame}
+		\frametitle{Conseils et liens utiles}
+		\begin{itemize}
+			\item Testez très souvent la compilation car la moindre accolade oubliée donne une erreur
+		incompréhensible car l'erreur est indiquée à la fin de l'environnement / page
+		\item Certains compilateurs laissent passer certains warnings / erreurs : à eviter absolument :\\
+		travaux de groupes, compréhension du code,...
+		\end{itemize}
+		\end{frame}
+	
+		\begin{frame}
+			\frametitle{Conseils et liens utiles}
+			\begin{itemize}
+				\item Testez très souvent la compilation car la moindre accolade oubliée donne une erreur
+			incompréhensible car l'erreur est indiquée à la fin de l'environnement / page
+			\item Certains compilateurs laissent passer certains warnings / erreurs : à eviter absolument :\\
+			travaux de groupes, compréhension du code,...
+			\item Rendez votre code clair : structurez, indentez, et faites respirer votre code pour la lisibilité
+		\end{itemize}
+		\end{frame}
+	
+		\begin{frame}
+			\frametitle{Conseils et liens utiles}
+			\begin{itemize}
+				\item Testez très souvent la compilation car la moindre accolade oubliée donne une erreur
+			incompréhensible car l'erreur est indiquée à la fin de l'environnement / page
+			\item Certains compilateurs laissent passer certains warnings / erreurs : à eviter absolument :\\
+			travaux de groupes, compréhension du code,...
+			\item Rendez votre code clair : structurez, indentez, et faites respirer votre code pour la lisibilité
+			\item Rajoutez des commentaires (symbole \% )peut être utile pour se retrouver / pour se rappeler de certaines choses
+			
+		\end{itemize}
+		\end{frame}
+	
+		\begin{frame}
+			\frametitle{Conseils et liens utiles}
+			\begin{itemize}
+
+			\item Mode mathématiques de \LaTeX sans autocomplétion = folie pure
+			
+		\end{itemize}
+		\end{frame}
+
+		\begin{frame}
+		\frametitle{Conseils et liens utiles}
+		\begin{itemize}
+
+		\item Rajoutez des commentaires (symbole \% )peut être utile pour se retrouver / pour se rappeler de certaines choses
+		\item Mode mathématiques de \LaTeX sans autocomplétion = folie pure
+		\item Online code editor : \\
+		\texttt{https://www.codecogs.com/latex/eqneditor.php}
+		
+		\end{itemize}
+		\end{frame}
+	
+		\begin{frame}
+			\frametitle{Conseils et liens utiles}
+			\begin{itemize}
+
+			\item Rajoutez des commentaires (symbole \% )peut être utile pour se retrouver / pour se rappeler de certaines choses
+			\item Mode mathématiques de \LaTeX sans autocomplétion = folie pure
+			\item Online code editor : \\
+			\texttt{https://www.codecogs.com/latex/eqneditor.php}
+			\item Templates : bibliographie, livre, sujet d'examen, calendrier, CV, thèses, slides, article scientifique,
+			template de Supaero...\\
+			\texttt{https://fr.sharelatex.com/templates}
+			
+		\end{itemize}
+		\end{frame}
+
+	\begin{frame}
+		\frametitle{Conseils et liens utiles}
+		\begin{itemize}
+
+			\item Rajoutez des commentaires (symbole \% )peut être utile pour se retrouver / pour se rappeler de certaines choses
+			\item Mode mathématiques de \LaTeX sans autocomplétion = folie pure
+			\item Online code editor : \\
+			\texttt{https://www.codecogs.com/latex/eqneditor.php}
+			\item Templates : bibliographie, livre, sujet d'examen, calendrier, CV, thèses, slides, article scientifique,
+			template de Supaero...\\
+			\texttt{https://fr.sharelatex.com/templates}
+			
+		\end{itemize}
+	\end{frame}
+	
 	\begin{frame}
 		\centering
 		\Huge
