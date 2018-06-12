@@ -1,0 +1,30 @@
+\mode<presentation>
+%
+% Frame title
+\defbeamertemplate*{frametitle}{ki}[1][]
+{
+  \vspace{-0.1cm}
+  \begin{beamercolorbox}[wd=\paperwidth,ht=2.4cm]{frametitle}%
+    \begin{tikzpicture}[baseline=0pt]%
+      \useasboundingbox[fill=white](0,0) 
+rectangle(\the\paperwidth,2.4);%
+      \fill[ki] (0,2.4) -- (\the\paperwidth,2.4) -- (\the\paperwidth, 0) 
+-- (0, 0.6);%
+       \ifx%
+          \insertframesubtitle\@empty%
+          {\node[anchor=base west, white,font=\large] at 
+(1.2,1.3){\insertframetitle};}
+          \else%
+          {\node[anchor=base west, white,font=\large] at 
+(1.2,1.75){\insertframetitle};%
+           \node[anchor=base west, white,font=\small] at 
+(1.2,1.25){\insertframesubtitle};}%
+          \fi
+       \node[anchor=north east] at (\the\paperwidth, 2.4)
+        {\includegraphics[width=2cm]{logo-ki.png}};
+    \end{tikzpicture}
+  \end{beamercolorbox}
+}
+
+\mode<all>
+
