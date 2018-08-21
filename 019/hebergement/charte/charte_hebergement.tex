@@ -1,31 +1,34 @@
-\documentclass{charteki019}
+\documentclass{ki019}
 
 \usepackage{hyperref}
-\usepackage[T1]{fontenc}
-\usepackage{array}
+
+%\pagestyle{plain}
 
 \begin{document}
 
-\header{Charte d'hébergement KI}
+\section{Charte d'hébergement KI}
 
 \freesection{Préambule}
 
 La présente charte est un guide destiné à assurer la compréhension ainsi que de poser les principes d'utilisation des services d'hébergement proposés par le Club informatique des Ponts et Chaussées, dénommé ci-après KI, pour favoriser la vie associative et la transmission de la connaissance au sein de l'école. Le KI met à disposition des entités (personnes, associations, clubs, programmes scolaires... ) qui en font la demande des services d'hébergement. Les ressources suceptibles d'être alloués sont les suivantes :
 \begin{itemize}
-\item sous nom de domaine de enpc.org
-\item compte FTP
-\item base de données
-\item compte email
-\item module WordPress
+\item Sous nom de domaine de enpc.org et redirection
+\item Compte FTP
+\item Base de données
+\item Compte email et redirection
+\item Module WordPress
+\item Entrée DNS
 \item Nextcloud
+\item Rocket Chat
 \end{itemize}
 
 L'utilisation de ces ressources doit être liée à la vie collective des Ponts et Chaussées.
 
-\section{Demande d'hébergement}
+\sectionenum{Demande d'hébergement}
 
-\subsection{Première demande}
+\subsectionenum{Première demande}
 
+% A modifier quand services.enpc.org sera en fonctionnement
 Toute demande d'hébergement doit être adressée au KI et contenir les informations suivantes :
 \begin{itemize}
 \item Nom de l'entité
@@ -39,69 +42,131 @@ Toute demande d'hébergement doit être adressée au KI et contenir les informat
 Le RSI est l'intermédiaire entre le KI et l'entité pour tout ce qui attrait aux services d'hébergement. Il est le garant moral du respect des principes de cette charte, au nom de l'entité. La durée de mise à disposition du service d'hébergement ne peut excéder un an, et est renouvelable indéfiniment, sous réserve d'accord du KI.
 Si la demande est acceptée par le KI, le responsable hébergement délivre au RSI une fiche d'hébergement informatique, dénommée ci-après FHI. Toute modification des informations stipulées sur la FHI doit être porté à l'attention du responsable hébergement du KI et donnera lieu à un amendement de la FHI. La durée de validité d'une FHI est de un an.
 
-\subsection{Renouvellement}
+\subsectionenum{Renouvellement}
 
-Les identifiants sont changées à chaque renouvellement dès lors qu'au moins une personne qui étaient en possession d'identifiant selon la FHI, perd se droit selon la nouvelle FHI. C'est donc systématiquement le cas pour les clubs/assos, pour lesquels le renouvellement s'effectue au moment de la passation entre 2 équipes. 
+Les identifiants sont changées à chaque renouvellement dès lors qu'au moins une personne qui étaient en possession d'identifiant selon la FHI, perd se droit selon la nouvelle FHI. C'est donc systématiquement le cas pour les clubs/assos, pour lesquels le renouvellement s'effectue au moment de la passation entre 2 équipes.
 
-\section{Sous nom de domaine}
+\sectionenum{Sous nom de domaine}
 
-Le KI possède le nom de domaine enpc.org depuis le 29 mai 2001. Il offre donc d'attribuer des sous nom de domaine de la forme site.enpc.org. Ce sous nom de domaine pointe vers le répertoire du compte FTP stipulé sur la FHI par son chemin relatif à la racine du compte FTP.
-L'entité hébergée a conscience que toute personne ou bot, y compris extérieure aux Ponts, est susceptible de consulter, enregistrer ou référencer le contenu afficher publiquement à une url appartenant au sous nom de domaine alloué. L'entité accepte donc l'entière responsabilité de ce qu'il met en ligne sur le sous-nom de domaine qu'il lui est attribué, et s'engage donc à respecter les lois françaises.
+Le KI possède le nom de domaine enpc.org depuis le 29 mai 2001. Il offre donc d'attribuer des sous nom de domaine de la forme site.enpc.org. Ce sous nom de domaine pointe vers le répertoire du compte FTP stipulé sur la FHI par son chemin relatif à la racine du compte FTP.		% A rajouter sur le modèle de fiche
+L'entité hébergée a conscience que toute personne ou bot, y compris extérieure aux Ponts, est susceptible de consulter, enregistrer ou référencer le contenu afficher publiquement à une url appartenant au sous nom de domaine alloué. L'entité accepte donc l'entière responsabilité de ce qu'il met en ligne sur le sous nom de domaine qu'il lui est attribué, et s'engage donc à respecter les lois françaises.
 
-Redirection : TODO
+Les redirections peuvent se faire entre noms de domaine (CNAME) ou vers une url de manière visible ou non (url qui change dans le navigateur), permanente ou non (code de retour HTTP de redirection différent pour la mise à jour du référencement des moteurs de recherche).
 
-\section{Compte FTP}
+\sectionenum{Compte FTP}
 
-Les comptes FTP mis à disposition consituent une partie du système de fichier d'un serveur mutualisé OVH. Ce serveur tourne sur un système d'exploitation linux Debian sur lequel est installé Apache et PHP. Ces comptes sont un espace de stoquage de fichiers destiné à héberger un site internet. L'accès à cette espace se fait via une connexion ftp, sftp ou ssh, à l'aide des identifiants fournis sur la FHI. Une connexion FTP peut s'effectuer dans un terminal linux par la commande ssh user@host. Il est d'autre part possible de se connecter en FTP par son navigateur internet en tapant l'url ftp://user@host, son explorateur de fichier ou le logiciel FileZilla.
+Les comptes FTP mis à disposition constituent une partie du système de fichier d'un serveur mutualisé OVH. Ce serveur tourne sur un système d'exploitation linux Debian sur lequel est installé Apache et PHP. Ces comptes sont des espaces de stoquage de fichiers destinés à héberger des sites internet. L'accès à ces espaces se fait via une connexion ftp, sftp ou ssh, à l'aide des identifiants fournis sur la FHI. Une connexion FTP peut s'effectuer dans un terminal linux par la commande \textit{ssh user@host}. Il est d'autre part possible de se connecter en FTP par son navigateur internet en tapant l'url \textit{ftp://user@host}, par son explorateur de fichier ou le logiciel FileZilla.
 
-\subsection{Modalités}
+Depuis un téléphone Android, il est possible d'établir des connexions SSH avec l'application JuiceSSH. D'autre part l'utilisation d'une configuration SSH et de la méthode d'authentification par clef privée / clef publique facilitent grandemment l'accès.
 
-L'hébergé s'engage a respecté le quota d'espace mémoire qu'il lui est alloué, tel que mentionné sur la fiche d'hébergement.
-Le KI s'engage à ne pas écrire ou modifier de fichiers sur l'espace alloué sans avertir le RSI des opérations effectuées.
+Les comptes FTP sont fournis avec les programmes Apache v2.4, PHP v5.6 et Git v2.1. Il n'y a pas d'accès root.
+
+Formations
+\begin{itemize}
+\item Git : \url{https://kiclubinfo.github.io/formation-git/}
+\item Web : \url{https://github.com/KIClubinfo/formation-web/}
+\item Web - slides séance 2 (DNS, FTP, Filezilla...) : \\
+\url{https://docs.google.com/presentation/d/117pZuP9A91rzJ171BremHm8uPIZWndsoD3dUhRV1F04}
+\end{itemize}
+
+\subsectionenum{Modalités}
+
+L'hébergé s'engage à respecter le quota d'espace mémoire qu'il lui est alloué, tel que mentionné sur la fiche d'hébergement.
+Le KI s'engage à ne pas écrire ou modifier de fichiers sur l'espace alloué sans l'authorisation de l'herbergé et l'hébergé s'engage à ne pas détourner l'usage des services qui sont mis à sa dispostion respectivement à l'utilisation mentionné à la création du site.
 Le KI s'optroie la propriété de tout fichier laissé par l'entité sur ses serveurs à la date d'expiration du service, tel que notifiée sur la FHI.
 
-\subsection{Données et confidentialité}
+\subsectionenum{Données et confidentialité}
 
 Tout document ou information sur l'hébergement est susceptible d'être consulté par le président, le président technique et le responsable hébergement du KI.
 L'ensemble des fichiers font l'objet d'une sauvegarde externe une fois par mois.
 
-\section{Base de données}
+\sectionenum{Base de données}
 
-TODO : description matériel, phpmyadmin
+\subsectionenum{MySQL}
+
+Les bases de données sont de type MySQL 5.6. Nous disposons d'un total de 8 Go pour l'ensemble des bases de données, c'est pourquoi nous limitons à 1 Go l'espace de chacune.
 Une sauvegarde des base de données est effectuée toutes les semaines. Ces sauvegardes sont conservées au moins un mois.
+La base de données peut être accédée via une interface graphique avec phpmyadmin.
+Se connecter sur \url{https://phpmyadmin.ovh.net} avec
+\begin{itemize}
+\item server : va1757-001.privatesql
+\item port : 35287
+\end{itemize}
 
-\section{Compte email}
+\subsectionenum{Autre}
 
-TODO
+D'autres types de base de données peuvent être déployés sous forme dockerisée tel que MongoDB.
 
-\section{Module WordPress}
+\sectionenum{Compte email}
 
-TODO
+Les adresses sont en @enpc.org.
+Les boîtes mail sont accessibles à l'adresse \url{mail.enpc.org} (\url{https://mail.ovh.net/}).
+Ce sont des boîte Roundcube avec un quota autorisé entre 1 et 5 Go en fonction des besoins exprimés au moment de la demande d'hébergement.
+Des filtres de suppression et de redirection peuvent être mis en place par le KI.
+Il est possible depuis les paramètres de créer différentes identités : nom et adresse email affichés, adresse de réponse, de copie cachée et signature (HTML avec image, lien, couleur, italique...) des mails envoyés.
+Les messages peuvent eux aussi être composés en HTML en l'indiquant comme \textit{editor type} au moment d'écrire l'email.
 
-Des bots circulent en permanence sur internet afin en quête de formulaire de soumission de texte afin de poster des annonces publicitaires, pouvant être à caractère sexuel ou illégal. Tout type de blog étant une cible privilégiée, il est demandé que l'entité modère les commentaires ou de les désactive.
+\sectionenum{Module WordPress}
 
-\section{Nextcloud}
+L'interface d'administration du module est accessible à l'adresse https://monsite.enpc.org/wp-admin.
 
-TODO
+Des bots circulent en permanence sur internet afin en quête de formulaire de soumission de texte afin de poster des annonces publicitaires, pouvant être à caractère sexuel ou illégal. Tout type de blog étant une cible privilégiée, il est demandé que l'entité modère les commentaires ou les désactive.
 
-\section{Sécurité}
+\sectionenum{Entrée DNS}
 
-\subsection{Serveur}
+Elles peuvent être de trois types :
+\begin{itemize}
+\item Champs de pointage : A, AAAA, NS, CNAME
+\item Champs étendus : CAA, TXT, NAPTR, SRV, LOC, SSHFP, TLSA
+\item MX, SPF, DKIM
+\end{itemize}
+
+Le KI s'occupe de cette configuration pour les services qu'ils proposent. Il est cependant possible de demander une configuration DNS particulière.
+Cela peut servir à la configuration de serveurs mails ou de sites web gérées de manières externes par les entitités (sur un VPS ou via un site d'emailing de masse type \url{sparkpost.com} ou \url{mailgun.com})
+
+\sectionenum{Nextcloud}
+
+Nextcloud est un logiciel de cloud avec un système de partage de fichier par lien public ou avec d'autres utilisateurs ou groupes d'utilisateurs.
+
+\sectionenum{Rocket Chat}
+
+Le KI peut héberger tout type d'application opensource dockerisée telle que des chats.
+Rocket Chat est un chat doté de fonctionnalités de vidéo conference, de partage d'écran, d'upload d'images, de roles et permissions, de notifications, d'intégrations hubot et webhooks, de recherche d'historique par expression régulière, de décorateurs de texte tels que le markdown, le KaTeX, les emojis. Il est possible d'importer des données de Slack et Hipchat.
+
+\sectionenum{Sécurité}
+
+\subsectionenum{Serveur}
 
 Il est strictement interdit de porter atteinte d'une quelconque manière que ce soit à la stabilité du serveur OVH hébergeur, ainsi que de lister, créer, lire, modifier ou exécuter des fichiers qui se trouvent à l'extérieur de l'espace alloué.
 Le RSI est seule responsable de la non-divulgation des mots de passe à l'extérieur des personnes indiquées sur la FHI, le KI ne peut donc être tenu responsable de tout dommage lié à l'utilisation des mots de passe transmis au FHI. Si vous suspectez qu'un ordinateur contenant des mots de passe enregistrés dans un navigateur internet, un fichier non-cryptés ou un logiciel tel que FileZilla, ait été piratée, volé ou perdu, merci d'en faire part au KI dans les plus brefs délais.
 Tout formulaire sur une page publique permettant la soumission par un internaute d'informations non-restreintes (une checkbox avec 6 choix définies vs un champs de texte où on écrit ce que l'on veut) doit faire l'objet d'une attention particulière de la part de l'entité. La soumissions de données non-échappées ("sanitized") peut permettre de l'injection de code type SQL, PHP ou javascript sur une page web, et porter atteinte à la sécurité de l'ensemble de l'hébergement du KI.
 
-\subsection{Identifiants}
+\subsectionenum{Identifiants}
 
 En cas de perte d'identifiants, le RSI doit les réclamer auprès du responsable hébergement du KI. Jamais aucun identifiant ne sera demandé de la part du KI.
 
-\section{Missions de création de site}
+\sectionenum{Demande particulière}
 
-TODO
+\subsectionenum{Missions de création de site}
 
-TODO : migration des ressources, assistance
+Le KI pour être contracté pour coder des sites à l'image de \url{https://admissibles.enpc.org} destinés aux admissibles du concours commun Mines-Ponts.
 
-Cette charte est disponible à tout moment à l'adresse clubinfo.enpc.org/charte ainsi qu'à la racine de tout compte FTP nouvellement créé. Cette charte est la propriété intellectuelle du club informatique de l'Ecole Nationale des Ponts et Chaussées. Elle est susceptible d'être modifiée à tout moment par le club informatique.
+\subsectionenum{Migration des ressources}
+
+Nous ne prenons normalement pas en charge la migration des nouveaux sites vers notre hébergement.
+Il est notamment fortement déconseillé de développer un site WordPress en local sur son ordinateur avant de le migrer en production sur l'hébergement.
+
+Guide officiel de migration de WordPress : \url{https://codex.wordpress.org/Moving_WordPress}
+
+\subsectionenum{Assistance}
+
+En cas de besoin, contactez le KI par Messenger à \url{https://m.me/enpc.clubinfo}, ou bien sur uPont via la section dépannage à \url{https://upont.enpc.fr/assos/depannage}.
+Vous pouvez également nous contacter pour des problèmes d'hébergement sur ovh@clubinfo.enpc.fr.
+Notre local est situé en P401. Il est joignable par téléphone au 01 64 15 33 82.
+Un voyant lumineux dans la sidebar de uPont indique si nous sommes ouverts.
+
+Cette charte est disponible à tout moment à l'adresse \url{https://enpc.org/charte}. Elle est susceptible d'être modifiée à tout moment par le club informatique.
+
+\Footer{\today}
 
 \end{document}

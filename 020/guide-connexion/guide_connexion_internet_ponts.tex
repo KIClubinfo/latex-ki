@@ -1,0 +1,375 @@
+% Guide de connexion internet des Ponts, KI020, août 2018
+
+% The ki019 needs XeLaTeX to use the specified fonts
+% The minted package requires the python package Pigments.
+% Minted makes calls to the outside world (Pigments), that's why the source must be compiled from terminal with the -shell-escape argument.
+
+% sudo pip3 install Pigments
+% In the guide-connexion's directory :
+% xelatex -shell-escape guide_connexion_internet_ponts.tex
+% xelatex -shell-escape guide_connexion_internet_ponts.tex
+% (twice to generate the table of contents
+
+\documentclass{../templates/enpc-ki/ki020}
+
+\usepackage{lipsum}
+\usepackage[hidelinks]{hyperref}
+\usepackage{minted}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{wrapfig}
+
+\graphicspath{{images/}}
+
+\begin{document}
+
+
+  \Header{}
+
+  \begin{center}
+    {\Huge \emph{Notice Internet 2018}}
+  \end{center}
+
+  \begin{figure}[H]
+    \centering
+    \includegraphics{page1}
+  \end{figure}
+
+
+  \begin{center}
+    \Huge{Guide de connexion à Internet à Meunier et aux Ponts}
+  \end{center}
+  \thispagestyle{empty}
+  \Footer
+
+
+  \newpage
+
+  \Section{Bienvenue}
+    \vspace{2cm}
+    Bienvenue aux Ponts !
+
+    Le Club Informatique des Ponts, que tu vas apprendre à désigner par son surnom, le \emph{KI} (à prononcer K-I) est heureux de te présenter ce guide de connexion qui, on l'espère, te permettra de te connecter à internet sans difficultés.
+
+    Si jamais tu as tout de même besoin d'aide,n'hésite pas à venir nous voir au local en \emph{P401}, à nous contacter par mail à \href{mailto:clubinfo@upont.enpc.fr}{clubinfo@upont.enpc.fr}, à poster un petit message sur l’onglet “Dépannage” de uPont ou sur notre page Facebook, ou même à demander directement à un des membres du KI, qui se fera une joie de te répondre ! Tu pourras nous reconnaître grâce à nos \emph{polos bleus et noirs} au logo facilement identifiable.\\[2.0cm]
+
+    \begin{figure}[H]
+      \centering
+      \includegraphics[width=10cm]{page2}
+    \end{figure}
+
+  \Section{L'essentiel}
+    \vspace{2cm}
+    \begin{kiframe}
+      \subsection{Dans les résidences} %TODO refaire subsubsection
+        Une seule des deux prises RJ45 est reliée à Internet, la bonne est en général la plus proche du bureau.
+
+        Les routeurs vendus par le KI doivent être reliés au mur grâce à la prise \emph{bleue} (port WAN). En cas de problème, ou si tu comptes utiliser ton propre routeur, n'hésite pas a nous demander.
+
+        \begin{flushleft}
+          \emph{Proxy des résidences :}
+          \begin{itemize}
+            \item Adresse : etuproxy.enpc.fr
+            \item Port : 3128
+            \item Login : identifiants DSI (prénom.nom@enpc.fr)
+          \end{itemize}
+        \end{flushleft}
+
+      \subsection{Internet aux Ponts}
+        \begin{flushleft}
+          \emph{Wifi des Ponts :}
+          \begin{itemize}
+            \item SSID : eduroam
+            \item Login : identifiants DSI (prénom.nom@enpc.fr)
+            \item \emph{Bien désactiver la vérification du certificat}
+          \end{itemize}
+        \end{flushleft}
+
+\subsection{Guide complet}
+  \begin{flushleft}
+    \emph{Le guide de connexion complet est disponible sur enpc.org/guide}
+  \end{flushleft}
+      \end{kiframe}
+
+
+  \newpage
+    \Header{}
+
+
+    \tableofcontents
+
+  \newpage
+    \Section{Internet dans les résidences}
+    \vspace{0.5cm}
+    \subsection{La prise murale}
+    \begin{wrapfigure}{r}{0.4\textwidth}
+      \centering
+      \includegraphics[width=0.38\textwidth]{page6}
+    \end{wrapfigure}
+    La première étape est de trouver la bonne prise murale.
+
+    En effet, à Meunier, toutes les chambres possèdent deux prises RJ45 : une destinée au \emph{téléphone}, l'autre à \emph{Internet}. En général, la prise Internet est celle qui se trouve \emph{le plus près de ton bureau}. Elle a souvent un logo d'ordinateur.
+
+    Tu peux soit t’y connecter directement avec un câble Ethernet et passer à la configuration de ton réseau, soit installer un routeur. %TODO lien vers page routeur
+
+
+\bigskip
+    \subsection{Le routeur}
+    \begin{wrapfigure}{r}{0.4\textwidth}
+      \centering
+      \includegraphics[width=0.38\textwidth]{page7}
+    \end{wrapfigure}
+    Si tu souhaites avoir le Wifi dans ta chambre, tu auras besoin d’un routeur. Le KI peut t'en vendre un ou tu peux te le procurer par toi-même.
+
+
+    Il faudra juste que tu fasses attention à le brancher correctement, au risque de perturber le réseau de toutes les résidences et de te faire haïr par tes camarades. Sache que nous saurons rapidement d’où vient la panne, te voilà prévenu !
+    %TODO image prise bleue
+
+    Sur les routeurs vendus par le KI, le câble que tu dois connecter au mur se branche sur la prise \emph{bleue} du routeur, aussi appelée \emph{prise WAN}. Si tu as ton propre routeur, pense à vérifier que tu utilises bien cette dernière.
+
+
+
+  \newpage
+    \subsection{Le proxy}
+    {Malheureusement, l’accès à Internet aux Ponts ne peut pas se faire directement car la DSI veut pouvoir surveiller le trafic et bloquer certains usages (P2P, spam, jeux en ligne,...).}
+
+    Tu vas donc devoir apprendre à configurer un proxy sur ton système et/ou ton navigateur. Pense à te munir de tes identifiants DSI, tu en auras besoin pour la procédure. Le login est de la forme "prenom.nom@enpc.fr", comme dans les salles informatiques de l'école.
+
+    Note bien qu'il n'y a pas de proxy sous eduroam\footnote{C'est le réseau wifi de l'école}, ni en dehors de Meunier. Il faudra donc désactiver le proxy dès que tu sors de la résidence.
+
+    \begin{kiframe}
+      Toutes les applications ne peuvent pas fonctionner au travers d'un proxy (par exemple sur PC : Steam, Spotify... Sur portable : WhatsApp, Facebook, Skype...).
+
+      Si une application ne demande pas tes identifiants au démarrage et qu'il n'y a pas d'options dédiées, elle ne gère sans doute pas les proxy. C'est une fonctionnalité que les développeurs choisissent ou non de mettre en place, le KI ne peut pas modifier cet état de fait.
+    \end{kiframe}
+
+\newpage
+      \subsubsection{Sous Windows}
+
+        \begin{enumerate}
+          \item Appuie sur la \emph{touche Windows}
+          \item Tape “serveur proxy” et choisir \emph{Configurer le serveur proxy}
+          \item Clique sur {Paramètres réseau} %TODO mettre la photo avec parametre encadré
+          \begin{figure}[h!]
+            \centering
+          \includegraphics[width=.5\linewidth]{page9}
+          \end{figure}
+          \item Coche \emph{Utiliser un serveur proxy pour votre réseau local}
+          \item Décoche l’option \emph{Détecter automatiquement les paramètres de connexion}
+          \item Renseigne l’adresse \emph{etuproxy.enpc.fr} et le port \emph{3128} %TODO Image dialogue fini
+          \begin{figure}[h!]
+            \centering
+            \includegraphics[width=.5\linewidth]{page10}
+          \end{figure}
+        \end{enumerate}
+
+
+
+
+\newpage
+      \subsubsection{Sous Mac}
+        \begin{enumerate}
+          \item Ouvre \emph{Préférences Système}, puis \emph{Réseau}
+          \item Dans la colonne de gauche, choisis \emph{Ethernet}
+          \item Clique sur \emph{Avancé}, puis \emph{Proxy} %TODO image reseau MAC
+          \begin{figure}[h!]
+            \centering
+          \includegraphics[width=.7\linewidth]{page11_2}
+          \end{figure}
+          \item Coche \emph{Proxy web (HTTP)} et remplis les champs comme dans l’image ci-dessous
+          \begin{figure}[h!]
+            \centering
+          \includegraphics[width=.7\linewidth]{page12}
+          \end{figure}
+          \item Fais de même pour le \emph{Proxy web sécurisé (HTTPS)} %TODO IMAGE config mac
+
+        \end{enumerate}
+
+\newpage
+      \subsubsection{Sous Linux}
+        Sous Linux, il n’y a pas de procédure simple et générale pour configurer le proxy, même si, sous certaines distributions (ex: Ubuntu, Linux Mint...), il existe un menu disponible dans les paramètres réseau.
+
+        On va donc te monter comment faire \emph{en ligne de commandes}:
+
+        Si tu veux que le proxy soit utilisé par les programmes en ligne de commande (apt-get, git, ...), tu dois configurer les variables d’environnement en ajoutant les lignes suivantes dans ton $\sim$/.bashrc (pense à bien remplacer par tes véritables identifiants) :
+
+        \begin{minted}[frame=leftline]{bash}
+export http_proxy=http://user:pass@etuproxy.enpc.fr:3128/
+export https_proxy=$http_proxy
+export HTTPS_PROXY=$http_proxy
+export ftp_proxy=$http_proxy
+        \end{minted}
+
+        Pour que les variables d’environnement soient conservées par la commande sudo, ajouter la ligne suivante en lançant visudo :
+        \begin{minted}[frame=leftline]{bash}
+Defaults env_keep += "http_proxy https_proxy ftp_proxy"
+        \end{minted}
+
+\newpage
+      \subsubsection{Changer le proxy sous Firefox Uniquement}
+        Une solution alternative à la configuration du proxy pour ton système dans son ensemble est de se contenter d’une configuration de ton navigateur. C’est plus simple, mais aucun autre programme qui a besoin d’internet ne pourra fonctionner !
+
+        Sous Firefox, il existe une fenêtre de configuration rapide à utiliser.
+
+        \begin{enumerate}
+          \item Ouvre le \emph{Menu} (en haut à droite) et clique sur \emph{Préférences} %TODO Préferences firefox Image
+          \item Dans la colonne de gauche, sélectionne \emph{Avancé}
+          \item Va dans l’onglet \emph{Réseau}
+          \begin{figure}[h!]
+            \centering
+            \includegraphics[width=.9\linewidth]{page15}
+          \end{figure}
+          \item Dans la section \emph{Connexion}, clique sur \emph{Paramètres} %TODO préferences Avancé firefox
+      \newpage
+          \item Remplir les champs comme dans l’image ci-dessous : %TODO Image champs remplis firefox
+          \begin{figure}[h!]
+            \centering
+        \includegraphics{page16}
+          \end{figure}
+        \end{enumerate}
+
+        Le proxy est alors configuré pour Firefox \emph{uniquement}. Il te demandera automatiquement tes identifiants la première fois que tu voudras accéder à une page web.
+
+
+
+
+
+  \Section{Internet aux Ponts}
+    \vspace{2cm}
+    Le réseau Wifi de l’école s’appelle eduroam et est accessible depuis les bâtiments Carnot, Coriolis, et Bienvenüe, mais aussi un grand nombre d'écoles et universités dans le monde.
+
+    La connexion à eduroam est plus délicate qu’aux autres réseaux Wifi de par l'authentification centralisée qui est effectuée. Globalement, il suffit de désactiver la vérification du certificat pour que cela fonctionne.
+
+    Dans les faits, c’est plus ou moins difficile à faire suivant le système d’exploitation que tu utilises.
+
+    Attention ! Pour te connecter, tu dois utiliser tes identifiants d’authentification centralisée sous la forme : \emph{prenom.nom@enpc.fr}
+
+\newpage
+    \subsubsection{Sous Windows}
+      \begin{enumerate}
+        \item Ouvre les paramètres rapides, puis \emph{Réseau et Internet}
+        \item Clique sur \emph{Centre Réseau et Partage} %TODO Image 2 des parametres dows
+        \begin{figure}[h!]
+          \centering
+          \includegraphics[width=.7\linewidth]{page19_2}
+        \end{figure}
+
+        \item Clique sur \emph{Configurer une nouvelle connexion ou un nouveau réseau}
+        \begin{figure}[h!]
+          \centering
+          \includegraphics[width=.9\linewidth]{page20_1}
+        \end{figure}
+    \newpage
+        \item Choisis \emph{Se connecter manuellement à un réseau sans fil} %TODO Image ici des parametres
+        \begin{figure}[h!]
+          \centering
+          \includegraphics{page20_2}
+        \end{figure}
+        \item Renseigne \emph{eduroam} et \emph{choisis WPA2 - Entreprise}
+        \begin{figure}[h!]
+          \centering
+          \includegraphics[width=.85\linewidth]{page21_1}
+        \end{figure}
+        \item Clique sur \emph{Modifier les paramètres de connexion}, puis \emph{Paramètres avancés}
+        \begin{figure}[h!]
+          \centering
+          \includegraphics[width=.6\textwidth]{page21_2}
+        \end{figure}
+        \item Coche \emph{Spécifier le mode d’authentification} et sélectionne \emph{Authentification utilisateur}
+        \begin{figure}[h!]
+          \centering
+          \includegraphics{page22}
+        \end{figure}
+
+
+          Clique sur \emph{Enregistrer ident.} %APres l'image
+          Tu dois alors saisir tes identifiants d’authentification centralisée (prenom.nom@enpc.fr)
+        \item Valide et clique sur \emph{Paramètres}
+        \item Décoche \emph{Vérifier l’identité du serveur en validant le certificat}
+        \begin{figure}[h!]
+          \centering
+          \includegraphics[width=.4\textwidth]{page23}
+        \end{figure}
+      \end{enumerate}
+
+\newpage
+
+
+    \subsubsection{Sous Mac}
+
+      \begin{enumerate}
+        \item Ouvre le menu Wifi en cliquant sur l’icône en haut à droite
+        \item Choisis \emph{Se connecter à un autre réseau}
+        \begin{figure}[h!]
+          \centering
+          \includegraphics{page24}
+        \end{figure}
+        \item Renseigne les paramètres comme sur l’image :
+        \begin{figure}[h!]%{0.6\textwidth}
+          \centering
+          \includegraphics{page25}
+        \end{figure}
+        \item Un avertissement s’affiche. Clique sur \emph{Continuer}
+        \item Si demandé, saisis ton mot de passe Mac OS X
+      \end{enumerate}
+
+
+
+\newpage
+
+
+
+    \subsubsection{Sous Linux}
+    Cela varie avec les distributions. Nous illustrerons uniquement avec Mint, une distribution proche d’Ubuntu.
+
+    Il va falloir renseigner les protocoles de sécurité et tes identifiants pour que ton ordinateur accepte de se connecter à eduroam.
+
+
+    {\begin{enumerate}
+
+      \item Clique sur \emph{Se connecter à un réseau caché}, et renseigne \emph{eduroam}.
+      \begin{figure}[h!]
+        \centering
+        \includegraphics[width=0.7\textwidth]{page26}
+      \end{figure}
+      \item Ensuite, clique sur la barre d’outils qui apparaît.
+      \item Renseigne les informations comme montré sur l'image ci-dessous
+      \begin{figure}[h!]
+        \centering
+        \includegraphics[width=0.7\textwidth]{page27_2}
+      \end{figure}
+    \end{enumerate}}
+
+
+
+  \Section{Contact}
+  \vspace{2cm}
+
+    Un souci ? Une question ? Un conseil ? Que ce soit parce que ton ordinateur commence à dégager beaucoup de fumée ou que tu ne t’y retrouves pas avec le proxy et les câbles Ethernet, le KI est là pour toi !
+
+    Pour nous contacter, tu peux :
+\begin{itemize}
+  \item Venir nous voir dans notre local en \emph{P401}, au dernier étage de l’aile Prony, à droite de l’ascenseur
+  \item Utiliser le lien “Contacter le KI!” sur \emph{uPont}
+  \item Envoyer un \emph{mail} à \href{mailto:clubinfo@upont.enpc.fr}{clubinfo@upont.enpc.fr}
+  \item Envoyer un message privé sur la page \emph{Facebook} du KI : \\ \href{www.facebook.com/enpc.clubinfo}{www.facebook.com/enpc.clubinfo} (Pas sur Stair'WEI to Heaven !)
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

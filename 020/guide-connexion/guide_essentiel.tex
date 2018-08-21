@@ -1,0 +1,75 @@
+% Partie l'essentiel du Guide de connexion internet des Ponts, KI020, août 2018
+
+% The ki020 needs XeLaTeX to use the specified fonts
+% The minted package requires the python package Pigments.
+% Minted makes calls to the outside world (Pigments), that's why the source must be compiled from terminal with the -shell-escape argument.
+
+% sudo pip3 install Pigments
+% In the guide-connexion's directory :
+% xelatex -shell-escape guide_connexion_internet_ponts.tex
+% xelatex -shell-escape guide_connexion_internet_ponts.tex
+% (twice to generate the table of contents
+
+\documentclass{../templates/enpc-ki/ki020}
+
+\usepackage{lipsum}
+\usepackage[hidelinks]{hyperref}
+\usepackage{minted}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{wrapfig}
+
+\graphicspath{{images/}}
+\pagestyle{empty}
+
+\begin{document}
+
+\begin{tikzpicture}[remember picture,overlay,baseline=0pt]
+\fill[primary]
+  ([yshift=-4.4cm]current page.north west) --
+  ([xshift=-4.62cm,yshift=-2.85cm]current page.north east) --
+  ([yshift=-5.27cm]current page.north west) -- cycle;
+\fill[header]
+  (current page.north west) -- (current page.north east) --
+  ([yshift=-2.45cm]current page.north east) --
+  ([xshift=-4.62cm,yshift=-2.89cm]current page.north east) --
+  ([yshift=-4.44cm]current page.north west) -- cycle;
+  \node[anchor=base west, white,font=\Huge\titlefont,xshift=4.5cm,yshift=-2cm] at (current page.north west){La connexion Internet};
+  \node[anchor=north west,xshift=0.5cm,yshift=-0.2cm] at (current page.north west)
+    {\includegraphics[height=3cm]{../../logos/Logo_fond_gris_blanchi.png}};
+\end{tikzpicture}
+
+\vspace{4.3cm}
+
+    \begin{kiframe}
+      \subsection{Dans les résidences} %TODO refaire subsubsection
+        Une seule des deux prises RJ45 est reliée à Internet, la bonne est en général la plus proche du bureau.
+
+        Les routeurs vendus par le KI doivent être reliés au mur grâce à la prise \emph{bleue} (port WAN). En cas de problème, ou si tu comptes utiliser ton propre routeur, n'hésite pas a nous demander.
+
+        \begin{flushleft}
+          \emph{Proxy des résidences :}
+          \begin{itemize}
+            \item Adresse : etuproxy.enpc.fr
+            \item Port : 3128
+            \item Login : identifiants DSI (prénom.nom@enpc.fr)
+          \end{itemize}
+        \end{flushleft}
+
+      \subsection{Internet aux Ponts}
+        \begin{flushleft}
+          \emph{Wifi des Ponts :}
+          \begin{itemize}
+            \item SSID : eduroam
+            \item Login : identifiants DSI (prénom.nom@enpc.fr)
+            \item \emph{Bien désactiver la vérification du certificat}
+          \end{itemize}
+        \end{flushleft}
+
+\subsection{Guide complet}
+  \begin{flushleft}
+    \emph{Le guide de connexion complet est disponible sur enpc.org/guide}
+  \end{flushleft}
+      \end{kiframe}
+
+\end{document}

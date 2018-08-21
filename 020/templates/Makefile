@@ -17,7 +17,7 @@ all: $(patsubst %,%.all,$(SUBMAKABLE))
 install: $(patsubst %,%.install,$(SUBMAKABLE))
 
 %.install:
-	$(call submake,$*,install)
+	$(call submake,$*,install,sudo)
 
 clean: $(patsubst %,%.clean,$(SUBMAKABLE))
 

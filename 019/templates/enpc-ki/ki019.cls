@@ -1,23 +1,23 @@
-\ProvidesClass{ki019}[05/07/2017 KI Clubinfo des Ponts]
+\ProvidesClass{ki019}[09/12/2017 KI Clubinfo des Ponts]
 \LoadClass[11pt]{article}
 
 \RequirePackage[a4paper,margin=1.75cm]{geometry}
 \RequirePackage[utf8]{inputenc}
-\RequirePackage[frenchb]{babel}
+\RequirePackage[french]{babel}
 \RequirePackage[md]{titlesec}
 \RequirePackage{tikzpagenodes}
 \usetikzlibrary{calc}
 %\RequirePackage{atbegshi}
 %\RequirePackage{everypage}
 \RequirePackage{mdframed}
+\RequirePackage[ddmmyyyy]{datetime}
 
 \RequirePackage{fontspec}
-\newfontfamily\titlefont[Path = fonts/]{Telex-Regular.ttf}
+\newfontfamily\titlefont{Telex-Regular.ttf}
 \setmainfont[
     Extension=.ttf,
     UprightFont= *-Light,
-    BoldFont=*-Bold,
-    Path = fonts/
+    BoldFont=*-Bold
 ]{Nunito}
 
 
@@ -44,12 +44,13 @@
   ([yshift=-2.15cm]current page.north east) --
   ([xshift=-4.62cm,yshift=-2.59cm]current page.north east) --
   ([yshift=-4.14cm]current page.north west) -- cycle;
-  \node[anchor=base west, white,font=\Huge\titlefont,xshift=5cm,yshift=-1.7cm] at (current page.north west){#1};
-  \node[anchor=north west,xshift=0.5cm,yshift=-0.2cm] at (current page.north west)
-    {\includegraphics[height=3cm]{../../logos/Logo_fond_gris_blanchi.png}};
+\node[anchor=base west, white,font=\Huge\titlefont,
+  xshift=5cm,yshift=-1.7cm] at (current page.north west){#1};
+\node[anchor=north west,xshift=0.5cm,yshift=-0.2cm] at (current page.north west)
+  {\includegraphics[height=3cm]{logo_ki019.png}};
 \end{tikzpicture}
 }
-\newcommand{\Footer}{
+\newcommand{\Footer}[1]{
 \begin{tikzpicture}[remember picture,overlay,baseline=0pt]
 \fill[footer]
   ([yshift=0.5cm]current page.south west) --
@@ -60,6 +61,8 @@
   ([yshift=0.96cm]current page.south east) --
   ([xshift=12.01cm,yshift=0.78cm]current page.south west) --
   ([yshift=0.54cm]current page.south west) -- cycle;
+\node[anchor=base west, white,font=\Large\titlefont,
+  xshift=-4cm,yshift=0.3cm] at (current page.south east){#1};
 \end{tikzpicture}
 }
 
@@ -82,3 +85,11 @@
 
 \let\oldsubsubsection\subsubsection
 \renewcommand{\subsubsection}[1]{{\oldsubsubsection*{#1}}\vspace{-1em}}
+
+\newcommand{\freesection}[1]{\bigskip{\color{primary}\titlefont\oldsection*{#1}}\vspace{-1em}}
+
+\newcommand{\sectionenum}[1]{\bigskip{\color{primary}\titlefont\oldsection{#1}}\vspace{-1em}}
+
+\newcommand{\subsectionenum}[1]{{\color{primary}\titlefont\oldsubsection{#1}}\vspace{-1em}}
+
+\newcommand{\subsubsectionenum}[1]{{\oldsubsubsection*{#1}}\vspace{-1em}}

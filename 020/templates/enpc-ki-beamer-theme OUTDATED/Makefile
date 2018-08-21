@@ -24,7 +24,7 @@ PDFLATEX:=pdflatex -interaction=nonstopmode
 MAKEINDEX:=makeindex -q -s gind.ist -o
 OUTPUT:=>/dev/null 2>&1
 TEXMFHOME:=$(shell kpsewhich -var-value=TEXMFHOME)
-PKGDIR:=$(TEXMFHOME)/tex/latex/enpc-ki
+PKGDIR:=$(TEXMFHOME)/tex/latex/enpc-ki-beamer-theme
 
 all: install
 
@@ -32,12 +32,7 @@ install:
 	$(call say,creating destination $(PKGDIR))
 	@mkdir -p $(PKGDIR)
 	$(call say,copying files to $(PKGDIR))
-	@cp -r $(wildcard *.cls) images/ $(PKGDIR)
-
-	$(call say,creating destination $(TEXMFHOME)/fonts/truetype)
-	@mkdir -p $(TEXMFHOME)/fonts/truetype
-	$(call say,copying files to $(TEXMFHOME)/fonts/truetype)
-	@cp $(wildcard fonts/*.ttf) $(TEXMFHOME)/fonts/truetype
-
+	@cp -r . $(PKGDIR)
+	@rm -f $(PKGDIR)/Makefile
 	@texhash $(TEXMFHOME) || mktexlsr
 	$(call installed,$(PKGDIR))
