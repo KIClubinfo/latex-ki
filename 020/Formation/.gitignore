@@ -6,3 +6,6 @@ beamer.snm
 beamer.synctex
 beamer.toc
 beamer.vrb
+beamer.fls
+beamer.fdb_latexmk
+

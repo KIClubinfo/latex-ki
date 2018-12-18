@@ -32,74 +32,74 @@
 \date{\today}
 
 \begin{document}
-	
+
 	\begin{frame}
 		\titlepage
 	\end{frame}
-	
+
 	\begin{frame}
 		\frametitle{Sommaire}
 		\setcounter{tocdepth}{1}
 		\tableofcontents
 	\end{frame}
-	
+
 	\section{Introduction}
-	
+
 	\begin{frame}
 		\frametitle{Qu'est-ce que \LaTeX ?}
-		
+
 		\begin{tabular}{cc}
 			\includegraphics[width=5cm]{Images/Introduction/Word}&\includegraphics[width=5cm]{Images/Introduction/LaTeX}\\
 			Word & \LaTeX
 		\end{tabular}
-		
+
 	\end{frame}
-	
+
 	\begin{frame}
 		\frametitle{Comment ça marche ?}
-		
+
 		\begin{tabular}{ccc}
 			\includegraphics[width=5cm]{Images/Introduction/fichier_tex} & &
 			\includegraphics[width=5cm]{Images/Introduction/fichier_PDF}\\
 			Fichier .tex & $\longrightarrow$ & Fichier PDF
 		\end{tabular}
-		
+
 	\end{frame}
-	
+
 	\begin{frame}
-		\frametitle{ShareLaTeX}
-		
+		\frametitle{ShareLaTeX - OverLeaf}
+
 		\centering
-		\textbf{SHARELATEX}\\
-		HTTPS://FR.SHARELATEX.COM/
-		
-		\includegraphics[width=0.8\linewidth]{Images/Introduction/sharelatex}
-		
+		\textbf{SHARELATEX - OVERLEAF}\\
+		HTTPS://FR.OVERLEAF.COM/
+
+		\includegraphics[width=0.8\linewidth]{Images/Introduction/overleaf}
+
 	\end{frame}
-	
+
 	\section{Créer un document \LaTeX}
-	
+
 	\begin{frame}[fragile=singleslide]
 		\frametitle{LA commande}
-		
+
 		\begin{center}
 			\huge
 			Au commencement, il y avait la commande
 		\end{center}
-		
+
 		\Huge
 		\begin{block}
-			
+
 			\begin{verbatim}
 			\nom_commande{...}
 			\end{verbatim}
 		\end{block}
 	\end{frame}
-	
-	
+
+
 	\begin{frame}[fragile=singleslide]
 		\frametitle{La base d'un document \LaTeX}
-		
+
 		\begin{center}
 			\Large
 			Et la lumière fut...
@@ -107,42 +107,42 @@
 		\footnotesize
 			\begin{verbatim}
 			\documentclass[11pt,a4paper]{article}
-			
+
 			\usepackage[utf8]{inputenc}
 			\usepackage[T1]{fontenc}
 			\usepackage[french]{babel}
 			\usepackage{lmodern}
 			\usepackage{mathtools,amssymb}
 			\usepackage{float}
-			
+
 			\title{Mon super titre}
 			\author{Moi}
 			\date{Aujourd'hui}
-			
+
 			\begin{document}
 			\end{document}
 			\end{verbatim}
 	\end{frame}
-	
-	
+
+
 	\begin{frame}[fragile=singleslide]
 		\frametitle{Ca, c'est la classe}
-		
+
 		\Large
 		\begin{block}
-			
+
 			\begin{verbatim}
 			\documentclass[11pt,a4paper]{article}
 			\end{verbatim}
 		\end{block}
 	\end{frame}
-	
+
 	\begin{frame}[fragile=singleslide]
 		\frametitle{Beaucoup de packages}
-		
+
 		\LARGE
 		\begin{block}
-			
+
 			\begin{verbatim}
 			\usepackage[utf8]{inputenc}
 			\usepackage[T1]{fontenc}
@@ -153,13 +153,13 @@
 			\end{verbatim}
 		\end{block}
 	\end{frame}
-	
+
 	\begin{frame}[fragile=singleslide]
 		\frametitle{Coucou c'est moi avec mon document}
-		
+
 		\huge
 		\begin{block}
-			
+
 			\begin{verbatim}
 			\title{Mon super titre}
 			\author{Moi}
@@ -167,86 +167,86 @@
 			\end{verbatim}
 		\end{block}
 	\end{frame}
-	
+
 	\begin{frame}[fragile=singleslide]
 		\frametitle{Ce qui encadre le tout}
-		
+
 		\huge
 		\begin{block}
-			
+
 			\begin{verbatim}
 			\begin{document}
-			
+
 			\end{document}
 			\end{verbatim}
 		\end{block}
-		
+
 	\end{frame}
-	
-	
+
+
 	\section{Mettre en forme le texte}
-	
+
 	\begin{frame}[fragile=singleslide]
 		\frametitle{Structurons}
 		\begin{block}
-			
+
 			\begin{verbatim}
 			\maketitle
-			
+
 			\part{Ma Partie}
-			
+
 			\section{Ma Section}
 			\section*{Ma Section}
-			
+
 			\subsection{Sous-section}
 			\subsubsection{Sous-sous-section}
-			
+
 			\paragraph{Mon paragraphe}
 			\end{verbatim}
 		\end{block}
 	\end{frame}
-	
+
 	\begin{frame}
-		
+
 		\begin{center}
 			\includegraphics[scale=0.6]{Images/Structure/maketitle}
 		\end{center}
-		
+
 	\end{frame}
-	
+
 	\begin{frame}
-		
+
 		\includegraphics[width=4cm]{Images/Structure/structure}
-		
+
 	\end{frame}
-	
+
 	\begin{frame}[fragile=singleslide]
 		\frametitle{Je veux tout sauter}
-		
+
 		\begin{center}
 			Les commandes de tous les instants
 		\end{center}
-		
+
 		\begin{block}
-			
+
 			\begin{verbatim}
 			\newline
-			
+
 			\\
-			
+
 			\indent
-			
+
 			\newpage
 			\end{verbatim}
 		\end{block}
 	\end{frame}
-	
+
 	\begin{frame}[fragile=singleslide]
 		\frametitle{Listons}
-		
+
 		\begin{minipage}[c]{6cm}
 			\begin{block}
-				
+
 				\begin{verbatim}
 \begin{itemize}
 \item Bonjour
@@ -254,7 +254,7 @@
 \item Les
 \item Pizzas
 \end{itemize}
-				
+
 \begin{enumerate}
 \item JE
 \item VEUX
@@ -272,7 +272,7 @@
 					\item Les
 					\item Pizzas
 				\end{itemize}
-				
+
 				\begin{enumerate}
 					\item JE
 					\item VEUX
@@ -281,28 +281,28 @@
 				\end{enumerate}
 			\end{center}
 		\end{minipage}
-		
+
 	\end{frame}
-	
-	
+
+
 	\begin{frame}[fragile=singleslide]
 		\frametitle{Écrivons}
-		
+
 		\begin{minipage}[c]{5cm}
-				
-				\begin{lstlisting}	
+
+				\begin{lstlisting}
 \textbf{gras}
 
 \textit{italique}
-	
+
 \texttt{script}
-				
+
 \underline{souligne}
-				
+
 \emph{emphase}
-				
+
 \textsc{Small Caps}
-		
+
 \fbox{encadre}
 				\end{lstlisting}
 		\end{minipage} \hfill
@@ -310,114 +310,114 @@
 			\begin{center}
 				\textbf{gras}
 				\vspace*{0.5cm}
-				
+
 				\textit{italique}
 				\vspace*{0.5cm}
-				
+
 				\texttt{script}
 				\vspace*{0.5cm}
-				
+
 				\underline{souligne}
 				\vspace*{0.5cm}
-				
+
 				\emph{emphase}
 				\vspace*{0.5cm}
-				
+
 				\textsc{Small Caps}
 				\vspace*{0.5cm}
-				
+
 				\fbox{encadre}
 			\end{center}
 		\end{minipage}
-		
-		
+
+
 	\end{frame}
-	
+
 	\begin{frame}[fragile=singleslide]
 		\frametitle{Commandes supplémentaires}
-		
+
 		\begin{minipage}[c]{6cm}
 			\footnotesize
 			\begin{block}
-				
+
 				\begin{lstlisting}
 \begin{quote}
 Citation
 \end{quote}
-				
+
 \begin{quotation}
 Citation
 sur plusieurs lignes
 \end{quotation}
-				
+
 Creer une note \footnote
 {Voici une note de bas de page}
-				
+
 				\end{lstlisting}
 			\end{block}
 		\end{minipage}\hfill
 		\begin{minipage}[c][0cm]{4cm}
 			\includegraphics[width=4cm]{Images/Structure/footnote}
 		\end{minipage}
-		
-		
-		
+
+
+
 	\end{frame}
-	
+
 	\begin{frame}[fragile=singleslide]
 		\frametitle{Commandes supplémentaires}
 		\scriptsize
 		\begin{block}
-			
+
 			\begin{lstlisting}
 \begin{flushleft}    \begin{center}	  \begin{flushright}
 Gauche		     Centre		  Droite
 \end{flushleft}	     \end{center}	  \end{flushright}
 			\end{lstlisting}
 		\end{block}
-		
-		
+
+
 	\end{frame}
-	
+
 	\begin{frame}
 		\frametitle{TP1}
 		\centering
 		\includegraphics[width=10cm]{Images/Structure/TP1}
 	\end{frame}
-	
-	
+
+
 	\begin{frame}[fragile=singleslide]
 		\frametitle{Solution}
 		\footnotesize
-			
+
 			\begin{verbatim}
 			documentclass[11pt,a4paper]{article}
-			
+
 			\usepackage[utf8]{inputenc}
 			\usepackage[T1]{fontenc}
 			\usepackage[french]{babel}
 			\usepackage{lmodern}
 			\usepackage{mathtools,amssymb}
 			\usepackage{float}
-			
+
 			\title{Pourquoi j'aime la formation \LaTeX}
 			\author{KI '020}
 			\date{\today}
-			
+
 			\begin{document}
-			
+
 			\maketitle
 			\end{verbatim}
-		
+
 	\end{frame}
-	
-	
+
+
 	\begin{frame}[fragile=singleslide]
 		\frametitle{Solution}
-			
+
 			\begin{verbatim}
 			\section{Parce que je trouve LaTeX cool}
-			
+
 			\LaTeX est purement un \textit{plaisir} à utiliser.
 			C'est aussi facile que de faire du vélo.
 			Sauf que le vélo est en feu.
@@ -431,68 +431,68 @@ Gauche		     Centre		  Droite
 			\footnote{Et oui.} !
 			\end{itemize}
 			\end{verbatim}
-		
+
 	\end{frame}
-	
+
 	\begin{frame}[fragile=singleslide]
 		\frametitle{Solution}
-			
+
 			\begin{verbatim}
 			\subsection{Parce que je trouve le présentateur
 			awesome}
-			
+
 			J'ai envie de lui écrire des poèmes en allemand.
 			C'est très perturbant.
-			
+
 			\section*{Autres raisons moins importantes}
-			
+
 			\begin{enumerate}
 			\item Parce qu'il y a des \underline{\textsc{pizzas}}
 			\item aw yisss pizzas
 			\item om nom nom nom
 			\end{enumerate}
 			\end{verbatim}
-		
+
 	\end{frame}
-	
-	
+
+
 	\section{Compléments} % (Références, tableaux, insérer du code, bibliographie, sommaire,...)
-	
-	
+
+
 	\begin{frame}[fragile=singleslide]
 		\frametitle{On dit merci qui ?}
 		\centering \LARGE
 		Faire des références
 		\begin{block}
-			
+
 			\begin{verbatim}
 			\label{petit_nom}
-			
+
 			\ref{petit_nom}
 			\end{verbatim}
 		\end{block}
 	\end{frame}
-	
+
 	\begin{frame}[fragile=singleslide]
 		\frametitle{On dit merci qui ?}
 		\begin{block}
-			
+
 			\begin{verbatim}
 			\section{Ma premiere section}
 			\label{premiere_section}
-			
+
 			\section{Ma deuxieme section}
-			
+
 			Je fais reference a la section \ref{premiere_section}.
 			\end{verbatim}
 		\end{block}
 		\centering
-		
+
 		\includegraphics[width=5cm]{Images/Complements/reference}
-		
+
 	\end{frame}
-	
-	
+
+
 	\begin{frame}[fragile=singleslide]
 		\frametitle{Ajout d'images}
 			\begin{verbatim}
@@ -500,7 +500,7 @@ Gauche		     Centre		  Droite
 			\usepackage{graphicx}
 			\usepackage{float}
 			...
-			
+
 			...
 			\begin{figure}[H]
 			\begin{center}
@@ -510,8 +510,8 @@ Gauche		     Centre		  Droite
 			\end{figure}
 			\end{verbatim}
 	\end{frame}
-	
-	
+
+
 	\begin{frame}[fragile=singleslide]
 		\frametitle{Ajout de tableaux}
 			\begin{verbatim}
@@ -535,19 +535,19 @@ Gauche		     Centre		  Droite
 	bonjour & pizzas ? & pizzas \\
 	\hline
 \end{tabular}
-		
+
 	\end{frame}
-	
+
 	\begin{frame}
 		\frametitle{Ajout de tableaux}
-		
+
 		\centering
-		
+
 		\fbox{HTTP://WWW.TABLESGENERATOR.COM}
-		
+
 		\includegraphics[width=10cm]{Images/Complements/tablesgenerator}
 	\end{frame}
-	
+
 	\begin{frame}[fragile=singleslide]
 		\frametitle{Insérer du code}
 			\begin{verbatim}
@@ -564,7 +564,7 @@ Gauche		     Centre		  Droite
 			\end{lstlisting}
 			\end{verbatim}
 	\end{frame}
-	
+
 	\begin{frame}[fragile=singleslide]
 		\frametitle{Insérer du code}
 		\centering
@@ -584,35 +584,35 @@ plt.xlabel('x')
 plt.ylabel('f(x)')
 plt.show()
 \end{lstlisting}
-		
+
 	\end{frame}
-	
+
 	\begin{frame}[fragile=singleslide]
 		\frametitle{Sommaire}
-		
+
 		\begin{center}
 			Tout d'abord :
 		\end{center}
 			\begin{verbatim}
 			\tableofcontents
 			\end{verbatim}
-		
+
 		\begin{center}
 			Pour changer "Table des matières" en "Mon nouveau titre" :
 		\end{center}
-			
+
 			\begin{verbatim}
-			\renewcommand{\contentsname}{Mon nouveau titre}
+			\def\refname{Mon nouveau titre}
 			\end{verbatim}
-		
+
 		\begin{center}
-			Pour ne pas garder les sous--sous-sections :
+			Pour ne pas garder les sous-sous-sections :
 		\end{center}
-		
+
 			\begin{verbatim}
 			\setcounter{tocdepth}{2}
 			\end{verbatim}
-			
+
 		\centering
 		\begin{tabular}{|c|c|c|c|}
 			\hline
@@ -621,31 +621,31 @@ plt.show()
 			1 & Section & 5 & Sous-paragraphe \\ \hline
 			2 & Sous-section & & \\ \hline
 		\end{tabular}
-		
+
 	\end{frame}
-	
+
 	\begin{frame}
 		\frametitle{Ajout de la bibliographie}
 		\framesubtitle{Que veut-on faire ?}
-		
+
 		\centering
 		\includegraphics[scale=0.35]{Images/Complements/biblio1}\\
 		\vspace*{1.5cm}
 		\includegraphics[scale=0.35]{Images/Complements/biblio2}
-		
+
 	\end{frame}
-	
+
 	\begin{frame}[fragile=singleslide]
 		\frametitle{Ajout de la bibliographie}
 		\framesubtitle{Et comment faire ?}
-		
+
 		\centering
 		\Large
 		Utilisation d'un fichier \textbf{.bib} \\
-		
+
 		\begin{minipage}{5cm}
 			\vspace*{0.5cm}
-			
+
 			\centering
 			\begin{verbatim}
 			@type{reference,
@@ -669,11 +669,11 @@ plt.show()
 			\end{tabular}
 		\end{minipage}
 	\end{frame}
-	
+
 	\begin{frame}[fragile=singleslide]
 		\frametitle{Ajout de la bibliographie}
 		\framesubtitle{Et ça donne quoi ?}
-		
+
 		\begin{verbatim}
 		@article{bananes,
 		title={Les Bananes et le IIIe Reich},
@@ -682,13 +682,13 @@ plt.show()
 		year={1984}
 		}
 		\end{verbatim}
-		
+
 	\end{frame}
 
 	\begin{frame}[fragile=singleslide]
 		\frametitle{Ajout de la bibliographie}
 		\framesubtitle{Et dans le .tex ?}
-		
+
 		\begin{minipage}{5cm}
 			\begin{verbatim}
 			\cite{reference}
@@ -698,106 +698,106 @@ plt.show()
 		\end{minipage}\hfill
 		\begin{minipage}{5cm}
 			\begin{verbatim}
-			Une étude \cite{banane} 
+			Une étude \cite{banane}
 			montre que ...
 			\end{verbatim}
 		\end{minipage}
 		\vspace*{1cm}
-	
+
 		\centering
 		\includegraphics[scale=0.35]{Images/Complements/biblio1}\\
 		\vspace*{0.1cm}
 		\includegraphics[scale=0.35]{Images/Complements/biblio2}
-		
-		
-	\end{frame}	
-	
+
+
+	\end{frame}
+
 	\begin{frame}
 		\Huge
 		\centering
-		
+
 		PAUSE <3
 	\end{frame}
-	
+
 	\section{Écrire des mathématiques}
-	
+
 	\begin{frame}[fragile=singleslide]
 		\frametitle{Les packages}
-		
+
 		\centering
 		Il nous faut :
-		
+
 			\begin{verbatim}
 			...
 			\usepackage{mathtools}
 			\usepackage{amssymb}
 			...
 			\end{verbatim}
-		
-		
+
+
 		\centering
 		\LaTeX contient déjà de nombreux outils pour les maths.\\
 		Ces deux packages contiennent (presque) tout le reste.
 	\end{frame}
-	
+
 	\begin{frame}[fragile=singleslide]
 		\frametitle{L'environnement mathématique}
-		
-		
+
+
 		\begin{block}
-			
+
 			\begin{verbatim}
 			Soit $z$ un complexe. Alors $\cos^2(z)+\sin^2(z)=1$.
 			\end{verbatim}
 		\end{block}
-		
+
 		\vspace*{1cm}
-		
+
 		Soit $z$ un complexe. Alors $\cos^2(z)+\sin^2(z)=1$.
-		
+
 		\vspace*{1cm}
-		
+
 		L'environnement mathématique possède ses propres règles, ses propres commandes, sa propre police.
-		
+
 	\end{frame}
-	
+
 	\begin{frame}[fragile=singleslide]
 		\frametitle{L'environnement mathématique}
-		
+
 			\begin{verbatim}
 			Soit $z$ un complexe. Alors $$\cos^2(z)+\sin^2(z)=1$$
 			\end{verbatim}
-		
+
 		\vspace*{1cm}
-		
+
 Soit $z$ un complexe. Alors $$\cos^2(z)+\sin^2(z)=1$$
-		
+
 	\end{frame}
-	
+
 	\begin{frame}[fragile=singleslide]
 		\frametitle{L'environnement mathématique}
-		
+
 			\begin{verbatim}
 			Soit $z$ un complexe. Alors
 			\begin{equation}
 			\cos^2(z)+\sin^2(z)=1
 			\end{equation}
 			\end{verbatim}
-		
+
 		\vspace*{1cm}
-		
+
 Soit $z$ un complexe. Alors
 \begin{equation}
 \cos^2(z)+\sin^2(z)=1
 \end{equation}
-		
+
 	\end{frame}
-	
+
 	\begin{frame}[fragile=singleslide]
 		\frametitle{Écrivons les mathématiques}
-		
+
 		\begin{minipage}[c]{7cm}
-				
+
 				\begin{lstlisting}
 \frac{num}{den}
 
@@ -814,26 +814,26 @@ base_{indice}
 			\begin{center}
 				$\frac{num}{den}$\\
 				\vspace*{0.5cm}
-				
+
 				$base^{esposant}$\\
 				\vspace*{0.5cm}
-				
+
 				$base_{indice}$\\
-				
+
 				$$\sum_{bas}^{haut} terme$$\\
-				
+
 				$$\prod_{bas}^{haut} facteur$$\\
 			\end{center}
 		\end{minipage}
-		
+
 	\end{frame}
-	
+
 	\begin{frame}[fragile=singleslide]
 		\frametitle{Écrivons les mathématiques}
-		
+
 		\begin{minipage}[c]{7cm}
 			\begin{block}
-				
+
 				\begin{verbatim}
 \sqrt{nombre}
 
@@ -845,46 +845,46 @@ base_{indice}
 
 \iint_{bas}^{haut} intégrande
 				\end{verbatim}
-				
+
 			\end{block}
 		\end{minipage} \hfill
 		\begin{minipage}[c][0cm]{3cm}
 			\begin{center}
 				$\sqrt{nombre}$
 				\vspace*{0.5cm}
-				
+
 				$\sqrt[n]{nombre}$
 				\vspace*{0.5cm}
-				
+
 				$\lim_{x \to a}$
 				\vspace*{0.5cm}
-				
-				$\int_{bas}^{haut} intégrande$
+
+				$\int_{bas}^{haut} integrande$
 				\vspace*{0.5cm}
-				
-				$\iint_{bas}^{haut} intégrande$
+
+				$\iiint integrande$
 			\end{center}
 		\end{minipage}
-		
+
 	\end{frame}
-	
+
 	\begin{frame}[fragile=singleslide]
 		\frametitle{Quelques symboles spéciaux}
-		
+
 		\begin{minipage}[c]{7cm}
 			\centering
 			Les lettres grecques
-				
+
 				\begin{verbatim}
 				\alpha \beta \gamma
 				\Omega \Lambda \Psi
 				\end{verbatim}
-			
+
 			\vspace*{1cm}
-			
+
 			Les glyphes mathématiques
 
-				
+
 				\begin{verbatim}
 				\forall \exists \in
 				\to \infty \partial
@@ -896,43 +896,43 @@ base_{indice}
 			\centering
 			$\alpha \qquad \beta \qquad \gamma$\\
 			\vspace*{0.2cm}
-			
+
 			$\Omega \qquad \Lambda \qquad \Psi$
-			
+
 			\vspace*{2cm}
-			
+
 			$\forall \qquad \exists \qquad \in$\\
 			\vspace*{0.2cm}
-			
+
 			$\to \qquad \infty \qquad \partial$\\
 			\vspace*{0.2cm}
-			
+
 			$\mathbb{R} \qquad \mathcal{N} \qquad \mathbf{I}$
-			
+
 		\end{minipage}
-		
-		
+
+
 	\end{frame}
-	
+
 	\begin{frame}
 		\frametitle{TP2}
 		\begin{flushleft}
 			\includegraphics[width=11cm]{Images/Mathematiques/tp2}
 		\end{flushleft}
-		
-		
+
+
 	\end{frame}
-	
+
 	\begin{frame}[fragile=singleslide]
 		\frametitle{Solution}
-	
+
 			\begin{verbatim}
 			On a ainsi,
 			\begin{equation}
 			\forall i \in [1,N], \ \ \ \ \pi_i
 			\propto e^{-\frac{E_i}{kT}}
 			\end{equation}
-			
+
 			et par normalisation de la somme des probabilités,
 			on trouve finalement un
 			coefficient de proportionnalité valant $1/Z$, avec
@@ -953,11 +953,11 @@ base_{indice}
 		\end{matrix}
 		$$
 		\end{verbatim}
-		
+
 	\end{minipage}
-	
+
 	\end{frame}
-	
+
 	\begin{frame}[fragile=singleslide]
 		\frametitle{Les matrices}
 		\begin{minipage}[c]{5cm}
@@ -982,9 +982,9 @@ base_{indice}
 			\end{matrix}
 			$$
 		\end{minipage}
-		
+
 	\end{frame}
-	
+
 	\begin{frame}[fragile=singleslide]
 		\frametitle{Les matrices}
 		\begin{minipage}[c]{5cm}
@@ -1008,9 +1008,9 @@ base_{indice}
 			\end{pmatrix}
 			$$
 		\end{minipage}
-		
+
 	\end{frame}
-	
+
 	\begin{frame}[fragile=singleslide]
 		\frametitle{Les matrices}
 		\begin{minipage}[c]{5cm}
@@ -1034,12 +1034,12 @@ base_{indice}
 			\end{bmatrix}
 			$$
 		\end{minipage}
-		
+
 	\end{frame}
-	
+
 	\begin{frame}[fragile=singleslide]
 		\frametitle{Les matrices}
-		
+
 		\begin{minipage}[c]{5cm}
 				\begin{verbatim}
 				$$
@@ -1061,42 +1061,42 @@ base_{indice}
 			\end{vmatrix}
 			$$
 		\end{minipage}
-		
+
 	\end{frame}
-	
+
 	\begin{frame}[fragile=singleslide]
 		\frametitle{Remplir les matrices}
-		
+
 		Mais on remplit avec quoi alors ?
-		
+
 		\begin{itemize}
 			\item Des chiffres, des lettres, des symboles,...
 			\item Beaucoup de points :
 			\begin{itemize}
 				\item \begin{verbatim}
-				\cdots
-				\end{verbatim}, points horizontaux
+				\cdots , points horizontaux
+				\end{verbatim}
 				\item \begin{verbatim}
-				\vdots
-				\end{verbatim}, points verticaux
+				\vdots , points verticaux
+				\end{verbatim}
 				\item \begin{verbatim}
-				\ddots
-				\end{verbatim}, points diagonaux
+				\ddots , points diagonaux
+				\end{verbatim}
 			\end{itemize}
 			\item Des espaces, pour des questions d'alignement : \begin{verbatim}
 			a \phantom{bc} d
 			\end{verbatim}
-			
+
 		\end{itemize}
-		
+
 		\centering
-		$\cdots \qquad \vdots \qquad \ddots \qquad a\phantom{bc}d$ 
-		
+		$\cdots \qquad \vdots \qquad \ddots \qquad a\phantom{bc}d$
+
 	\end{frame}
-	
+
 	\begin{frame}[fragile=singleslide]
 		\frametitle{Les systèmes d'équations}
-		
+
 		\begin{minipage}[c]{5cm}
 				\begin{verbatim}
 				$$
@@ -1122,19 +1122,19 @@ base_{indice}
 			\right.
 			$$
 		\end{minipage}
-		
+
 	\end{frame}
-	
+
 	\begin{frame}
 		\frametitle{TP3}
 		\begin{flushleft}
 			\includegraphics[width=10.5cm]{Images/Mathematiques/tp3}
 		\end{flushleft}
 	\end{frame}
-	
+
 	\begin{frame}[fragile=singleslide]
 		\frametitle{Solution}
-		
+
 			\begin{verbatim}
 			On cherche à résoudre le problème suivant :
 			\begin{equation}
@@ -1146,12 +1146,12 @@ base_{indice}
 			\right.
 			\end{equation}
 			\end{verbatim}
-		
+
 	\end{frame}
-	
+
 	\begin{frame}[fragile=singleslide]
 		\frametitle{Solution}
-	
+
 			\begin{verbatim}
 			\paragraph{}Cela revient à résoudre un système
 			de type $AU=B$ avec :
@@ -1167,62 +1167,62 @@ base_{indice}
 			$$
 			\end{verbatim}
 	\end{frame}
-	
-	
+
+
 	\begin{frame}
 		\centering
 		\Huge
 		"Google est votre ami !"
 	\end{frame}
-	
+
 	\section{Ouverture}
-	
+
 	\begin{frame}
 		\frametitle{Pour l'avenir}
 		\framesubtitle{De nouveaux environnements}
-		
+
 		\centering
-		\sout{\textsc{SHARELATEX}}
-		
+		\sout{\textsc{SHARELATEX - OVERLEAF}}
+
 		\begin{itemize}
 			\item IDE : Miktex, Texmaker, Kile (avec texlive)
 		\end{itemize}
 	\end{frame}
-	
+
 	\begin{frame}
 		\frametitle{Pour l'avenir}
 		\framesubtitle{Des compilateurs et éditeurs dédiés}
-		
+
 		\centering
-		\sout{\textsc{SHARELATEX}}
-		
+		\sout{\textsc{SHARELATEX - OVERLEAF}}
+
 		\begin{itemize}
 			\item IDE : Miktex, Texmaker, Kile (avec texlive)
 			\item Compilateur / éditeur : texlive / Vim, Emacs, Atom, Gedit, Notepad++
 		\end{itemize}
 	\end{frame}
-	
+
 	\begin{frame}
 		\frametitle{Pour l'avenir}
 		\framesubtitle{Des outils plus complexes}
-		
+
 		\centering
-		\sout{\textsc{SHARELATEX}}
-		
+		\sout{\textsc{SHARELATEX - OVERLEAF}}
+
 		\begin{itemize}
 			\item IDE : Miktex, Texmaker, Kile (avec texlive)
 			\item Compilateur / éditeur : texlive / Vim, Emacs, Atom, Gedit, Notepad++
 			\item Les .sty et le CTAN (classes, extensions, packages)
 		\end{itemize}
 	\end{frame}
-	
+
 	\begin{frame}
 		\frametitle{Pour l'avenir}
 		\framesubtitle{Des outils plus complexes}
-		
+
 		\centering
-		\sout{\textsc{SHARELATEX}}
-		
+		\sout{\textsc{SHARELATEX - OVERLEAF}}
+
 		\begin{itemize}
 			\item IDE : Miktex, Texmaker, Kile (avec texlive)
 			\item Compilateur / éditeur : texlive / Vim, Emacs, Atom, Gedit, Notepad++
@@ -1230,13 +1230,13 @@ base_{indice}
 			\item Tex, LaTeX, BibTeX, LuaLaTeX, XeTeX (langages de scripts \textit{lua}, mise en page en \textit{Unicode})
 		\end{itemize}
 	\end{frame}
-	
+
 	\begin{frame}
 		\frametitle{Un éditeur d'image ?}
 		\framesubtitle{Tikz et pgf}
-		
+
 		\begin{minipage}{6cm}
-			
+
 			\begin{itemize}
 				\item Des dessins, des graphes, ...\\
 				\texttt{http://www.texample.net/media/
@@ -1247,16 +1247,16 @@ base_{indice}
 		\begin{minipage}{4cm}
 			\includegraphics[width=4cm]{Images/Ouverture/phasor_diagram}
 		\end{minipage}
-		
-		
+
+
 	\end{frame}
-	
+
 	\begin{frame}
 		\frametitle{Un éditeur d'image ?}
 		\framesubtitle{Tikz et pgf}
-		
+
 		\begin{minipage}{6cm}
-			
+
 			\begin{itemize}
 				\item Des dessins, des graphes, ...\\
 				\texttt{http://www.texample.net/media/
@@ -1268,14 +1268,14 @@ base_{indice}
 		\begin{minipage}{4cm}
 			\includegraphics[width=4cm]{Images/Ouverture/phasor_diagram}
 		\end{minipage}
-		
-		
+
+
 	\end{frame}
-	
+
 	\begin{frame}[fragile=singleslide]
 		\frametitle{Les présentations}
 		\framesubtitle{Comment faire une présentation aussi stylée ?}
-		
+
 		\begin{itemize}
 			\item Ces slides sont faites en \LaTeX avec le type \textbf{beamer}\\
 				\begin{verbatim}
@@ -1285,23 +1285,23 @@ base_{indice}
 				\end{frame}
 				\end{verbatim}
 		\end{itemize}
-		
+
 	\end{frame}
-	
+
 	\begin{frame}[fragile=singleslide]
 		\frametitle{Les présentations}
 		\framesubtitle{Comment faire une présentation aussi stylée ?}
-		
+
 		\begin{itemize}
 			\item Ces slides sont faites en \LaTeX avec le type \textbf{beamer}\\
-			
+
 				\begin{verbatim}
 				\begin{frame}
 				\frametitle{Titre de la slide}
 				Contenu de la slide
 				\end{frame}
 				\end{verbatim}
-			
+
 			\item L'environnement double colonne, minipage,...
 
 				\begin{verbatim}
@@ -1311,12 +1311,12 @@ base_{indice}
 				\end{columns}
 				\end{verbatim}
 		\end{itemize}
-		
+
 	\end{frame}
-	
+
 	\begin{frame}[fragile=singleslide]
 		\frametitle{Python avec \LaTeX}
-		
+
 		\begin{minipage}{6cm}
 			\begin{itemize}
 				\item \LaTeX dans Matplotlib : r' '\\
@@ -1328,12 +1328,12 @@ plt.title(r'$\sin(2\pi x)$ sur $[0,1]$')
 		\begin{minipage}{4cm}
 			\includegraphics[width=4cm]{Images/Ouverture/python_latex}
 		\end{minipage}
-		
+
 	\end{frame}
-	
+
 	\begin{frame}[fragile=singleslide]
 		\frametitle{Python avec \LaTeX}
-		
+
 		\begin{minipage}{6cm}
 			\begin{itemize}
 				\item \LaTeX dans Matplotlib : r' '\\
@@ -1348,13 +1348,13 @@ plt.title(r'$\sin(2\pi x)$ sur $[0,1]$')
 		\begin{minipage}{4cm}
 			\includegraphics[width=4cm]{Images/Ouverture/python_latex}
 		\end{minipage}
-		
-		
+
+
 	\end{frame}
-	
+
 	\begin{frame}[fragile=singleslide]
 		\frametitle{Python avec \LaTeX}
-		
+
 		\begin{minipage}{6cm}
 			\begin{itemize}
 				\item \LaTeX dans Matplotlib : r' '\\
@@ -1371,13 +1371,13 @@ plt.title(r'$\sin(2\pi x)$ sur $[0,1]$')
 		\begin{minipage}{4cm}
 			\includegraphics[width=4cm]{Images/Ouverture/python_latex}
 		\end{minipage}
-		
-		
+
+
 	\end{frame}
-	
+
 	\begin{frame}[fragile=singleslide]
 		\frametitle{Jupyter Notebook}
-		
+
 		Exporter un notebook en latex depuis notebook avec du bash :
 
 			\begin{verbatim}
@@ -1387,10 +1387,10 @@ plt.title(r'$\sin(2\pi x)$ sur $[0,1]$')
 			pdflatex notebook.tex
 			\end{verbatim}
 	\end{frame}
-	
+
 	\begin{frame}[fragile=singleslide]
 		\frametitle{Formatage des paragraphes}
-		
+
 		\begin{itemize}
 			\item Changer les marges  de la page\\
 				\begin{verbatim}
@@ -1398,10 +1398,10 @@ plt.title(r'$\sin(2\pi x)$ sur $[0,1]$')
 				\end{verbatim}
 		\end{itemize}
 	\end{frame}
-	
+
 	\begin{frame}[fragile=singleslide]
 		\frametitle{Formatage des paragraphes}
-		
+
 		\begin{itemize}
 			\item Changer les marges  de la page\\
 
@@ -1415,12 +1415,12 @@ plt.title(r'$\sin(2\pi x)$ sur $[0,1]$')
 				\end{verbatim}
 		\end{itemize}
 	\end{frame}
-	
+
 	\begin{frame}[fragile=singleslide]
 		\frametitle{Formatage des paragraphes}
-		
+
 		\begin{itemize}
-			\item Changer les marges  de la page\\	
+			\item Changer les marges  de la page\\
 				\begin{verbatim}
 				\usepackage[a4paper,total={6in,8in}]{geometry}
 				\end{verbatim}
@@ -1436,10 +1436,10 @@ plt.title(r'$\sin(2\pi x)$ sur $[0,1]$')
 				\end{verbatim}
 		\end{itemize}
 	\end{frame}
-	
+
 	\begin{frame}[fragile=singleslide]
 		\frametitle{Formatage des paragraphes}
-		
+
 		\begin{itemize}
 			\item Changer les marges  de la page\\
 
@@ -1452,7 +1452,7 @@ plt.title(r'$\sin(2\pi x)$ sur $[0,1]$')
 				\setlength{\parindent}{4em}
 				\end{verbatim}
 			\item Distance inter-paragraphe\\
-				
+
 				\begin{verbatim}
 				\setlength{\parskip}{1em}
 				\end{verbatim}
@@ -1462,10 +1462,10 @@ plt.title(r'$\sin(2\pi x)$ sur $[0,1]$')
 				\end{verbatim}
 		\end{itemize}
 	\end{frame}
-	
+
 	\begin{frame}[fragile=singleslide]
 		\frametitle{Mettre un lien}
-		
+
 		\begin{enumerate}
 			\item Include le module :\\
 				\begin{verbatim}
@@ -1473,10 +1473,10 @@ plt.title(r'$\sin(2\pi x)$ sur $[0,1]$')
 				\end{verbatim}
 		\end{enumerate}
 	\end{frame}
-	
+
 	\begin{frame}[fragile=singleslide]
 		\frametitle{Mettre un lien}
-		
+
 		\begin{enumerate}
 			\item Include le module :\\
 				\begin{verbatim}
@@ -1489,10 +1489,10 @@ plt.title(r'$\sin(2\pi x)$ sur $[0,1]$')
 				\end{verbatim}
 		\end{enumerate}
 	\end{frame}
-	
+
 	\begin{frame}[fragile=singleslide]
 		\frametitle{Mettre un lien}
-		
+
 		\begin{enumerate}
 			\item Include le module :\\
 				\begin{verbatim}
@@ -1510,14 +1510,14 @@ plt.title(r'$\sin(2\pi x)$ sur $[0,1]$')
 			Exemple : Online code editor
 		\end{enumerate}
 	\end{frame}
-	
+
 	\begin{frame}
 		\frametitle{\LaTeX fait-il du café ?}
 		\begin{enumerate}
 			\item \LaTeX est turing-complet
 		\end{enumerate}
 	\end{frame}
-	
+
 	\begin{frame}
 		\frametitle{\LaTeX fait-il du café ?}
 		\begin{enumerate}
@@ -1525,7 +1525,7 @@ plt.title(r'$\sin(2\pi x)$ sur $[0,1]$')
 			\item Créer des macros (donc des fonctions)
 		\end{enumerate}
 	\end{frame}
-	
+
 	\begin{frame}
 		\frametitle{\LaTeX fait-il du café ?}
 		\begin{enumerate}
@@ -1536,7 +1536,7 @@ plt.title(r'$\sin(2\pi x)$ sur $[0,1]$')
 				latex-is-more-powerful-than-you-think.html}
 		\end{enumerate}
 	\end{frame}
-	
+
 	\begin{frame}
 		\frametitle{\LaTeX fait-il du café ?}
 		\begin{enumerate}
@@ -1549,7 +1549,7 @@ plt.title(r'$\sin(2\pi x)$ sur $[0,1]$')
 			\texttt{http://tug.org/TUGboat/Articles/tb11-3/tb29greene.pdf}
 		\end{enumerate}
 	\end{frame}
-	
+
 	\begin{frame}
 		\frametitle{\LaTeX fait-il du café ?}
 		\begin{enumerate}
@@ -1563,7 +1563,7 @@ plt.title(r'$\sin(2\pi x)$ sur $[0,1]$')
 			\item Créer une classe, créer des paquets,...
 		\end{enumerate}
 	\end{frame}
-	
+
 	\begin{frame}
 		\frametitle{\LaTeX fait-il du café ?}
 		\begin{enumerate}
@@ -1578,10 +1578,10 @@ plt.title(r'$\sin(2\pi x)$ sur $[0,1]$')
 			\item Faire des animations
 		\end{enumerate}
 	\end{frame}
-	
+
 	\begin{frame}[fragile=singleslide]
 		\frametitle{Mettre des vidéos}
-		
+
 		\begin{enumerate}
 			\item Appeler le module :\\
 				\begin{verbatim}
@@ -1589,10 +1589,10 @@ plt.title(r'$\sin(2\pi x)$ sur $[0,1]$')
 				\end{verbatim}
 		\end{enumerate}
 	\end{frame}
-	
+
 	\begin{frame}[fragile=singleslide]
 		\frametitle{Mettre des vidéos}
-		
+
 		\begin{enumerate}
 			\item Appeler le module :\\
 				\begin{verbatim}
@@ -1608,10 +1608,10 @@ plt.title(r'$\sin(2\pi x)$ sur $[0,1]$')
 				\end{verbatim}
 		\end{enumerate}
 	\end{frame}
-	
+
 	\begin{frame}[fragile=singleslide]
 		\frametitle{Mettre des vidéos}
-		
+
 		\begin{enumerate}
 			\item Appeler le module :\\
 				\begin{verbatim}
@@ -1628,26 +1628,26 @@ plt.title(r'$\sin(2\pi x)$ sur $[0,1]$')
 			\item Compiler en PDFLaTeX
 		\end{enumerate}
 	\end{frame}
-	
+
 	\begin{frame}
 		\frametitle{Conseils et liens utiles}
 		\begin{itemize}
 			\item Testez très souvent la compilation car la moindre accolade oubliée donne une erreur
 			incompréhensible car l'erreur est indiquée à la fin de l'environnement / page
-			
+
 		\end{itemize}
 	\end{frame}
-	
+
 	\begin{frame}
 		\frametitle{Conseils et liens utiles}
 		\begin{itemize}
 			\item Testez très souvent la compilation car la moindre accolade oubliée donne une erreur
 			incompréhensible car l'erreur est indiquée à la fin de l'environnement / page
-			\item Certains compilateurs laissent passer certains warnings / erreurs : à eviter absolument :\\
-			travaux de groupes, compréhension du code,...
+			\item Certains compilateurs laissent passer certains warnings / erreurs : à eviter absolument !!\\
+			travaux de groupes, compréhension du code, ...
 		\end{itemize}
 	\end{frame}
-	
+
 	\begin{frame}
 		\frametitle{Conseils et liens utiles}
 		\begin{itemize}
@@ -1658,7 +1658,7 @@ plt.title(r'$\sin(2\pi x)$ sur $[0,1]$')
 			\item Rendez votre code clair : structurez, indentez, et faites respirer votre code pour la lisibilité
 		\end{itemize}
 	\end{frame}
-	
+
 	\begin{frame}
 		\frametitle{Conseils et liens utiles}
 		\begin{itemize}
@@ -1667,62 +1667,59 @@ plt.title(r'$\sin(2\pi x)$ sur $[0,1]$')
 			\item Certains compilateurs laissent passer certains warnings / erreurs : à eviter absolument :\\
 			travaux de groupes, compréhension du code,...
 			\item Rendez votre code clair : structurez, indentez, et faites respirer votre code pour la lisibilité
-			\item Rajoutez des commentaires (symbole \% )peut être utile pour se retrouver / pour se rappeler de certaines choses
-			
+			\item Rajoutez des commentaires (symbole \% ) peut être utile pour se retrouver / pour se rappeler de certaines choses
+
 		\end{itemize}
 	\end{frame}
-	
+
 	\begin{frame}
 		\frametitle{Conseils et liens utiles}
 		\begin{itemize}
-			
+
 			\item Mode mathématiques de \LaTeX sans autocomplétion = folie pure
-			
+
 		\end{itemize}
 	\end{frame}
-	
+
 	\begin{frame}
 		\frametitle{Conseils et liens utiles}
 		\begin{itemize}
-			
-			\item Rajoutez des commentaires (symbole \% )peut être utile pour se retrouver / pour se rappeler de certaines choses
-			\item Mode mathématiques de \LaTeX sans autocomplétion = folie pure
-			\item Online code editor : \\
-			\texttt{https://www.codecogs.com/latex/eqneditor.php}
-			
-		\end{itemize}
-	\end{frame}
-	
-	\begin{frame}
-		\frametitle{Conseils et liens utiles}
-		\begin{itemize}
-			
-			\item Rajoutez des commentaires (symbole \% )peut être utile pour se retrouver / pour se rappeler de certaines choses
+
 			\item Mode mathématiques de \LaTeX sans autocomplétion = folie pure
 			\item Online code editor : \\
 			\texttt{https://www.codecogs.com/latex/eqneditor.php}
-			\item Templates : bibliographie, livre, sujet d'examen, calendrier, CV, thèses, slides, article scientifique,
-			template de Supaero...\\
-			\texttt{https://fr.sharelatex.com/templates}
-			
+
 		\end{itemize}
 	\end{frame}
-	
+
 	\begin{frame}
 		\frametitle{Conseils et liens utiles}
 		\begin{itemize}
-			
-			\item Rajoutez des commentaires (symbole \% )peut être utile pour se retrouver / pour se rappeler de certaines choses
+
 			\item Mode mathématiques de \LaTeX sans autocomplétion = folie pure
 			\item Online code editor : \\
 			\texttt{https://www.codecogs.com/latex/eqneditor.php}
 			\item Templates : bibliographie, livre, sujet d'examen, calendrier, CV, thèses, slides, article scientifique,
 			template de Supaero...\\
 			\texttt{https://fr.sharelatex.com/templates}
-			
+
 		\end{itemize}
 	\end{frame}
-	
+
+	\begin{frame}
+		\frametitle{Conseils et liens utiles}
+		\begin{itemize}
+
+			\item Mode mathématiques de \LaTeX sans autocomplétion = folie pure
+			\item Online code editor : \\
+			\texttt{https://www.codecogs.com/latex/eqneditor.php}
+			\item Templates : bibliographie, livre, sujet d'examen, calendrier, CV, thèses, slides, article scientifique,
+			template de Supaero...\\
+			\texttt{https://fr.sharelatex.com/templates}
+
+		\end{itemize}
+	\end{frame}
+
 	\begin{frame}
 		\centering
 		\Huge
@@ -1734,7 +1731,7 @@ plt.title(r'$\sin(2\pi x)$ sur $[0,1]$')
 		\centering
 		\includegraphics[scale=0.2]{logo-ki}
 	\end{frame}
-	
-	
-	
+
+
+
 \end{document}
