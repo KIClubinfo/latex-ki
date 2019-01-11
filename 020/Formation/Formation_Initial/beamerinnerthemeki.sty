@@ -1,0 +1,63 @@
+\mode<presentation>
+
+% \setbeamertemplate{background}{
+%   \begin{tikzpicture}
+%   \useasboundingbox (0,0) rectangle(\the\paperwidth,\the\paperheight);
+%   \fill[color=ki] (0,0) rectangle (\the\paperwidth,\the\paperheight);
+%   \ifnum\thepage>1\relax%
+%    \fill[white,opacity=1] (0,0) rectangle(\the\paperwidth,\the\paperheight);
+%    \fi
+%   \end{tikzpicture}
+% }
+
+\setbeamertemplate{background canvas}{%
+	\ifnum\c@framenumber=1%
+	% On title page
+	\color{ki}\rule{\paperwidth}{\paperheight}
+	\else%
+	% Other frames background
+	\fi%
+}
+
+\newcommand{\sepframe}[1]{
+	\begin{frame}
+		\vspace{-0.035cm}
+		\begin{beamercolorbox}[wd=\paperwidth,ht=\paperheight]{frametitle}%
+			\begin{tikzpicture}[baseline=0pt]%
+			\useasboundingbox[fill=ki](0,0) rectangle(\the\paperwidth,\the\paperheight);
+			\node[font=\huge,white,text width=10cm,text badly centered] at (current page.center) {\expandafter{#1}};%
+			\end{tikzpicture}
+		\end{beamercolorbox}
+	\end{frame}
+}
+
+% Title page
+
+\defbeamertemplate*{title page}{ki}[1][]
+{
+	\vbox{}
+	\vfill
+	\begin{centering}
+		\begin{beamercolorbox}[sep=8pt,center]{title}
+			\usebeamerfont{title}\inserttitle\par%
+			\vskip0.25em%
+			{\usebeamercolor[fg]{titlegraphic}\includegraphics[width=5cm]{logo-ki.png}\par}
+			\ifx\insertsubtitle\@empty%
+			\else%
+			\vskip0.25em%
+			{\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
+			\fi%
+		\end{beamercolorbox}%
+		\vskip1em\par
+		\begin{beamercolorbox}[sep=8pt,center]{author}
+			\usebeamerfont{author}\insertauthor
+		\end{beamercolorbox}
+		\begin{beamercolorbox}[sep=8pt,center]{institute}
+			\usebeamerfont{institute}\insertinstitute
+		\end{beamercolorbox}
+		\begin{beamercolorbox}[sep=8pt,center]{date}
+			\usebeamerfont{date}\insertdate
+		\end{beamercolorbox}\vskip0.5em
+	\end{centering}
+	\vfill
+}
