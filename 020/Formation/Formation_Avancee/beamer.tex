@@ -11,7 +11,7 @@
 \usepackage{amssymb}
 \usepackage{mathrsfs}
 \usepackage[bottom]{footmisc}
-\usepackage{multicol}
+
 \usepackage{float}
 \usepackage{textcomp}
 \usepackage{verbatim}
@@ -19,8 +19,14 @@
 \usepackage{xcolor}
 \usepackage{subfig}
 
+\usepackage{multicol}
+\setlength{\columnsep}{0.5cm}
+
 \usetheme{ki}
 \usefonttheme{serif}
+\setbeamercolor{block title}{bg=blue!30,fg=black}
+\setbeamertemplate{blocks}[rounded][shadow=true]
+
 
 \title{Formation \LaTeX \vspace{0.2cm} Avancée}
 \author{KI '020}
@@ -493,6 +499,9 @@ publisher={Charles-Antoine Jombert}
 		\usepackage[utf8]{inputenc}
 		\usepackage[T1]{fontenc}
 		\usepackage[french]{babel}
+
+		\usetheme{Warsaw}
+		\usefonttheme{serif}
 	\end{verbatim}
 \end{frame}
 
@@ -541,14 +550,14 @@ publisher={Charles-Antoine Jombert}
 
 \begin{frame}
 	\frametitle{Le type \textit{beamer}}
-	\centering
 
 	\begin{multicols}{2}
 	[
-	\section{First Section}
 	Les élèves de l'ENPC sont des êtres très touchants. Ils adorent être doux.
 	]
-	Ceci est le commencement de mon existence. Il s'avère que je suis né le 12 avril 1997. Et vous ? J'aime bien le sport : faire du sport, regarder du sport. Les fléchettes c'est marrant non ?
+	Ceci est le commencement de mon existence. Il s'avère que je suis né le 12 avril 1997. Et vous ? J'aime bien le sport : faire du sport, regarder du sport. Les fléchettes c'est marrant non ? On en apprend vraiment tous les jours sur le corps humain. D'ailleurs, j'aime beaucoup les corps de manière générale. Ce sont des choses impresionnantes. Vive l'amour.\\
+
+	\indent Et hop, je reviens à la ligne.
 	\end{multicols}
 
 \end{frame}
@@ -563,6 +572,63 @@ publisher={Charles-Antoine Jombert}
 \begin{frame}
 	\frametitle{C'est l'heure du TP !}
 
+	\begin{multicols}{3}
+	[Preuve de l'existence de Dieu.]
+	Alors que je me \textit{promenais} dans la rue, un vieux m'arrêta. ``Salutations, \textsc{humain} ! Voici ce que tu dois savoir :''\\
+	\begin{equation*}
+		H\Psi = E\Psi
+	\end{equation*}
+	Mon monde s'écroula. Non seulement je venais de comprendre mes erreurs, mais j'avais compris le but de toute chose. L'intrication quantique entre élèves des ponts n'était finalement pas seulement dûe au foyer...\\
+
+	\includegraphics[scale=0.1]{Images/Beamer/dieu.jpg}
+
+	\end{multicols}
+
+\end{frame}
+
+\begin{frame}[fragile=singleslide]
+	\frametitle{Et les maths avec beamer ?}
+
+	Souvent, on voit des boîtes qui entourent certains résultats importants :
+	\begin{verbatim}
+		\begin{block}[blocktitle]
+			Chose importante méritant une attention particulière
+		\end{block}
+	\end{verbatim}
+
+	Marche aussi avec \textit{\color{red}{alertblock}}, \textit{\color{green}{exampleblock}}.
+\end{frame}
+
+\begin{frame}
+	\frametitle{Et les maths avec beamer ?}
+
+	\begin{block}{Ratio de vraisemblance}
+	    On introduit la statistique suivante :
+	    $$
+	    \begin{array}{ccl}
+	    \Lambda(y_n|x_n) & = & 2\, \log\frac{\mbox{Maximum de vraisemblance du problème}}{\mbox{Maximum de vraisemblance sous } H_0} \\
+	    & & \\
+	    & = & 2\,\log \frac{\prod_{i=1}^n \hat{p}(1|x_i)^{y_i}(1-\hat{p}(1|x_i))^{1-y_i}}{\prod_{i=1}^n (\hat{p}^*)^{y_i}(1-\hat{p}^*)^{1-y_i}}
+	    \end{array}
+	    $$
+	\end{block}
+
+	\begin{block}{Lemme}
+		Sous $H_0$, $\Lambda(y_n|x_n)$ converge en loi vers la distribution $\chi_2(1)$
+	\end{block}
+
+	\begin{block}{Corrolaire}
+		On rejette $H_0$ si $\Lambda(y_n|x_n) \geq \chi_{1,1-\alpha}^2$ avec un niveau asymptotique $\alpha$.
+	\end{block}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Petite sieste tactique}
+	\Huge
+	\centering
+
+	PAUSE <3
 \end{frame}
 
 \section{Utiliser des templates}
