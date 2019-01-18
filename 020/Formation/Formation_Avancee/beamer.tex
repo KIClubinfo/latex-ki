@@ -199,6 +199,58 @@ publisher={Charles-Antoine Jombert}
 		\end{itemize}
 	\end{frame}
 
+\begin{frame}[fragile=singleslide]
+	\frametitle{Tableaux}
+	\centering
+	Environnement \textit{tabular} :
+	\begin{verbatim}
+		\begin{tabular}{|l|c|r|}
+			\hline
+			colonne 1 & colonne 2 & colonne 3 \\
+			\hline
+			1 & 2 & 3\\
+			\hline
+		\end{tabular}
+	\end{verbatim}
+
+	\begin{tabular}{|l|c|r|}
+		\hline
+		colonne 1 & colonne 2 & colonne 3 \\
+		\hline
+		1 & 2 & 3\\
+		\hline
+	\end{tabular}
+
+\end{frame}
+
+\begin{frame}[fragile=singleslide]
+	\frametitle{Tableaux}
+	\centering
+	Utilisation de \textit{multicolumn} :
+	\begin{verbatim}
+\begin{tabular}{|l|c|r|}
+   \hline
+   colonne 1 & \multicolumn{2}{c|}{colonnes 2 et 3} \\
+   \hline
+   1 & 2 & 3 \\
+   \hline
+   4 & 5 & 6 \\
+   \hline
+\end{tabular}
+	\end{verbatim}
+
+	\begin{tabular}{|l|c|r|}
+	   \hline
+	   colonne 1 & \multicolumn{2}{c|}{colonnes 2 et 3} \\
+	   \hline
+	   1 & 2 & 3 \\
+	   \hline
+	   4 & 5 & 6 \\
+	   \hline
+	\end{tabular}
+
+\end{frame}
+
 	\begin{frame}
 		\frametitle{Quelques Rappels ?}
 		\begin{itemize}
@@ -207,6 +259,57 @@ publisher={Charles-Antoine Jombert}
 			\item Manier des structures de tableaux ?
 			\item Environnement mathématique ?
 		\end{itemize}
+	\end{frame}
+
+	\begin{frame}[fragile=singleslide]
+		\frametitle{Mathématiques}
+
+		\centering
+		Environnement \textit{\$ \$}:
+		\begin{verbatim}
+			$\frac{a}{b} \leq \sqrt[n]{2}$
+			$$ \iiint f(x,y,z)dxdydz $$
+		\end{verbatim}
+
+		$\frac{a}{b} \leq \sqrt[n]{2}$
+		$$ \iiint_{\mathbb{R^3}} f(x,y,z)dxdydz $$
+
+	\end{frame}
+
+	\begin{frame}[fragile=singleslide]
+		\frametitle{Mathématiques}
+		\centering
+		Environnement \textit{align, equation} :
+		\begin{verbatim}
+			\begin{equation}
+				\cos(z)^2+\section(z)^2 \neq 0
+			\end{equation}
+		\end{verbatim}
+
+		\begin{equation}
+			\cos(z)^2+\sin(z)^2 \neq 0
+		\end{equation}
+
+
+	\end{frame}
+
+	\begin{frame}[fragile=singleslide]
+		\frametitle{Mathématiques}
+		\centering
+		\begin{verbatim}
+			\begin{align}
+				\mathbb{E}(Z)
+				&= \frac{1}{n}\sum_{i=1}^n \mathbb{E}(1)
+				&= \exp(0)
+			\end{align}
+		\end{verbatim}
+
+		\begin{align}
+			\mathbb{E}(Z)
+			&= \frac{1}{n}\sum_{i=1}^n \mathbb{E}(1)\\
+			&= \exp(0)
+		\end{align}
+
 	\end{frame}
 
 	\begin{frame}
