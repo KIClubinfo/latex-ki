@@ -11,6 +11,7 @@
 \usepackage{amssymb}
 \usepackage{mathrsfs}
 \usepackage[bottom]{footmisc}
+\usepackage{multicol}
 \usepackage{float}
 \usepackage{textcomp}
 \usepackage{verbatim}
@@ -100,6 +101,31 @@ publisher={Charles-Antoine Jombert}
 
 	\end{frame}
 
+	\begin{frame}[fragile=singleslide]
+		\frametitle{Sommaire}
+
+		\centering
+		Pour avoir un sommaire tout bien tout fait :\\
+		\begin{verbatim}
+			\tableofcontents
+		\end{verbatim}
+
+		Pour ne pas garder les sous-sous-sections :
+
+		\begin{verbatim}
+		\setcounter{tocdepth}{2}
+		\end{verbatim}
+
+		\begin{tabular}{|c|c|c|c|}
+			\hline
+			-1 & Partie & 3 & Sous-sous-section\\ \hline
+			0 & Chapitre & 4 & Paragraphe \\ \hline
+			1 & Section & 5 & Sous-paragraphe \\ \hline
+			2 & Sous-section & & \\ \hline
+		\end{tabular}
+
+	\end{frame}
+
 	\begin{frame}
 		\frametitle{Quelques Rappels ?}
 		\begin{itemize}
@@ -150,7 +176,7 @@ publisher={Charles-Antoine Jombert}
 	\end{frame}
 
 	\begin{frame}[fragile=singleslide]
-		\frametitle{Inclue des images}
+		\frametitle{Inclure des images}
 
 		\begin{verbatim}
 			\begin{figure}[h]
@@ -195,9 +221,94 @@ publisher={Charles-Antoine Jombert}
 		\begin{itemize}
 			\item Bibliographie ?
 			\item Inclure des images (notamment des images côte à côte) ?
-			\item Manier des structures de tableaux ?
+			\item Gérer l'indentation et la géométrie globale ?
 		\end{itemize}
 	\end{frame}
+
+	\begin{frame}[fragile=singleslide]
+	\frametitle{Formatage des paragraphes}
+
+	\begin{enumerate}
+		\item Changer les marges  de la page\\
+			\begin{verbatim}
+			\usepackage[a4paper,total={6in,8in}]{geometry}
+			\end{verbatim}
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile=singleslide]
+	\frametitle{Formatage des paragraphes}
+
+	\begin{enumerate}
+		\item Changer les marges  de la page\\
+
+			\begin{verbatim}
+			\usepackage[a4paper,total={6in,8in}]{geometry}
+			\end{verbatim}
+		\item Indentation d'un paragraphe\\
+
+			\begin{verbatim}
+			\setlength{\parindent}{4em} (utiliser \indent et \noindent !)
+			\end{verbatim}
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile=singleslide]
+	\frametitle{Formatage des paragraphes}
+
+	\begin{enumerate}
+		\item Changer les marges  de la page\\
+			\begin{verbatim}
+			\usepackage[a4paper,total={6in,8in}]{geometry}
+			\end{verbatim}
+		\item Indentation d'un paragraphe\\
+
+			\begin{verbatim}
+			\setlength{\parindent}{4em} (utiliser \indent et \noindent !)
+			\end{verbatim}
+		\item Distance inter-paragraphe\\
+
+			\begin{verbatim}
+			\setlength{\parskip}{1em}
+			\end{verbatim}
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile=singleslide]
+	\frametitle{Formatage des paragraphes}
+
+	\begin{enumerate}
+		\item Changer les marges  de la page\\
+
+			\begin{verbatim}
+			\usepackage[a4paper,total={6in,8in}]{geometry}
+			\end{verbatim}
+		\item Indentation d'un paragraphe\\
+
+			\begin{verbatim}
+			\setlength{\parindent}{4em} (utiliser \indent et \noindent !)
+			\end{verbatim}
+		\item Distance inter-paragraphe\\
+
+			\begin{verbatim}
+			\setlength{\parskip}{1em}
+			\end{verbatim}
+		\item Hauteur de ligne\\
+			\begin{verbatim}
+			\renewcommand{\baselinestretch}{2}
+			\end{verbatim}
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Quelques Rappels ?}
+	\begin{itemize}
+		\item Bibliographie ?
+		\item Inclure des images (notamment des images côte à côte) ?
+		\item Gérer l'indentation et la géométrie globale ?
+		\item Manier des structures de tableaux ?
+	\end{itemize}
+\end{frame}
 
 \begin{frame}[fragile=singleslide]
 	\frametitle{Tableaux}
@@ -256,6 +367,7 @@ publisher={Charles-Antoine Jombert}
 		\begin{itemize}
 			\item Bibliographie ?
 			\item Inclure des images (notamment des images côte à côte) ?
+			\item Gérer l'indentation et la géométrie globale ?
 			\item Manier des structures de tableaux ?
 			\item Environnement mathématique ?
 		\end{itemize}
@@ -317,6 +429,7 @@ publisher={Charles-Antoine Jombert}
 		\begin{itemize}
 			\item Bibliographie ?
 			\item Inclure des images (notamment des images côte à côte) ?
+			\item Gérer l'indentation et la géométrie globale ?
 			\item Manier des structures de tableaux ?
 			\item Environnement mathématique ?
 			\item Les bonnes pratiques pour travailler en groupe ?
@@ -324,22 +437,149 @@ publisher={Charles-Antoine Jombert}
 	\end{frame}
 
 	\begin{frame}
-		\frametitle{Quelques Rappels ?}
+		\frametitle{Gestion de projet}
 		\begin{itemize}
-			\item Bibliographie ?
-			\item Inclure des images (notamment des images côte à côte) ?
-			\item Manier des structures de tableaux ?
-			\item Environnement mathématique ?
-			\item Les bonnes pratiques pour travailler en groupe ?
-			\item Se servir d'un moteur de recherche ?
+			\item Utiliser des dépôts : Google Drive, Overleaf, GitHub, Trello
 		\end{itemize}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Gestion de projet}
+		\begin{enumerate}
+			\item Utiliser des dépôts : Google Drive, Overleaf, GitHub, Trello
+			\item Être rigoureux dans le code : warnings, erreurs, etc...
+		\end{enumerate}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Gestion de projet}
+		\begin{enumerate}
+			\item Utiliser des dépôts : Google Drive, Overleaf, GitHub, Trello
+			\item Être rigoureux dans le code : warnings, erreurs, etc.
+			\item Rendez votre code clair : structurez, indentez, faites respirer le code
+		\end{enumerate}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Gestion de projet}
+		\begin{enumerate}
+			\item Utiliser des dépôts : Google Drive, Overleaf, GitHub, Trello
+			\item Être rigoureux dans le code : warnings, erreurs, etc.
+			\item Rendez votre code clair : structurez, indentez, faites respirer le code
+			\item Utiliser au maximum des IDEs avec des \textit{linters} et qui ont des modules d'autocomplétion
+		\end{enumerate}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Gestion de projet}
+		\begin{enumerate}
+			\item Utiliser des dépôts : Google Drive, Overleaf, GitHub, Trello
+			\item Être rigoureux dans le code : warnings, erreurs, etc.
+			\item Rendez votre code clair : structurez, indentez, faites respirer le code
+			\item Utiliser au maximum des IDEs avec des \textit{linters} et qui ont des modules d'autocomplétion
+			\item Utiliser les moteurs de recherche au maximum pour de l'aide
+		\end{enumerate}
 	\end{frame}
 
 \section{Faire de \emph{magnifiques} slides}
 
+
+\begin{frame}[fragile=singleslide]
+	\frametitle{Le type \textit{beamer}}
+	\centering Ces slides sont faites en \LaTeX avec le type \textbf{beamer}\\
+
+	\begin{verbatim}
+		\documentclass[handout]{beamer}
+		\usepackage[utf8]{inputenc}
+		\usepackage[T1]{fontenc}
+		\usepackage[french]{babel}
+	\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile=singleslide]
+	\frametitle{Le type \textit{beamer}}
+	\centering
+	Pour créer une slide :
+
+			\begin{verbatim}
+			\begin{frame}
+			\frametitle{Titre de la slide}
+			Contenu de la slide
+			\end{frame}
+			\end{verbatim}
+
+\end{frame}
+
+\begin{frame}[fragile=singleslide]
+	\frametitle{Le type \textit{beamer}}
+	\centering
+	Pour partitionner les slides :\\
+	L'environnement \textit{multi colonne}, \textit{minipage}, etc.
+
+			\begin{verbatim}
+			\usepackage{multicol}
+			\setlength{\columnsep}{1cm}
+			\end{verbatim}
+
+\end{frame}
+
+\begin{frame}[fragile=singleslide]
+	\frametitle{Le type \textit{beamer}}
+	\centering
+
+			\begin{verbatim}
+				\begin{multicols}{2}
+				[
+				\section{First Section}
+				Titre de la section
+				]
+				Texte
+				\end{multicols}
+			\end{verbatim}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Le type \textit{beamer}}
+	\centering
+
+	\begin{multicols}{2}
+	[
+	\section{First Section}
+	Les élèves de l'ENPC sont des êtres très touchants. Ils adorent être doux.
+	]
+	Ceci est le commencement de mon existence. Il s'avère que je suis né le 12 avril 1997. Et vous ? J'aime bien le sport : faire du sport, regarder du sport. Les fléchettes c'est marrant non ?
+	\end{multicols}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Le type \textit{beamer}}
+	\framesubtitle{Ce qu'il est possible de faire avec ces environnements...}
+	\centering
+	\includegraphics[scale=0.25]{Images/Beamer/column.png}
+\end{frame}
+
+\begin{frame}
+	\frametitle{C'est l'heure du TP !}
+
+\end{frame}
+
 \section{Utiliser des templates}
 
 \section{Mettre des gifs animés dans les slides ?}
+
+\begin{frame}
+	\centering
+	\Huge
+	\textsc{MERCI BEAUCOUP !}\\
+	\vspace*{2cm}
+	\normalsize
+	\textsc{Le KI '020}\\
+	\vspace*{1cm}
+	\centering
+	\includegraphics[scale=0.2]{logo-ki.png}
+\end{frame}
 
 
 
