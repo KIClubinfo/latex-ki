@@ -16,6 +16,7 @@
 \usepackage{verbatim}
 \usepackage{ulem}
 \usepackage{xcolor}
+\usepackage{subfig}
 
 \usetheme{ki}
 \usefonttheme{serif}
@@ -46,12 +47,147 @@
 		\end{itemize}
 	\end{frame}
 
+	\begin{frame}[fragile=singleslide]
+		\frametitle{Bibliographie}
+
+		\centering
+		Fichier .bib :
+		\begin{verbatim}
+			@book{ArchitectureHydraulique,
+title={Architecture Hydraulique,
+Ou l'Art de Conduire, d'Élever Et de Ménager Les Eaux},
+author={Bernard Forest de Bélidor},
+year={1737},
+publisher={Charles-Antoine Jombert}
+}
+		\end{verbatim}
+
+	\end{frame}
+
+	\begin{frame}[fragile=singleslide]
+		\frametitle{Bibliographie}
+		\centering
+		Pour citer au milieu du texte :\\
+
+		\begin{verbatim}
+			Pour savoir quelle machine choisir, il est donc nécessaire
+			de trouver un moyen de comparer deux machines (ou moteurs)
+			entre elles : Navier veut une unité de mesure qui
+			représenterait les "quantités de travail employées pour
+			effectuer toute espèce de fabrication"
+			\cite{ArchitectureHydraulique}.
+		\end{verbatim}
+
+	\end{frame}
+
+	\begin{frame}[fragile=singleslide]
+		\frametitle{Bibliographie}
+
+		\centering
+		Fichier .bib importé à la fin du document \LaTeX :
+		\begin{verbatim}
+			\bibliographystyle{plain}
+			\bibliography{fichier.bib}
+		\end{verbatim}
+
+	\end{frame}
+
+	\begin{frame}
+
+		\centering
+
+		\includegraphics[scale=0.45]{Images/Rappels/biblio.png}
+
+	\end{frame}
+
 	\begin{frame}
 		\frametitle{Quelques Rappels ?}
 		\begin{itemize}
 			\item Bibliographie ?
 			\item Inclure des images (notamment des images côte à côte) ?
 		\end{itemize}
+	\end{frame}
+
+	\begin{frame}[fragile=singleslide]
+		\frametitle{Inclure des images}
+
+		\centering
+		\begin{verbatim}
+			\begin{figure}[options de position]
+				\caption{\label{etiquette} titre}
+			\includegraphics[options sur l'image]{chemin}
+		\end{figure}
+		\end{verbatim}
+
+		Liste d'options de position :
+		\begin{itemize}
+			\item \textit{h} à côté du texte précédent la source
+			\item \textit{t} en haut d'une page
+			\item \textit{b} en bas d'une page
+			\item \textit{p} dans une page ne contenant que des \emph{flottants} (images, tableaux, etc.)
+			\item Avec le package \textit{float}, on peut utiliser \textit{H}
+		\end{itemize}
+
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Inclure des images}
+
+		\centering
+		Mettre côte à côte : utiliser un environnement \textit{tabular}...
+	\end{frame}
+
+	\begin{frame}[fragile=singleslide]
+		\frametitle{Inclure des images}
+
+		\centering
+		Mettre côte à côte : utiliser un environnement \textit{tabular}... ou de nouveaux packages !\\
+
+		\begin{verbatim}
+			\usepackage{subfig}
+		\end{verbatim}
+
+	\end{frame}
+
+	\begin{frame}[fragile=singleslide]
+		\frametitle{Inclue des images}
+
+		\begin{verbatim}
+			\begin{figure}[h]
+  \begin{center}
+	\subfloat[Coco \& Moi]{
+	  \includegraphics[width=0.3\textwidth]{regiscoco1.jpg}
+	  \label{sub:renonc}
+						 }
+	\subfloat[Moi \& Coco]{
+	  \includegraphics[width=0.3\textwidth]{regiscoco2.jpg}
+	  \label{sub:popul}
+						 }
+	\caption{C'était le WEI}
+	\label{fig:renonculacees}
+  \end{center}
+\end{figure}
+		\end{verbatim}
+
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Inclure des images}
+
+		\begin{figure}[h]
+\begin{center}
+\subfloat[Coco \& Moi]{
+  \includegraphics[width=0.3\textwidth]{Images/Rappels/regiscoco1.jpg}
+  \label{sub:renonc}
+					 }
+\subfloat[Moi \& Coco]{
+  \includegraphics[width=0.3\textwidth]{Images/Rappels/regiscoco2.JPG}
+  \label{sub:popul}
+					 }
+\caption{C'était le WEI}
+\label{fig:renonculacees}
+\end{center}
+\end{figure}
 	\end{frame}
 
 	\begin{frame}
@@ -80,6 +216,18 @@
 			\item Inclure des images (notamment des images côte à côte) ?
 			\item Manier des structures de tableaux ?
 			\item Environnement mathématique ?
+			\item Les bonnes pratiques pour travailler en groupe ?
+		\end{itemize}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Quelques Rappels ?}
+		\begin{itemize}
+			\item Bibliographie ?
+			\item Inclure des images (notamment des images côte à côte) ?
+			\item Manier des structures de tableaux ?
+			\item Environnement mathématique ?
+			\item Les bonnes pratiques pour travailler en groupe ?
 			\item Se servir d'un moteur de recherche ?
 		\end{itemize}
 	\end{frame}
