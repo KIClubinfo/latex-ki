@@ -254,7 +254,8 @@ publisher={Charles-Antoine Jombert}
 		\item Indentation d'un paragraphe\\
 
 			\begin{verbatim}
-			\setlength{\parindent}{4em} (utiliser \indent et \noindent !)
+			\setlength{\parindent}{4em}
+			% (utiliser \indent et \noindent !)
 			\end{verbatim}
 	\end{enumerate}
 \end{frame}
@@ -270,7 +271,8 @@ publisher={Charles-Antoine Jombert}
 		\item Indentation d'un paragraphe\\
 
 			\begin{verbatim}
-			\setlength{\parindent}{4em} (utiliser \indent et \noindent !)
+			\setlength{\parindent}{4em}
+			% (utiliser \indent et \noindent !)
 			\end{verbatim}
 		\item Distance inter-paragraphe\\
 
@@ -292,7 +294,8 @@ publisher={Charles-Antoine Jombert}
 		\item Indentation d'un paragraphe\\
 
 			\begin{verbatim}
-			\setlength{\parindent}{4em} (utiliser \indent et \noindent !)
+			\setlength{\parindent}{4em}
+			% (utiliser \indent et \noindent !)
 			\end{verbatim}
 		\item Distance inter-paragraphe\\
 
@@ -487,7 +490,7 @@ publisher={Charles-Antoine Jombert}
 		\end{enumerate}
 	\end{frame}
 
-\section{Faire de \emph{magnifiques} slides}
+\section{Faire de \textit{magnifiques} slides}
 
 
 \begin{frame}[fragile=singleslide]
@@ -591,7 +594,7 @@ publisher={Charles-Antoine Jombert}
 
 	Souvent, on voit des boîtes qui entourent certains résultats importants :
 	\begin{verbatim}
-		\begin{block}[blocktitle]
+		\begin{block}{blocktitle}
 			Chose importante méritant une attention particulière
 		\end{block}
 	\end{verbatim}
@@ -633,7 +636,156 @@ publisher={Charles-Antoine Jombert}
 
 \section{Utiliser des templates}
 
-\section{Mettre des gifs animés dans les slides ?}
+\begin{frame}
+	\frametitle{Bientôt dans votre scolarité}
+	\centering
+	Dans les différents départements (2A, DLC) et pour votre vie future :\\
+	\begin{itemize}
+		\item Faire des posters
+		\item Faire votre CV
+		\item Faire des articles, des thèses, etc.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Utilisation des templates}
+
+	\centering
+	\Huge
+	\fbox{\textsc{Templates}}
+	\normalsize
+
+	\hspace{2cm}
+
+	\begin{itemize}
+		\item https://fr.overleaf.com/latex/templates
+		\item https://fr.sharelatex.com/templates
+		\item https://www.latextemplates.com/
+	\end{itemize}
+\end{frame}
+
+\section{Quelques trucs sympas}
+
+\begin{frame}[fragile=singleslide]
+	\frametitle{Inclure du \LaTeX}
+
+	\centering
+
+	\begin{verbatim}
+		\usepackage{verbatim}
+
+		\begin{verbatim}
+			\begin{itemize}
+				\item ...
+			\end{itemize}
+		%end{verbatim}
+
+	\end{verbatim}
+
+	Attention aux slides :\\
+	\begin{verbatim}
+		\begin{frame}[fragile=singleslide]
+			stuff
+		\end{frame}
+	\end{verbatim}
+
+\end{frame}
+
+\begin{frame}[fragile=singleslide]
+	\frametitle{Mettre un lien}
+
+	\begin{enumerate}
+		\item Include le module :\\
+			\begin{verbatim}
+			\usepackage{hyperref}
+			\end{verbatim}
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile=singleslide]
+	\frametitle{Mettre un lien}
+
+	\begin{enumerate}
+		\item Include le module :\\
+			\begin{verbatim}
+			\usepackage{hyperref}
+			\end{verbatim}
+		\item Faire des liens :\\
+			\begin{verbatim}
+			\url{https://en.wikibooks.org/wiki/LaTeX}
+			\href{https://en.wikibooks.org}{Un lien}
+			\end{verbatim}
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile=singleslide]
+	\frametitle{Mettre un lien}
+
+	\begin{enumerate}
+		\item Include le module :\\
+			\begin{verbatim}
+			\usepackage{hyperref}
+			\end{verbatim}
+		\item Faire des liens :\\
+			\begin{verbatim}
+			\url{https://en.wikibooks.org/wiki/LaTeX}
+			\href{https://en.wikibooks.org}{Un lien}
+			\end{verbatim}
+		\item Rendre cliquable le sommaire :\\
+			\begin{verbatim}
+				\hypersetup{
+    				colorlinks,
+    				linkcolor=black,
+				}
+			\end{verbatim}
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Mettre des animations dans des slides}
+	\centering
+	Pour les présentations de projets (Département ou Recherche) :\\
+	\begin{itemize}
+		\item Séparer le \textit{.gif} en pleins de \textit{.png}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Mettre des animations dans des slides}
+	\centering
+	Pour les présentations de projets (Département ou Recherche) :\\
+	\begin{itemize}
+		\item Séparer le \textit{.gif} en pleins de \textit{.png}
+		\item Utiliser le package \textit{animate}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile=singleslide]
+	\frametitle{Mettre des animations dans des slides}
+	\centering
+	Pour les présentations de projets (Département ou Recherche) :\\
+	\begin{itemize}
+		\item Séparer le \textit{.gif} en pleins de \textit{.png} (\textit{convert} en \textit{shell} le fait très bien, accessible sur tous les OS)
+		\item Utiliser le package \textit{animate}
+		\item
+			\begin{verbatim}
+			\begin{figure}
+		    \centering
+		    \animategraphics[loop,autoplay]{12}
+			{./figures/frame-}{0}{36} % (37 frames)
+		    \end{figure}
+			\end{itemize}
+			\end{verbatim}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Do not forget}
+	\centering
+	\begin{quote}
+		RTFM.
+	\end{quote}
+\end{frame}
 
 \begin{frame}
 	\centering
