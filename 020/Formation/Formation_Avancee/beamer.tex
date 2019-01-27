@@ -202,14 +202,14 @@ publisher={Charles-Antoine Jombert}
   \begin{center}
 	\subfloat[Coco \& Moi]{
 	  \includegraphics[width=0.3\textwidth]{regiscoco1.jpg}
-	  \label{sub:renonc}
+	  \label{sub:campagnesbda}
 						 }
 	\subfloat[Moi \& Coco]{
 	  \includegraphics[width=0.3\textwidth]{regiscoco2.jpg}
-	  \label{sub:popul}
+	  \label{sub:wei}
 						 }
 	\caption{C'était le WEI}
-	\label{fig:renonculacees}
+	\label{fig:cocomoi}
   \end{center}
 \end{figure}
 		\end{verbatim}
@@ -402,7 +402,7 @@ publisher={Charles-Antoine Jombert}
 		Environnement \textit{\$ \$}:
 		\begin{verbatim}
 			$\frac{a}{b} \leq \sqrt[n]{2}$
-			$$ \iiint f(x,y,z)dxdydz $$
+			$$ \iiint_{\mathbb{R}^3} f(x,y,z)dxdydz $$
 		\end{verbatim}
 
 		$\frac{a}{b} \leq \sqrt[n]{2}$
@@ -416,7 +416,7 @@ publisher={Charles-Antoine Jombert}
 		Environnement \textit{align, equation} :
 		\begin{verbatim}
 			\begin{equation}
-				\cos(z)^2+\section(z)^2 \neq 0
+				\cos(z)^2+\sin(z)^2 \neq 0
 			\end{equation}
 		\end{verbatim}
 
@@ -508,7 +508,7 @@ publisher={Charles-Antoine Jombert}
 
 \begin{frame}[fragile=singleslide]
 	\frametitle{Le type \textit{beamer}}
-	\centering Ces slides sont faites en \LaTeX avec le type \textbf{beamer}\\
+	\centering Ces slides sont faites en \LaTeX \hspace{0.1cm}avec le type \textbf{beamer}\\
 
 	\begin{verbatim}
 		\documentclass[handout]{beamer}
@@ -652,7 +652,7 @@ publisher={Charles-Antoine Jombert}
 
 \begin{frame}
 	\frametitle{Et les maths avec beamer ?}
-
+	\vspace{-0.2cm}
 	\begin{block}{Ratio de vraisemblance}
 	    On introduit la statistique suivante :
 	    $$
@@ -803,7 +803,7 @@ publisher={Charles-Antoine Jombert}
 		    \centering
 		    \animategraphics[loop,autoplay]{12}
 			{./figures/frame-}{0}{36} % (37 frames)
-		    \end{figure}
+		\end{figure}
 			\end{verbatim}
 	\end{itemize}
 \end{frame}
@@ -933,6 +933,8 @@ Ce cannabinoïde possède plusieurs isomères :\\
 \frametitle{Solution}
 \footnotesize
 \begin{verbatim}
+% 2ème slide
+
 Notons que le \THC \hspace{0.1cm}(de formule \formule{21}{30}{2} 
 je le rappelle) possède des vertus anti-inflammatoires et 
 anti-métastatiques 
@@ -973,8 +975,7 @@ Dans ce qu'on a vu jusqu'à présent :
 
 \begin{frame}
 \frametitle{Comment avons-nous un template KI ?}
-	Le thème \textit{Warsaw} n'est pas incroyable, et les autres disponibles par défaut ne sont pas non plus glorieux...\\
-	D'où l'utilité des fichiers \textit{.sty} (fichiers d'extensions) :
+	D'où l'utilité des fichiers \textit{.sty} (fichiers d'extensions). Pour faire cette présentation, on a besoin de :
 	\begin{itemize}
 		\item \textit{beamercolorthemeki.sty} // Couleurs
 		\item \textit{beamerinnerthemeki.sty} // A l'intérieur de chaque frame
@@ -1071,9 +1072,8 @@ Ma Meilleure Extension, Version 12.04]
 
 % commandes personnelles
 
-\newcommand{\langue}{\emph} 
-\newcommand{\citital}{\emph} 
-\newcommand{\nomprog}{\texttt}
+\newcommand{\bff}{koukou} 
+\newcommand{\michesdepain}{Andreas & Nicolas}
 \end{verbatim}
 \end{frame}
 
