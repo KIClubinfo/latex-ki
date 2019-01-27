@@ -18,6 +18,13 @@
 \usepackage{ulem}
 \usepackage{xcolor}
 \usepackage{subfig}
+\usepackage{hyperref}
+\usepackage{subscript}
+
+\hypersetup{
+	colorlinks,
+	linkcolor=blue,
+}
 
 \usepackage{multicol}
 \setlength{\columnsep}{0.5cm}
@@ -32,6 +39,12 @@
 \author{KI '020}
 \institute{\color{white}Ecole des Ponts Paristech}
 \date{\today}
+
+
+% Commandes pour le TP
+\newcommand{\THC}{tétrahydrocannabinol}
+\newcommand{\formule}[3]{\textbf{C}\textsubscript{#1}\textbf{H}\textsubscript{#2}\textbf{O}\textsubscript{#3}}
+\newcommand{\Deltatext}[1]{$\Delta$\up{#1}}
 
 \begin{document}
 
@@ -210,14 +223,14 @@ publisher={Charles-Antoine Jombert}
 \begin{center}
 \subfloat[Coco \& Moi]{
   \includegraphics[width=0.3\textwidth]{Images/Rappels/regiscoco1.jpg}
-  \label{sub:renonc}
+  \label{sub:campagnesbda}
 					 }
 \subfloat[Moi \& Coco]{
   \includegraphics[width=0.3\textwidth]{Images/Rappels/regiscoco2.JPG}
-  \label{sub:popul}
+  \label{sub:wei}
 					 }
 \caption{C'était le WEI}
-\label{fig:renonculacees}
+\label{fig:cocomoi}
 \end{center}
 \end{figure}
 	\end{frame}
@@ -693,9 +706,9 @@ publisher={Charles-Antoine Jombert}
 	\hspace{2cm}
 
 	\begin{itemize}
-		\item https://fr.overleaf.com/latex/templates
-		\item https://fr.sharelatex.com/templates
-		\item https://www.latextemplates.com/
+		\item \url{https://fr.overleaf.com/latex/templates}
+		\item \url{https://fr.sharelatex.com/templates}
+		\item \url{https://www.latextemplates.com/}
 	\end{itemize}
 \end{frame}
 
@@ -730,21 +743,6 @@ publisher={Charles-Antoine Jombert}
 	\frametitle{Mettre un lien}
 
 	\begin{enumerate}
-		\item Include le module :\\
-			\begin{verbatim}
-			\usepackage{hyperref}
-			\end{verbatim}
-	\end{enumerate}
-\end{frame}
-
-\begin{frame}[fragile=singleslide]
-	\frametitle{Mettre un lien}
-
-	\begin{enumerate}
-		\item Include le module :\\
-			\begin{verbatim}
-			\usepackage{hyperref}
-			\end{verbatim}
 		\item Faire des liens :\\
 			\begin{verbatim}
 			\url{https://en.wikibooks.org/wiki/LaTeX}
@@ -757,10 +755,6 @@ publisher={Charles-Antoine Jombert}
 	\frametitle{Mettre un lien}
 
 	\begin{enumerate}
-		\item Include le module :\\
-			\begin{verbatim}
-			\usepackage{hyperref}
-			\end{verbatim}
 		\item Faire des liens :\\
 			\begin{verbatim}
 			\url{https://en.wikibooks.org/wiki/LaTeX}
@@ -768,6 +762,7 @@ publisher={Charles-Antoine Jombert}
 			\end{verbatim}
 		\item Rendre cliquable le sommaire :\\
 			\begin{verbatim}
+				\usepackage{hyperref}
 				\hypersetup{
     				colorlinks,
     				linkcolor=black,
@@ -809,9 +804,144 @@ publisher={Charles-Antoine Jombert}
 		    \animategraphics[loop,autoplay]{12}
 			{./figures/frame-}{0}{36} % (37 frames)
 		    \end{figure}
-			\end{itemize}
 			\end{verbatim}
 	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile=singleslide]
+	\frametitle{Créer ses propres commandes}
+	\begin{itemize}
+		\item Pour des abréviations\\
+		\begin{verbatim}
+		\newcommand{\formeabrégée}{forme complète}
+		% Ne pas utiliser de choses déjà existantes
+		% Que des lettres
+		\end{verbatim}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile=singleslide]
+\frametitle{Créer ses propres commandes}
+\begin{itemize}
+	\item Pour des abréviations\\
+	\begin{verbatim}
+	\newcommand{\formeabrégée}{forme complète}
+	% Ne pas utiliser de choses déjà existantes
+	% Que des lettres
+	\end{verbatim}
+	\item Pour des instructions de fonction\\
+	\begin{verbatim}
+	\newcommand{\fonction}[n]{définition de la commande}
+	% n : nombre de paramètres 
+	% On peut aussi donner un comportement par défaut
+	\newcommand{\BF}[1]{\textbf{BF}\up{#1}}
+	\BF{2}
+	\end{verbatim}
+	\newcommand{\BF}[1]{\textbf{BF}\up{#1}}
+	\BF{2}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile=singleslide]
+\frametitle{L'heure du TP !}
+
+\begin{block}{Notations}
+	On note \textit{THC} le \THC. Il possède comme formule brute \formule{21}{30}{2}.
+\end{block}
+
+Ce cannabinoïde possède plusieurs isomères :\\
+
+\begin{figure}[h]
+	\begin{center}
+		\subfloat[Isomère \Deltatext{8}]{
+			\includegraphics[width=0.4\textwidth]{Images/Trucs/Delta-8-THC.jpg}
+			\label{sub:delta8}
+		}
+		\subfloat[Isomère \Deltatext{9}]{
+			\includegraphics[width=0.4\textwidth]{Images/Trucs/Delta-9-THC.jpg}
+			\label{sub:delta9}
+		}
+		\caption{Deux isomères du \THC}
+		\label{fig:isomereTHC}
+	\end{center}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{L'heure du TP !}
+Notons que le \THC \hspace{0.1cm}(de formule \formule{21}{30}{2} je le rappelle) possède des vertus anti-inflammatoires et anti-métastatiques\footnote{Bonjour\url{https://fr.wikipedia.org/wiki/T\%C3\%A9trahydrocannabinol}}.\\
+.\\
+.\\
+.\\
+
+[1] \href{https://fr.wikipedia.org/wiki/T\%C3\%A9trahydrocannabinol}{Wikipedia} le dit (mot cliquable, note de bas de page ou référence).
+
+\end{frame}
+
+\begin{frame}[fragile=singleslide]
+	\frametitle{Solution}
+\begin{verbatim}
+% Préambule
+
+\usepackage{subscript}
+\newcommand{\THC}{tétrahydrocannabinol}
+\newcommand{\formule}[3]{\textbf{C}\textsubscript{#1}
+\textbf{H}\textsubscript{#2}\textbf{O}\textsubscript{#3}}
+\newcommand{\Deltatext}[1]{$\Delta$\up{#1}}
+\end{verbatim}
+	
+\end{frame}
+
+\begin{frame}[fragile=singleslide]
+\frametitle{Solution}
+\begin{verbatim}
+% 1ère slide
+
+\begin{block}{Notations}
+On note \textit{THC} le \THC. Il possède comme formule 
+brute \formule{21}{30}{2}.
+\end{block}
+\end{verbatim}
+
+\end{frame}
+
+
+\begin{frame}[fragile=singleslide]
+\frametitle{Solution}
+\footnotesize
+\begin{verbatim}
+% 1ère slide
+Ce cannabinoïde possède plusieurs isomères :\\
+\begin{figure}[h]
+	\begin{center}
+		\subfloat[Isomère \Deltatext{8}]{
+			\includegraphics[width=0.4\textwidth]{Images/Trucs/Delta-8-THC.jpg}
+			\label{sub:delta8}
+		}
+		\subfloat[Isomère \Deltatext{9}]{
+			\includegraphics[width=0.4\textwidth]{Images/Trucs/Delta-9-THC.jpg}
+			\label{sub:delta9}
+		}
+		\caption{Deux isomères du \THC}
+		\label{fig:isomereTHC}
+	\end{center}
+\end{figure}
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile=singleslide]
+\frametitle{Solution}
+\footnotesize
+\begin{verbatim}
+Notons que le \THC \hspace{0.1cm}(de formule \formule{21}{30}{2} 
+je le rappelle) possède des vertus anti-inflammatoires et 
+anti-métastatiques 
+\footnote{
+\href{https://fr.wikipedia.org/wiki/T\%C3\%A9trahydrocannabinol}
+{Wikipedia} 
+le dit.}.
+
+\end{verbatim}
 \end{frame}
 
 \begin{frame}
@@ -821,6 +951,153 @@ publisher={Charles-Antoine Jombert}
 		RTFM.
 	\end{quote}
 \end{frame}
+
+\section{Les classes, les extensions, les thèmes, les trucs qui simplifient la vie}
+
+\begin{frame}
+\frametitle{Embellissons...}
+Dans ce qu'on a vu jusqu'à présent :
+\begin{enumerate}
+	\item Le thème \textit{Warsaw} n'est pas incroyable, et les autres disponibles par défaut ne sont pas non plus glorieux...
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Embellissons... et simplifions}
+Dans ce qu'on a vu jusqu'à présent :
+\begin{enumerate}
+	\item Le thème \textit{Warsaw} n'est pas incroyable, et les autres disponibles par défaut ne sont pas non plus glorieux...
+	\item On utilise des packages à foison au début de chaque document \LaTeX \vspace{1cm} et obligé de faire C/C à chaque fois
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Comment avons-nous un template KI ?}
+	Le thème \textit{Warsaw} n'est pas incroyable, et les autres disponibles par défaut ne sont pas non plus glorieux...\\
+	D'où l'utilité des fichiers \textit{.sty} (fichiers d'extensions) :
+	\begin{itemize}
+		\item \textit{beamercolorthemeki.sty} // Couleurs
+		\item \textit{beamerinnerthemeki.sty} // A l'intérieur de chaque frame
+		\item \textit{beamerouterthemeki.sty} // Bandeau d'une frame
+		\item \textit{beamerthemethemeki.sty} // Combine le tout
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile=singleslide]
+\frametitle{Comment avons-nous un template KI ?}
+Dans le \textit{beamertheme.sty} :
+\begin{verbatim}
+\mode<presentation>
+% Requirement
+\RequirePackage{tikz}
+
+\definecolor{ki}{RGB}{44, 45, 45}
+
+% Settings
+\useinnertheme{ki}
+\useoutertheme{ki}
+\usecolortheme{ki}
+
+\setbeamertemplate{navigation symbols}{}
+\mode<all>
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile=singleslide]
+\frametitle{Comment avons-nous un template KI?}
+Dans le \textit{beamercolortheme.sty} :
+\begin{verbatim}
+\mode<presentation>
+
+% Settings
+\setbeamercolor*{title}{fg=white}
+\setbeamercolor*{title page header}{fg=white}
+\setbeamercolor*{author}{fg=white}
+\setbeamercolor*{date}{fg=white}
+\setbeamercolor*{item}{fg=orange}
+\setbeamercolor*{background canvas}{bg=ki}
+\setbeamercolor*{footline}{fg=ki}
+\setbeamerfont*{footline}{series=\bfseries}
+
+\mode<all>
+\end{verbatim}
+\end{frame}
+
+\begin{frame}
+\frametitle{Simplifions l'importation des packages !}
+Certains packages sont toujours à importer : \\ \textit{babel}, \textit{inputenc}, \textit{fontenc}\\
+D'autres sont souvent nécessaires : \\
+\textit{graphicx}, \textit{float}, \textit{amssymb}, \textit{amsmath}, etc.
+\end{frame}
+
+\begin{frame}
+\frametitle{Simplifions l'importation des packages !}
+Certains packages sont toujours à importer : \\ \textit{babel}, \textit{inputenc}, \textit{fontenc}\\
+D'autres sont souvent nécessaires : \\
+\textit{graphicx}, \textit{float}, \textit{amssymb}, \textit{amsmath}, etc.\\
+
+\hspace{5em}
+\fbox{
+La meilleure solution pour regrouper tout ça : 
+\textit{monextension.sty}
+}
+\end{frame}
+
+\begin{frame}[fragile=singleslide]
+\frametitle{Simplifions l'importation des packages !}
+A l'intérieur :\\
+\begin{verbatim}
+\NeedsTeXFormat{LaTeX2e} 
+% Format pour lequel cette extension est créée,
+% LaTeX2e est la version stabilisée la plus récente 
+% de LaTeX (le langage informatique)
+
+\ProvidesPackage{monextension}[26/02/2019, 
+Ma Meilleure Extension, Version 12.04] 
+% Petite description, nom du fichier sans le .sty
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile=singleslide]
+\frametitle{Simplifions l'importation des packages !}
+\begin{verbatim}
+% extensions
+
+\RequirePackage[latin1]{inputenc}
+\RequirePackage[T1]{fontenc}
+\RequirePackage{lmodern}
+\RequirePackage{graphicx}
+\RequirePackage[frenchb]{babel}
+
+% commandes personnelles
+
+\newcommand{\langue}{\emph} 
+\newcommand{\citital}{\emph} 
+\newcommand{\nomprog}{\texttt}
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile=singleslide]
+\frametitle{Simplifions l'importation des packages !}
+\framesubtitle{Et dans le \textit{.tex} ?}
+\begin{verbatim}
+\documentclass[a4paper, 11pt]{article}
+
+% Comme un package normal en somme, 
+% mais il n'y en a plus beaucoup !
+\usepackage{monextension} 
+
+\begin{document}
+...
+\end{verbatim}
+
+
+\centering 
+Pratique pour factoriser l'utilisation de ses packages !
+
+\end{frame}
+
+% Parler des classes (.cls)
 
 \begin{frame}
 	\centering
